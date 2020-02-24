@@ -77,22 +77,41 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-8">
                         <div class="carousel">
-                            <div>
+                            
+                            <div class="image">
+                                <img class="noticia-image"
+                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    alt="" srcset="">
                                 <h1>1</h1>
                             </div>
-                            <div>
+                            <div class="image">
+                                <img class="noticia-image"
+                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    alt="" srcset="">
                                 <h1>2</h1>
                             </div>
-                            <div>
+                            <div class="image">
+                                <img class="noticia-image"
+                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    alt="" srcset="">
                                 <h1>3</h1>
                             </div>
-                            <div>
+                            <div class="image">
+                                <img class="noticia-image"
+                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    alt="" srcset="">
                                 <h1>4</h1>
                             </div>
-                            <div>
+                            <div class="image">
+                                <img class="noticia-image"
+                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    alt="" srcset="">
                                 <h1>5</h1>
                             </div>
-                            <div>
+                            <div class="image">
+                                <img class="noticia-image"
+                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    alt="" srcset="">
                                 <h1>6</h1>
                             </div>
                         </div>

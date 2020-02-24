@@ -5,3 +5,11 @@ hr.nextSection{
 hr.inSection{
     border: 0.5px solid rgba(255, 0, 0, 0.123);
 }
+
+.image{
+    padding: 10px;
+}
+
+.carousel .noticia-image{
+    width:100%;
+}
