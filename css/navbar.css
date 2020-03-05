@@ -4,3 +4,7 @@
     transform: translateX(-50%);
     height: 100%;
 }
+
+.nav-logo{
+    background-color: coral !important;
+}
