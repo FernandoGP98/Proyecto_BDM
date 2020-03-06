@@ -10,8 +10,6 @@
         <a class="btn btn-outline-success my-2 my-sm-0" href="redactar.php"><i class="fas fa-plus-circle"></i></a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
-        <a href="login.php"><button class="btn btn-outline-succes my-2 my-sm-0">Ingresar</button></a> 
-        <a href="registrarse.php"><button class="btn btn-outline-succes my-2 my-sm-0">Registrarse</button></a> 
         <form class="form-inline my-2 my-lg-0">
             <input style="display: none" class="form-control mr-sm-2" type="search" placeholder="Search"
                 aria-label="Search">
