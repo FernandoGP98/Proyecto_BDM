@@ -1,0 +1,13 @@
+.contact-form
+{
+    position:relative;
+    margin :40px;
+    width: 400px;
+    height:430px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+    color:#E3E3E3;
+}

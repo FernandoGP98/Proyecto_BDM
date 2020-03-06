@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="css/navbar.css">
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div class="logo">
-        <a class="" href="#">
+        <a class="" href="/proyecto">
             <h1>Noticias</h1>
         </a>
     </div>
 
     <div class="collapse navbar-collapse d-flex justify-content-end">
-        <button class="btn btn-outline-succes my-2 my-sm-0">Ingresar</button>
-        <button class="btn btn-outline-succes my-2 my-sm-0">Registrarse</button>
+        <a class="btn btn-outline-success my-2 my-sm-0" href="redactar.php"><i class="fas fa-plus-circle"></i></a>
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
         <form class="form-inline my-2 my-lg-0">
             <input style="display: none" class="form-control mr-sm-2" type="search" placeholder="Search"
                 aria-label="Search">
