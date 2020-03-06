@@ -8,7 +8,7 @@
     <?php include 'links.php';?>
     <!--load styles -->
     <link rel="stylesheet" href="css/index.css">
-    <title>Document</title>
+    <title>Index</title>
 </head>
 
 <body>
@@ -24,25 +24,86 @@
                 </div>
                 <hr class="inSection">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12">
                         <div class="carousel">
-                            <div>
-                                <h1>1</h1>
+                            <div class="noticia-card card destacado">
+                                <a href="#">
+                                    <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                    alt="Card image cap">
+                                    
+                                </a>
+                                    <div class="card-body">
+                                        <a href="#">
+                                            <h5 class="card-title">Titulo Noticia 1 </h5>
+                                        </a>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                    
+                                    <div class="card-img-overlay">
+                                        <a href="#">
+                                            <img class="image-destacado" src="./image/ultimo_momento_02.png" alt="" srcset="">
+                                        </a>
+                                    </div>
                             </div>
-                            <div>
-                                <h1>2</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 2</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div>
-                                <h1>3</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 3</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div>
-                                <h1>4</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 4</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div>
-                                <h1>5</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 5 </h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div>
-                                <h1>6</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 6</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
                         </div>
                     </div>
@@ -63,7 +124,7 @@
                 </div>
                 <hr class="inSection">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12">
                         <div class="carousel">
                             <div class="image">
                                 <img class="noticia-image"
@@ -76,31 +137,90 @@
                                     src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                     alt="" srcset="">
                                 <h1>2</h1>
+                        <div class="noticia-card card destacado">
+                                <a href="#">
+                                    <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                    alt="Card image cap">
+                                    
+                                </a>
+                                    <div class="card-body">
+                                        <a href="#">
+                                            <h5 class="card-title">Titulo Noticia 1 </h5>
+                                        </a>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                    
+                                    <div class="card-img-overlay">
+                                        <a href="#">
+                                            <img class="image-destacado" src="./image/ultimo_momento_02.png" alt="" srcset="">
+                                         </a>
+                                    </div>
+                        </div>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                        <a href="#">
+                                            <h5 class="card-title">Titulo Noticia 2 </h5>
+                                        </a>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div class="image">
-                                <img class="noticia-image"
-                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                    alt="" srcset="">
-                                <h1>3</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                        <a href="#">
+                                            <h5 class="card-title">Titulo Noticia 3 </h5>
+                                        </a>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div class="image">
-                                <img class="noticia-image"
-                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                    alt="" srcset="">
-                                <h1>4</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 4</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div class="image">
-                                <img class="noticia-image"
-                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                    alt="" srcset="">
-                                <h1>5</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 5 </h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
-                            <div class="image">
-                                <img class="noticia-image"
-                                    src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                    alt="" srcset="">
-                                <h1>6</h1>
+
+                            <div class="noticia-card card">
+                            <a href="#">
+                                <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+                                alt="Card image cap">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo Noticia 6</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            
                             </div>
+                           
                         </div>
                     </div>
                 </div>
