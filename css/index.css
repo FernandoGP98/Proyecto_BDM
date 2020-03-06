@@ -39,6 +39,13 @@ hr.inSection{
     font-weight: 600;
 }
 
+.noticia-card a{
+    text-decoration: none;
+}
+.noticia-card a:hover{
+    text-decoration: none;
+}
+
 .noticia-card .card-text{
     font-weight: 200;
 }

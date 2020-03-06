@@ -1,0 +1,15 @@
+.encabezado h2{
+    font-size: 16px;
+    line-height: 24px;
+    color: #888;
+}
+
+.autor{
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.fecha_creacion{
+    font-size: 15px;
+    color: #777;
+}

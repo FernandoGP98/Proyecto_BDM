@@ -7,7 +7,7 @@
     </div>
 
     <div class="collapse navbar-collapse d-flex justify-content-end">
-        <a class="btn btn-outline-success my-2 my-sm-0" href="redactar.php"><i class="fas fa-plus-circle"></i></a>
+        <a class="mr-3 my-2 my-sm-0" href="redactar.php"><i class="fas fa-pen-fancy"></i></a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
         <form class="form-inline my-2 my-lg-0">
