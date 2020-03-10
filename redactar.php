@@ -23,6 +23,21 @@
 
                 <label for="">Nota</label>
                 <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia">
+                
+                <label for="">Palabras clave</label>
+                <input class="form-control" style="display:block; width:100%;" type="textarea" name="" id="">
+                <div class="dropdown show">
+                    <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Seccion1</a>
+                        <a class="dropdown-item" href="#">Seccion2</a>
+                        <a class="dropdown-item" href="#">Seccion3</a>
+                    </div>
+                </div>
 
                 <label for="">Seccion</label>
                 <div class="dropdown show">

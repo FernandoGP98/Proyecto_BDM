@@ -1,0 +1,27 @@
+.vertical-line-right{
+    border-right: 1px solid #e2e2e2;
+}
+
+ul, ol{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.publicaiones a {
+    text-decoration: none!important;
+}
+.post-innerbox {
+    padding: 10px;
+}
+
+.post-outbox {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+}
+
+.post-outbox:hover {
+    border: 1px solid;
+    border-color: rgb(206, 122, 66);
+    border-radius: 5px;
+}
