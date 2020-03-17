@@ -21,32 +21,39 @@
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
-                <div class="publicaciones">
+                <div class="temp">
                     <?php
-                    for ($i=0; $i < 5; $i++) { 
+                    for ($j=0; $j <= 5; $j++) {
                     ?>
-                    <div class="post-outbox">
-                        <div class="post-innerbox">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <p>Fecha</p>
-                                </div>
-                                <div class="col-md-4 p-1 d-flex justify-content-center">
-                                    <a href="noticia.php">
-                                        <img src="" width="auto" height="50px" alt="...">
-                                    </a>
-                                </div>
-                                <div class="col-md-6 p-0">
-                                    <a href="noticia.php">
-                                        <h4 class="mb-1">Titulo</h4>
-                                    </a>
-                                    <div>
-                                        <p>Descripcion</p>
+                    <div class="publicaciones">
+                        <?php
+                            for ($i=0; $i <= 5; $i++) { 
+                        ?>
+                        <div class="post-outbox">
+                            <div class="post-innerbox">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <p>Fecha</p>
+                                    </div>
+                                    <div class="col-md-4 p-1 d-flex justify-content-center">
+                                        <a href="noticia.php">
+                                            <img src="" width="auto" height="50px" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 p-0">
+                                        <a href="noticia.php">
+                                            <h4 class="mb-1">Titulo</h4>
+                                        </a>
+                                        <div>
+                                            <p>Descripcion</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <?php
                     }
@@ -56,6 +63,18 @@
         </div>
     </div>
     <?php include 'templates/footer.php';?>
+    <!--Slick JS-->
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script>
+    $(function() {
+        $('.temp').slick({
+            slidesToShow: 1,
+            dots: true,
+            centerMode: true,
+            arrows:false,
+        });
+    });
+    </script>
 </body>
 
 </html>
