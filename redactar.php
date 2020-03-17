@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
+    <link rel="stylesheet" href="css/redactar.css">
 </head>
 
 <body>
     <?php include 'templates/navbar.php';?>
     <div class="row d-flex justify-content-center">
-        <div class="loginBackground">
-        </div>
         <div class="noticia-form">
             <h2>Redactar noticia</h2>
             <form action="">
@@ -23,13 +23,13 @@
 
                 <label for="">Nota</label>
                 <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia">
-                
+
                 <label for="">Palabras clave</label>
                 <input class="form-control" style="display:block; width:100%;" type="textarea" name="" id="">
-                <div class="dropdown show">
-                    <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                <div class="dropdown show" style="margin-top:15px;">
+                    <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                        Palabras
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -41,9 +41,9 @@
 
                 <label for="">Seccion</label>
                 <div class="dropdown show">
-                    <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                    <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                        Secciones
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -55,9 +55,9 @@
 
                 <label for="">Lugar del acontecimiento</label>
                 <div class="dropdown show">
-                    <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                    <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                        Estados
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -67,9 +67,14 @@
                     </div>
                 </div>
 
-                <button class="mb-2 btn btn-primary">Agregar multimedia</button>
+                <label for="">Multimedia</label>
+                <input type="file" name="multimedia" id="multimedia" class="input-multimedia">
+                <label for="multimedia" class="btn"><i class="mr-2 fas fa-file-upload"></i>Multimedia</label>
 
-                <br><input class="mb-2 btn btn-primary" type="submit" value="Enviar"><br>
+
+                <div class="text-center">
+                    <input class="mb-2 btn btn-submit" type="submit" value="Enviar">
+                </div>
 
             </form>
         </div>

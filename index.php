@@ -131,7 +131,7 @@
             </div>
         </div>
         <?php
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i <= 5; $i++) { 
         ?>
         <div class="row d-flex justify-content-center">
             <div class="col-12">
@@ -258,6 +258,84 @@
         <?php
         }
         ?>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+                <hr class="nextSection">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Reporteros destacados</h2>
+                    </div>
+                </div>
+                <hr class="inSection">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12">
+                        <div class="carousel">
+                            <div class="noticia-card card">
+                                <a href="reportero.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reportero 1 </h5>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="reportero.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reportero 2 </h5>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="reportero.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reportero 3 </h5>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="reportero.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reportero 4 </h5>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="reportero.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reportero 5 </h5>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr class="inSection">
+            </div>
+        </div>
     </div>
     <?php include 'templates/footer.php';?>
 
