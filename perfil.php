@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <link rel="stylesheet" href="css/perfil.css">
 </head>
 
 <body>
@@ -39,12 +38,6 @@
                 </div>
                 <div class="publicaciones">
                     <div class="">
-                        <!--
-                        <a class="btn btn-outline-primary" style="margin-left:100px; margin-right:100px;"
-                            href="redactar.php">Agregar</a>
-                        <a class="btn btn-outline-primary" style="margin-left:100px; margin-right:100px;"
-                            href="">Eliminar</a>
-                        -->
                     </div>
                     <?php
                     for ($i=0; $i < 5; $i++) { 

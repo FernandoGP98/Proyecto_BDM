@@ -1,0 +1,241 @@
+/*NAVBAR*/
+.logo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;   
+}
+
+.nav-logo{
+    background-color: rgb(136, 23, 8) !important;
+}
+
+.nav-logo a{
+    color: whitesmoke;
+}
+
+.nav-avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+/*INDEX*/
+body{
+    background-color: rgb(250, 250, 242);
+}
+
+hr.nextSection{
+    border: 1px solid rgba(255, 0, 0, 0.37);
+}
+
+hr.inSection{
+    border: 0.5px solid rgba(255, 0, 0, 0.123);
+}
+
+.card-img-top{
+    padding: 10px;
+    border-bottom-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
+
+.carousel .noticia-image{
+    width:100%;
+}
+
+.noticia-card{
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5%;
+}
+
+.noticia-card:hover{
+    background-color: rgb(221, 221, 221);
+}
+
+.noticia-card.destacado:hover{
+    background-color: rgb(201, 184, 154);
+}
+
+.noticia-card h5{
+    color: coral !important;
+    font-weight: 600;
+}
+
+.noticia-card a{
+    text-decoration: none;
+}
+.noticia-card a:hover{
+    text-decoration: none;
+}
+
+.noticia-card .card-text{
+    font-weight: 200;
+}
+
+div.destacado{
+ background-color: rgb(255, 249, 214);
+}
+
+.card-img-overlay{
+    padding: 0 !important;
+    margin: 0;
+    
+}
+
+.card-img-overlay img{
+    width: 100%;
+    border-top-right-radius: 6%;
+    border-top-left-radius: 6%;
+}
+
+/*Login Registrar*/
+.contact-form
+{
+    position:relative;
+    margin :40px;
+    width: 400px;
+    height:400px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+    color:#E3E3E3;
+}
+
+/*Noticias*/
+.encabezado h2{
+    font-size: 16px;
+    line-height: 24px;
+    color: #888;
+}
+
+.autor{
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.fecha_creacion{
+    font-size: 15px;
+    color: #777;
+}
+
+.contenido-nota{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#NuevoComentario{
+    width: 100%;
+}
+
+.btn-submit{
+    margin: 5px;
+    margin-top: 15px;
+    text-align: center;
+    float: right;
+    font-size: 1rem;
+    background-color: whitesmoke;
+    border-color: rgb(136, 23, 8);
+}
+.btn-submit:hover{
+    background-color: rgb(136, 23, 8);
+    color: whitesmoke;
+}
+
+.comentario-publicado{
+    font-size: 15px;
+}
+
+.avatar{
+    height: 60px;
+    width: 60px;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.like:hover, #like:hover, #dislike:hover{
+    color: brown;
+}
+
+.like, #like, #dislike{
+    color: gray;
+}
+
+.like-text{
+    font-weight: bold;
+    color: green;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/*Redactar*/
+.btn-drop{
+    background-color: rgb(136, 23, 8) !important;
+    color: whitesmoke;
+    width: 25%;
+}
+.btn-drop:hover{
+    background-color: rgb(153, 87, 79) !important;
+    color: whitesmoke;
+}
+.dropdown{
+    margin-bottom: 15px;
+}
+
+.input-multimedia{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.input-multimedia + label {
+    background-color: rgb(136, 23, 8) !important;
+    color: whitesmoke;  
+    cursor: pointer;
+    display: block;
+}
+.input-multimedia:focus + label,
+.input-multimedia+label:hover{
+    background-color: rgb(153, 87, 79) !important;
+    color: whitesmoke;
+}
+
+/*Perfil*/
+.vertical-line-right{
+    border-right: 1px solid #e2e2e2;
+}
+
+.vertical-line-right ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.publicaiones a {
+    text-decoration: none!important;
+}
+.post-innerbox {
+    padding: 10px;
+}
+
+.post-outbox {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+}
+
+.post-outbox:hover {
+    border: 1px solid;
+    border-color: rgb(206, 122, 66);
+    border-radius: 5px;
+}
+
+.estatus{
+    font-weight: bold;
+}
+
+small{
+    color: gray;
+}

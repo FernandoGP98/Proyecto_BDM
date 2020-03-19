@@ -1,11 +1,7 @@
-.publicaiones a {
-    text-decoration: none!important;
-}
-.post-innerbox {
-    padding: 10px;
-}
-
 .post-outbox {
+    border-radius: 0px;
+    border: 1px solid transparent;
+
     border-top: rgb(207, 135, 122) solid 1px;
     margin-bottom: 50px;
 }
@@ -14,6 +10,11 @@
     text-align: right;
     padding: 10px;
     border-right: rgb(207, 135, 122) solid 1px;
+}
+.post-outbox:hover{
+    border: 1px solid transparent;
+    border-top: rgb(207, 135, 122) solid 1px;
+    border-radius: 0px;
 }
 
 .publicaciones{

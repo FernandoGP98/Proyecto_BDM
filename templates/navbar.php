@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css/navbar.css">
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-logo">
     <div class="logo">
         <a class="" href="index.php">

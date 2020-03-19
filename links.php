@@ -16,3 +16,5 @@
 <!--Tiny-->
 <script src="https://cdn.tiny.cloud/1/b6viljwvwtt7o1eqxe5d2fneiy77vre2xetex4yi6hwl40rb/tinymce/5/tinymce.min.js"
     referrerpolicy="origin"></script>
+
+<link rel="stylesheet" href="css/global.css">
