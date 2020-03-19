@@ -39,32 +39,43 @@
                 </div>
                 <div class="publicaciones">
                     <div class="">
+                        <!--
                         <a class="btn btn-outline-primary" style="margin-left:100px; margin-right:100px;"
                             href="redactar.php">Agregar</a>
                         <a class="btn btn-outline-primary" style="margin-left:100px; margin-right:100px;"
                             href="">Eliminar</a>
+                        -->
                     </div>
                     <?php
                     for ($i=0; $i < 5; $i++) { 
                     ?>
                     <div class="post-outbox">
                         <div class="post-innerbox">
-                            <a href="noticia.php">
-                                <div class="row">
-                                    <div class="col-2 p-1 d-flex justify-content-center">
-                                        <img src="" width="auto" height="50px" alt="...">
-                                    </div>
-                                    <div class="col-4 p-0">
-                                        <h4 class="mb-1">Titulo</h4>
-                                        <div>
-                                            <p>Descripcion</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 text-right">
-                                        <input type="checkbox" name="" id="">
-                                    </div>
+                        <div class="row">
+                            <div class="col-2 p-1 d-flex justify-content-center">
+                                <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                            </div>
+                            <div class="col-6 p-0">
+                                <a href="noticia.php">
+                                <h4 class="mb-1">Titulo</h4>
+                                </a>
+                                <div>
+                                    <small>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
+                                        Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+                                        cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
+                                        galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. </small>
                                 </div>
-                            </a>
+                            </div>
+                            <div class="col-md-2">
+                            <button class="btn btn-outline-warning">Editar</button>
+                            <br><br>
+                                <button class="btn btn-outline-danger" >Eliminar</button>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <p class="estatus">Estatus:</p>
+                                <small>Edicion</small>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     <?php

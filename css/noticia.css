@@ -18,3 +18,54 @@
     padding-left: 100px;
     padding-right: 100px;
 }
+
+.card{
+    width: 100%;
+}
+
+#NuevoComentario{
+    width: 100%;
+}
+
+.btn-submit{
+    margin: 5px;
+    margin-top: 15px;
+    text-align: center;
+    float: right;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    background-color: whitesmoke;
+    border-color: rgb(136, 23, 8);
+}
+.btn-submit:hover{
+    background-color: rgb(136, 23, 8);
+    color: whitesmoke;
+}
+
+.comentario-publicado{
+    font-size: 15px;
+}
+
+.avatar{
+    height: 60px;
+    width: 60px;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.like:hover, #like:hover, #dislike:hover{
+    color: brown;
+}
+
+.like, #like, #dislike{
+    color: gray;
+}
+
+.like-text{
+    font-weight: bold;
+    color: green;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+

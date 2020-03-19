@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-md-4 p-1 d-flex justify-content-center">
                                         <a href="noticia.php">
-                                            <img src="" width="auto" height="50px" alt="...">
+                                            <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
                                         </a>
                                     </div>
                                     <div class="col-md-6 p-0">

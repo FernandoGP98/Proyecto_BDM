@@ -24,13 +24,14 @@
                 <input class="form-control" type="text" name="username" placeholder="Ingrese su nombre de usuario">
 
                 <label for="">Contraseña</label>
-                <input class="form-control" type="password" name="password" placeholder="Ingrese su contrase;a">
+                <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña">
 
                 <br><input class="mb-2 btn btn-primary" type="submit" value="Registrarse"><br>
 
                 <a style="color:aliceblue" href="/Login"><u>¿Ya tienes una cuenta? Inicia Sesion!</u></a><br>
 
             </form>
+            <br>
         </div>
     </div>
     <?php include 'templates/footer.php';?>

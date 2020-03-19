@@ -25,3 +25,15 @@ ul, ol{
     border-color: rgb(206, 122, 66);
     border-radius: 5px;
 }
+
+.btn{
+    margin: auto;
+}
+
+.estatus{
+    font-weight: bold;
+}
+
+small{
+    color: gray;
+}

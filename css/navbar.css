@@ -12,3 +12,9 @@
 .nav-logo a{
     color: whitesmoke;
 }
+
+.nav-avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

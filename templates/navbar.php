@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/navbar.css">
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-logo">
     <div class="logo">
-        <a class="" href="/proyecto">
+        <a class="" href="index.php">
             <h1>Noticias</h1>
         </a>
     </div>
@@ -10,6 +10,9 @@
         <a class="mr-3 my-2 my-sm-0" href="redactar.php"><i class="fas fa-pen-fancy"></i></a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil.php">
+            <img src="./image/no-imagen.jpg" class="nav-avatar" alt="">
+        </a>
         <form class="form-inline my-2 my-lg-0">
             <input style="display: none" class="form-control mr-sm-2" type="search" placeholder="Search"
                 aria-label="Search">

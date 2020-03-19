@@ -17,12 +17,16 @@
             <form action="">
                 <label for="">Titulo</label>
                 <input class="form-control" type="text" name="titulo" placeholder="Titulo">
-
+                <br>
                 <label for="">Descripcion</label>
-                <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion">
+                <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
+                <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30" rows="5"></textarea>
+                <br>        
 
                 <label for="">Nota</label>
-                <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia">
+                <!-- <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia"> -->
+                <textarea id="texto" class="form-control" name="texto" id="" cols="30" rows="15" placeholder="Noticia"></textarea>
+                <br>
 
                 <label for="">Palabras clave</label>
                 <input class="form-control" style="display:block; width:100%;" type="textarea" name="" id="">
