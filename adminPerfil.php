@@ -96,7 +96,22 @@
                                         Color
                                     </div>
                                     <div class="col">
-                                        <button class="btn btn-outline-warning">Modificar Color</button>
+                                        <div class="boton-modificar" id="modificar-color">
+                                            <button class="btn btn-outline-warning">Modificar Color</button>
+                                        </div>
+                                        <div class="selec-color">
+                                            <label for="">Seleccionar Color:</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Rojo</option>
+                                                <option value="">Azul</option>
+                                                <option value="">Naranja</option>
+                                                <option value="">Cafe</option>
+                                                <option value="">Gris</option>
+                                            </select>
+                                            <br>
+                                            <button class="btn btn-outline-success btn-guardar">Guardar</button>
+                                        </div>
+                                        
                                     </div>
                                     <div class="col">
                                     <button class="btn btn-outline-danger">Eliminar</button>
@@ -108,6 +123,8 @@
                                 ?>
                             </div>
                         </div>
+
+
                     </div>
 
                     <!-- Aparatado de Usuarios -->
