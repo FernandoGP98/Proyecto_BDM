@@ -30,8 +30,11 @@ $(document).ready(function(){
     });
 
     $(".btn-guardar").click(function(){
+        var color = $(this).parent().find(".jscolor").val();
+
         $(this).parent().hide()
         $(this).parent().siblings().show()
+        $(this).closest(".secciones-lista").find(".color-muestra-final").css({"background-color": "#"+color});
     });
 
 
