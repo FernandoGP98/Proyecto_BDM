@@ -77,14 +77,36 @@
 
                     <!-- Apartado de Secciones -->
                     <div class="secciones-administrador">
-                        <div class="card">
-                            <h3>Secciones</h3>
-                            <form action="">
-                                <h4>Nueva Seccion</h4>
+                        <div class="container">
+                        <h3 class="text-center">Secciones</h3>
+                            <hr>
+                            <div class="">
+                            <?php
+                                for ($i=0; $i < 5; $i++) { 
+                                ?>
+                                <div class="row secciones-lista">
+                                    <div class="col">
+                                        Orden 
+                                        #
+                                    </div>
+                                    <div class="col text-center">
+                                        Seccion Nombre
+                                    </div>
+                                    <div class="col text-center">
+                                        Color
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-outline-warning">Modificar Color</button>
+                                    </div>
+                                    <div class="col">
+                                    <button class="btn btn-outline-danger">Eliminar</button>
+                                    </div>    
+                                </div>
                                 
-                                <label for="">Nombre Seccion:</label>
-                                <input class="form-control" type="text" placeholder="Nombre de Seccion">
-                            </form>
+                                <?php
+                                }   
+                                ?>
+                            </div>
                         </div>
                     </div>
 

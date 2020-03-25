@@ -37,3 +37,14 @@ ul, ol{
 small{
     color: gray;
 }
+
+.secciones-lista{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.secciones-lista:hover {
+    border: 1px solid;
+    border-color: rgb(206, 122, 66);
+    border-radius: 5px;
+}
