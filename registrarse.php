@@ -20,7 +20,7 @@
                 <label for="">E-mail</label>
                 <input class="form-control" type="email" name="email" placeholder="Ingrese su email">
 
-                <label for="">Nick</label>
+                <label for="">Firma</label>
                 <input class="form-control" type="text" name="username" placeholder="Ingrese su nombre de usuario">
 
                 <label for="">Contraseña</label>
