@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/registrar.css">
     <link rel="stylesheet" href="css/perfil.css">
     <script src="js/perfil_administrador.js"></script>
+    <script src="js/jscolor.js"></script>
 </head>
 
 <body>
@@ -92,8 +93,8 @@
                                     <div class="col text-center">
                                         Seccion Nombre
                                     </div>
-                                    <div class="col text-center">
-                                        Color
+                                    <div class="col text-center muestra-color">
+                                        <div class="color-muestra-final"></div>
                                     </div>
                                     <div class="col">
                                         <div class="boton-modificar" id="modificar-color">
@@ -101,13 +102,7 @@
                                         </div>
                                         <div class="selec-color">
                                             <label for="">Seleccionar Color:</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">Rojo</option>
-                                                <option value="">Azul</option>
-                                                <option value="">Naranja</option>
-                                                <option value="">Cafe</option>
-                                                <option value="">Gris</option>
-                                            </select>
+                                            <input class="jscolor" value="ab2567">
                                             <br>
                                             <button class="btn btn-outline-success btn-guardar">Guardar</button>
                                         </div>
