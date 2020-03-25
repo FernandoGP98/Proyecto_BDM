@@ -23,7 +23,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse mx-auto">
         <div class="container">
-            <div class="row">
+            <div class="row sections">
             <ul class="navbar-nav mr-auto secciones">
                 <li class="nav-item active col">
                     <a class="nav-link" href="#">Seccion1 <span class="sr-only"></span></a>

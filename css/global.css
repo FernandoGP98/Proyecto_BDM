@@ -19,6 +19,10 @@
     width: 50px;
     border-radius: 50%;
 }
+
+.sections{
+    width: 100%;
+}
 /*INDEX*/
 body{
     background-color: rgb(250, 250, 242);
@@ -94,7 +98,6 @@ div.destacado{
     position:relative;
     margin :40px;
     width: 400px;
-    height:400px;
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
@@ -232,10 +235,25 @@ div.destacado{
     border-radius: 5px;
 }
 
+.btn.mod{
+    margin: auto;
+}
+
 .estatus{
     font-weight: bold;
 }
 
 small{
     color: gray;
+}
+
+.secciones-lista{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.secciones-lista:hover {
+    border: 1px solid;
+    border-color: rgb(206, 122, 66);
+    border-radius: 5px;
 }

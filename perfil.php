@@ -60,9 +60,9 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
-                            <button class="btn btn-outline-warning">Editar</button>
+                            <button class="btn btn-outline-warning mod">Editar</button>
                             <br><br>
-                                <button class="btn btn-outline-danger" >Eliminar</button>
+                                <button class="btn btn-outline-danger mod" >Eliminar</button>
                             </div>
                             <div class="col-md-2 text-right">
                                 <p class="estatus">Estatus:</p>
