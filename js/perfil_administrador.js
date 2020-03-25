@@ -3,6 +3,8 @@ $(document).ready(function(){
     $(".secciones-administrador").hide();
     $(".usuarios-administrador").hide();
 
+    $(".selec-color").hide();
+
     $("#admin-redaccion").click(function(){
         $(".noticias-redaccion").show(400);
         $(".secciones-administrador").hide(400);
@@ -20,4 +22,17 @@ $(document).ready(function(){
         $(".secciones-administrador").hide(400);
         $(".usuarios-administrador").show(400);
     });
+
+
+    $(".boton-modificar").click(function(){
+        $(this).hide();
+        $(this).siblings().show();
+    });
+
+    $(".btn-guardar").click(function(){
+        $(this).parent().hide()
+        $(this).parent().siblings().show()
+    });
+
+
 });
