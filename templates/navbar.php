@@ -9,13 +9,13 @@
         <a class="mr-3 my-2 my-sm-0" href="redactar.php"><i class="fas fa-pen-fancy"></i></a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
-        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil.php">
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="adminperfil.php">
             <img src="./image/no-imagen.jpg" class="nav-avatar" alt="">
         </a>
-        <form class="form-inline my-2 my-lg-0">
-            <input style="display: none" class="form-control mr-sm-2" type="search" placeholder="Search"
+        <form class="form-inline my-2 my-lg-0" action="busqueda.php">
+            <input id="search-bar" style="display: none" class="form-control mr-sm-2" type="search" placeholder="Buscar"
                 aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"> </i></button>
+            <a id="search-btn" class="ml-md-2 mr-md-2" type="button" ><i class="fas fa-search"> </i></a>
         </form>
     </div>
 </nav>
@@ -46,9 +46,18 @@
                 <li class="nav-item active col">
                     <a class="nav-link" href="#">Seccion7 <span class="sr-only"></span></a>
                 </li>
-
             </ul>
             </div>
         </div>
     </div>
 </nav>
+<script>
+    $("#search-btn").click(function(){
+        if ($("i").hasClass("fa-search")) {
+            $(".fa-search").removeClass("fa-search").addClass("fa-times-circle");   
+        }else{
+            $(".fa-times-circle").removeClass("fa-times-circle").addClass("fa-search");
+        }
+        $("#search-bar").toggle("swing").show();
+    });
+</script>
