@@ -272,6 +272,10 @@ small{
     margin: auto;
 }
 
+.jscolor{
+    width: 100%;
+}
+
 /*Buscar*/
 #buscar-red{
     color: rgb(136, 23, 8);
