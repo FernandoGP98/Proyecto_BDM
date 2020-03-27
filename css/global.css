@@ -106,6 +106,7 @@ div.destacado{
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
+    padding-bottom: 30px;
     box-sizing: border-box;
     background: rgba(0,0,0,.5);
     color:#E3E3E3;
@@ -279,4 +280,24 @@ small{
 /*Buscar*/
 #buscar-red{
     color: rgb(136, 23, 8);
+}
+
+.busqueda-card{
+    background-color: rgb(223, 223, 223);
+}
+
+/*Admin Perfil*/
+.reportero-card{
+    margin: 15px;
+}
+
+.reportero-imagen{
+    border-radius: 60%;
+    width: 100%;
+}
+
+.reportero-card:hover{
+    border: 1px solid;
+    border-color: rgb(136, 23, 8);
+    border-radius: 5px;
 }

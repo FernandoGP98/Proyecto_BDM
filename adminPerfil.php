@@ -22,7 +22,13 @@
                 <ul>
                     <li><a id="admin-redaccion" href="#">Noticias en Redaccion</a></li>
                     <li><a id="admin-secciones" href="#">Secciones</a></li>
-                    <li><a id="admin-usuarios" href="#">Crear Usuario</a></li>
+                    <li><a id="admin-usuarios" href="#">Crear Usuarios</a></li>
+                    <li><a id="admin-usuarios-eliminar" href="#">Eliminar Usuarios</a></li>
+                </ul>
+                
+                <ul>
+                    <li> ** Temporal **</li>
+                    <li><a href="perfil.php">Perfil Reportero</a></li>
                 </ul>
             </div>
             <div class="col-8">
@@ -70,7 +76,7 @@
                                         <br>
                                         <button class="btn btn-outline-success">Publicar</button>
                                         <br><br>
-                                        <button class="btn btn-outline-danger">Eliminar</button>
+                                        <button class="btn btn-outline-danger btn-eliminar" >Eliminar</button>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +92,7 @@
                     <div class="container">
                         <h3 class="text-center">Secciones</h3>
                         <hr>
-                        <div class="">
+                        <div id="contender-secciones">
                             <?php
                                 for ($i=0; $i < 5; $i++) { 
                                 ?>
@@ -114,13 +120,32 @@
 
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-outline-danger">Eliminar</button>
+                                    <button class="btn btn-outline-danger btn-eliminar-seccion">Eliminar</button>
                                 </div>
                             </div>
 
                             <?php
                                 }   
                                 ?>
+                        </div>
+
+
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                            <h3 class="text-center">Crear Seccion</h3>
+                            <br>
+                            <div>
+                                <form action="">
+                                    <label for="">Nombre Seccion:</label>
+                                    <input type="text" class="form-control" id="nuevaSeccion">
+                                    <label for="">Color:</label>
+                                    <input class="jscolor form-control" id="nuevoColor">
+                                    <br>
+                                    <button class="btn btn-outline-success crear-seccion">Crear</button>
+                                </form>
+                            </div>
+                            </div>
                         </div>
                     </div>
 
@@ -130,6 +155,7 @@
                 <!-- Aparatado de Usuarios -->
                 <div class="usuarios-administrador">
                     <br><br>
+                    <h1 class="text-center">Crear Usuario</h1>
                     <div class="row d-flex justify-content-center">
                         <div class="loginBackground">
                         </div>
@@ -160,9 +186,100 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Aparatado de Eliminar Usuarios -->
+                <div class="usuarios-administrador-eliminar">
+                    <br><br>
+                    <h1 class="text-center">Eliminar Usuario</h1>
+                    <div class="container">
+                        <div class="row">
+                        <?php
+                            for ($i=0; $i < 5; $i++) { 
+                        ?>
+                            <div class="card col-3 reportero-card">
+                            <img class="card-img-top reportero-imagen" src="image/no-imagen.jpg" alt="Card image">
+                            <div class="card-body">
+                                <p class="card-text">Nombre Reportero</p>
+                                <p class="card-text"><b>Firma:</b> Firma Chida</p>
+                                <p class="card-text"><b>Contacto:</b> <span>##########</span></p>
+                                <a href="#" class="btn btn-outline-danger btn-reportero-eliminar">Eliminar</a>
+                            </div>
+                            </div>
+                        <?php
+                            }
+                        ?>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <?php include 'templates/footer.php';?>
+
+
+        <!-- Modal  Noticias -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar noticia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Quieres eliminar esta noticia?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancelar" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger eliminar-noticia" data-dismiss="modal">Eliminar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal Reportero -->
+        <div class="modal fade" id="reporteroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Reportero</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Quieres eliminar a este reportero?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancelar-reportero" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger eliminar-reportero" data-dismiss="modal">Eliminar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal Secciones -->
+        <div class="modal fade" id="seccionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Seccion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Quieres eliminar esta seccion?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancelar-seccion" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger eliminar-seccion" data-dismiss="modal">Eliminar</button>
+            </div>
+            </div>
+        </div>
+        </div>
 </body>
 
 </html>

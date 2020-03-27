@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
+    <script src="js/busqueda.js"></script>
 </head>
 
 <body>
@@ -13,11 +14,39 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="mt-md-5 col-md-10">
-                <form class="form-inline my-2 my-lg-0" action="busqueda.php">
-                    <input id="search-bar" style="width:90%; height:100px; font-size: 40px;" class="form-control mr-sm-2" type="search"
-                        placeholder="Buscar" aria-label="Search">
-                    <a id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red" class="fas fa-search fa-2x"> </i></a>
-                </form>
+                <div class="card busqueda-card">
+                <form class="form-inline my-2 my-lg-0" action="busqueda.php" style="padding: 30px;">
+                    <div class="row">
+                        <input id="search-bar" style="width:80%; height:100px; font-size: 40px;" class="form-control mr-sm-2" type="search"
+                            placeholder="Buscar" aria-label="Search">
+                        <a id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red" class="fas fa-search fa-4x"> </i></a>
+                        <br><br>
+                        <label for="">Tipo de busqudas</label>
+                        <select name="" id="custom-busqueda" class="form-control">
+                            <option value="0" selected>Titulo</option>
+                            <option value="1">Palabra Clave</option>
+                            <option value="2">Rango de Fecha</option>
+                        </select>
+                        <br><br>
+                    </div>
+                    <div class="row rango-fechas" style="width: 100%">
+                        
+                            <div class="col-3">
+                                <label for="">Desde:</label>
+                                <input type="date" name="" id="fecha-inicio" class="form-control">
+                            </div>
+
+                            <div class="col-3">
+                                <label for="">Hasta:</label>
+                                <input type="date" name="" id="fecha-fin" class="form-control">
+                            </div>
+                        
+                    </div>
+                    
+                    
+                </form>    
+                </div>
+                
                 <!-- Apartado de Noticias -->
                 <div class="noticias-redaccion mt-md-3">
                     <h1 class="text-center">Resultado</h1>
