@@ -15,38 +15,43 @@
         <div class="row d-flex justify-content-center">
             <div class="mt-md-5 col-md-10">
                 <div class="card busqueda-card">
-                <form class="form-inline my-2 my-lg-0" action="busqueda.php" style="padding: 30px;">
-                    <div class="row">
-                        <input id="search-bar" style="width:80%; height:100px; font-size: 40px;" class="form-control mr-sm-2" type="search"
-                            placeholder="Buscar" aria-label="Search">
-                        <a id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red" class="fas fa-search fa-4x"> </i></a>
-                        <br><br>
-                        <label for="">Tipo de busqudas</label>
-                        <select name="" id="custom-busqueda" class="form-control">
-                            <option value="0" selected>Titulo</option>
-                            <option value="1">Palabra Clave</option>
-                            <option value="2">Rango de Fecha</option>
-                        </select>
-                        <br><br>
-                    </div>
-                    <div class="row rango-fechas" style="width: 100%">
-                        
+                    <form class="form-inline my-2 my-lg-0" action="busqueda.php" style="padding: 30px;">
+                        <div class="row" style="width:100%">
+                            <div class="col-md-10">
+                                <input id="search-bar" style="width:100%; height:auto; font-size: 40px;"
+                                    class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                            </div>
+                            <div class="col-md-2">
+                                <a id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red"
+                                        class="fas fa-search fa-4x"> </i></a>
+                            </div>
+                        </div>
+                        <div class="row mt-3" style="width: 100%">
+                            <div class="col-md-9">
+                                <label class="justify-content-md-start" for="">Tipo de busqueda</label>
+                                <select name="" id="custom-busqueda" class="form-control">
+                                    <option value="0" selected>Titulo</option>
+                                    <option value="1">Palabra Clave</option>
+                                    <option value="2">Rango de Fecha</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3 rango-fechas" style="width: 100%">
                             <div class="col-3">
                                 <label for="">Desde:</label>
                                 <input type="date" name="" id="fecha-inicio" class="form-control">
                             </div>
-
                             <div class="col-3">
                                 <label for="">Hasta:</label>
                                 <input type="date" name="" id="fecha-fin" class="form-control">
                             </div>
-                        
-                    </div>
-                    
-                    
-                </form>    
+                        </div>
+                    </form>
                 </div>
-                
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="mt-md-3 col-md-10">
                 <!-- Apartado de Noticias -->
                 <div class="noticias-redaccion mt-md-3">
                     <h1 class="text-center">Resultado</h1>
