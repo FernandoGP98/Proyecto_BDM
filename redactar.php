@@ -65,12 +65,12 @@
                             </div>
                         </div>
                         <div class="contenedor-imagenes" style="width: 100%;">
-                            <label for="">Multimedia</label>
-                            <input type="file" name="file" id="multimedia"
-                                class="input-multimedia file form_nueva_receta" accept="image/*" required
+                            <label for="">Imagenes</label>
+                            <input type="file" name="fileImagenes[]" id="multimedia"
+                                class="input-multimedia" accept="image/*" required
                                 style="width: 70%">
                             <label id="img_input" for="multimedia" class="btn"><i
-                                    class="mr-2 fas fa-file-upload"></i>Multimedia</label>
+                                    class="mr-2 fas fa-file-upload"></i>Imagenes</label>
 
                             <div class="img-carousel">
                                 <div>
@@ -78,6 +78,25 @@
                                         id="primera">
                                 </div>
                             </div>
+                        </div>
+
+                        <div id="imagenes-input">
+                            <small>Esto va HIDDEN al final, lo dejo por ahora, para asegurarme de que funciona</small>
+                            <br>
+                            Imagenes: <span id="contador">###</span>
+                            <br>
+                        </div>
+
+
+                        <div>
+                        <label for="">Video</label>
+                            <input type="file" name="video" id="multimedia-v"
+                                class="input-multimedia" accept="video/*" required
+                                style="width: 70%">
+                                <label id="video_input" for="multimedia-v" class="btn">
+                                    <i class="mr-2 fas fa-file-upload"></i>
+                                    Video
+                                </label>                                
                         </div>
 
                         <div class="text-center">

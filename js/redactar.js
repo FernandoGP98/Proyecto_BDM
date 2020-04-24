@@ -1,10 +1,15 @@
 var imagen = 0;
-$("#img_input").click(function(){
-     // Carga de Imagen
-     $("#multimedia").change(function() {
-         imagen++;
-        readURL(this, imagen);
-    });
+var clone22;
+
+$("#multimedia").change(function() {
+    imagen = imagen + 1;
+    clone22 = $(this).clone();
+    readURL(this, imagen);
+});
+
+$("#multimedia-v").change(function(){
+    var value = '     <i class="fas fa-check-circle"></i>'
+    $("#video_input").append(value);
 });
 
 function sliderInit(){
@@ -24,16 +29,23 @@ function readURL(input, intento) {
             if(intento == 1){
                 $("#primera").attr("src",e.target.result)
             }else{
-                var elemento = '<div><img cclass="img-slide" width="100%" height="512px" src="'+e.target.result+'" alt="First slide"></div>'
+                var elemento = '<div><img class="img-slide" width="100%" height="512px" src="'+e.target.result+'" alt="First slide"></div>'
                 
-            //$("#nueva-imagen").attr("src", e.target.result);
-            $(".img-carousel").append(elemento);
-            $('.img-carousel').slick("unslick");
-            sliderInit();
+                //$("#nueva-imagen").attr("src", e.target.result);
+                $(".img-carousel").append(elemento);
+                $('.img-carousel').slick("unslick");
+                sliderInit();
             }
             
         }
 
-        reader.readAsDataURL(input.files[0]);
+        /* Add input Hidden para subir al server */
+        clone22.removeClass("input-multimedia");
+        clone22.removeAttr("id");
+        clone22.attr("name","imagenes[]");
+
+        $("#contador").html(intento);
+        $("#imagenes-input").append(clone22);
+        reader.readAsDataURL(input.files[0]);        
     }
 }

@@ -26,13 +26,30 @@
         ?>
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="https://imagenes.milenio.com/iD4EjdR_INry5ysU_NR7_o1SpJg=/958x596/https://www.milenio.com/uploads/media/2020/03/05/personas-sin-sintomas-de-coronavirus_0_41_958_595.jpg"
-                    alt="" srcset="">
+                <div class="img-carousel">
+                    <?php
+                        for ($i=0; $i < 5; $i++) { 
+                    ?>
+                    <img class="img-slide" width="100%" height="512px" src="https://imagenes.milenio.com/iD4EjdR_INry5ysU_NR7_o1SpJg=/958x596/https://www.milenio.com/uploads/media/2020/03/05/personas-sin-sintomas-de-coronavirus_0_41_958_595.jpg">
+                    <?php
+                        }
+                    ?>
+                </div>
             </div>
         </div>
         <?php
         }
         ?>
+
+        <div class="contenido-nota pt-md-3">
+            <div class="row">
+                <video src="video/video.mp4" 
+                    width=100%  height=540 controls poster="vistaprevia.jpg">
+                </video>
+            </div>
+        </div>
+
+
         <div class="contenido-nota pt-md-3">
             <div class="row">
                 <div class="contenido col-md-12">
@@ -139,6 +156,20 @@
         </div>
     </div>
     <?php include 'templates/footer.php';?>
+
+
+
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script>
+    $(function() {
+        $('.img-carousel').slick({
+            slidesToShow: 1,
+            dots: true,
+            centerMode: true,
+        });
+    });
+    </script>
+
 </body>
 
 </html>
