@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
     <script src="js/perfil.js"></script>
+    <?php require('MVC/Controllers/obtenerUsuario.php') ?>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
             <div class="col-md-9">
                 <div class="info-usuario">
                     <label class="form-check-label" for="">Nombre</label>
-                    <input class="form-control" type="text" name="" id="" value="Nombre">
+                    <input class="form-control" type="text" name="" id="" value="<?=$usuario;?>">
                     <label class="form-check-label" for="">Apellido Paterno</label>
                     <input class="form-control" type="text" name="" id="" value="Paterno">
                     <label class="form-check-label" for="">Apellido Materno</label>
