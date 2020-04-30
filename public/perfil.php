@@ -51,7 +51,7 @@
                         <div class="post-innerbox">
                         <div class="row">
                             <div class="col-2 p-1 d-flex justify-content-center">
-                                <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
                             </div>
                             <div class="col-6 p-0">
                                 <a href="noticia.php">
