@@ -8,6 +8,7 @@
     <?php include 'links.php';?>
     <!--load styles -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="resources/css/global.css">
     <title>Index</title>
 </head>
 

@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <script src="js/perfil.js"></script>
-    <?php require('MVC/Controllers/obtenerUsuario.php') ?>
+    <script src="resources/js/perfil.js"></script>
+    <?php //require('MVC/Controllers/obtenerUsuario.php') ?>
+    <!-- 
+        COMENTE LO DE OBTENER USUARIO NO PUEDO ACCEDER A LA BD REMOTA
+        ASI QUE POR AHORA LO TENGO ASI, DESPUES CHECO QUE ONDA CON ESO
+    -->
 </head>
 
 <body>

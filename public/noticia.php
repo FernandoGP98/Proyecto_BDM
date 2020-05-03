@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <link rel="stylesheet" href="css/noticia.css">
-    <script src="js/noticia.js"></script>
+    <link rel="stylesheet" href="resources/css/global.css">
+    <script src="resources/js/noticia.js"></script>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
 
         <div class="contenido-nota pt-md-3">
             <div class="row">
-                <video src="video/video.mp4" 
+                <video src="resources/video/video.mp4" 
                     width=100%  height=540 controls poster="vistaprevia.jpg">
                 </video>
             </div>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="card comentarios">
+                <div class="card comentarios" style="width: 100%">
                     <div class="card-header">
                         <h4 class="text-center">Comentarios</h4>
                     </div>
@@ -108,30 +108,34 @@
                         <div class="comentarios-in">
 
                             <?php
-                    for ($i=0; $i < 2; $i++) { 
-                    ?>
-                            <div class="row">
-                                <div class="col-2">
-                                    <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
-                                    <p><span class="username">Nombre Usuario</span> </p>
-                                    <small class="fecha">19-03-2020</small>
+                        for ($i=0; $i < 5; $i++) { 
+                    ?>      
+                    <div class="comentarios">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
+                                        <p><span class="username">Nombre Usuario</span> </p>
+                                        <small class="fecha">19-03-2020</small>
+                                    </div>
+                                    <div class="col">
+                                        <p class="comentario-publicado" id="comentario-publicado">Lorem Ipsum es simplemente
+                                            el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el
+                                            texto de relleno estándar de las industrias desde el año 1500, cuando un
+                                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
+                                            galería de textos y los mezcló de tal manera que logró hacer un libro de textos
+                                            especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de
+                                            relleno en documentos electrónicos, quedando esencialmente igual al original.
+                                            Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales
+                                            contenian pasajes de Lorem Ipsum, y más recientemente con software de
+                                            autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de
+                                            Lorem Ipsum.</p>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p class="comentario-publicado" id="comentario-publicado">Lorem Ipsum es simplemente
-                                        el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el
-                                        texto de relleno estándar de las industrias desde el año 1500, cuando un
-                                        impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
-                                        galería de textos y los mezcló de tal manera que logró hacer un libro de textos
-                                        especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de
-                                        relleno en documentos electrónicos, quedando esencialmente igual al original.
-                                        Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales
-                                        contenian pasajes de Lorem Ipsum, y más recientemente con software de
-                                        autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de
-                                        Lorem Ipsum.</p>
+                                <div class="row">
+                                    <button class="mb-1 btn btn-submit btn-eliminar-comentario"><i class="fas fa-trash-alt"></i></button>
                                 </div>
+                                <hr>
                             </div>
-                            <hr>
-
                             <?php
                         } 
                     ?>

@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <link rel="stylesheet" href="css/registrar.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <script src="js/perfil_administrador.js"></script>
-    <script src="js/jscolor.js"></script>
+    <!-- <link rel="stylesheet" href="css/registrar.css">
+    <link rel="stylesheet" href="css/perfil.css"> -->
+    <link rel="stylesheet" href="resources/css/global.css">
+    <link rel="stylesheet" href="resources/css/reportero.css">
+    <script src="resources/js/perfil_administrador.js"></script>
+    <script src="resources/js/jscolor.js"></script>
 </head>
 
 <body>
@@ -163,7 +165,7 @@
                             <h2>Nuevo Usuario</h2>
                             <form action="">
                                 <label for="">E-mail</label>
-                                <input class="form-control" type="email" name="email" placeholder="Ingrese un email">
+                                <input class="form-control" type="email" name="email" placeholder="Ingrese un email" id="email">
 
                                 <label for="">Firma</label>
                                 <input class="form-control" type="text" name="username"
@@ -171,8 +173,10 @@
 
                                 <label for="">Contraseña</label>
                                 <input class="form-control" type="password" name="password"
-                                    placeholder="Ingrese una contraseña">
-
+                                    placeholder="Ingrese una contraseña" id="contraseña">
+                                <small class="info-registro-contraseña">La contraseña debe contener un letra mayuscula, una letra minuscula y un numero</small>
+                
+                                <br>
                                 <label for="">Tipo de Usuario</label>
                                 <select class="form-control" name="" id="">
                                     <option value="0">Administrador</option>
@@ -180,7 +184,7 @@
                                     <option value="2">Usuario</option>
                                 </select>
 
-                                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar"><br>
+                                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar" id="registro"><br>
                             </form>
                             <br>
                         </div>
