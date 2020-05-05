@@ -93,8 +93,8 @@
                     <p class="like-text">0001</p>
                 </div>
                 <div class="col-md-10">
-                    <img class="like" src="resources/image/Like_gray.png" width="50px" height="50px" like="0" alt="">
-                    <img class="like" src="resources/image/Like_gray.png" width="50px" height="50px" like="1" alt="">
+                    <img class="like" src="image/Like_gray.png" width="50px" height="50px" like="0" alt="">
+                    <img class="like" src="image/Like_gray.png" width="50px" height="50px" like="1" alt="">
                 </div>
             </div>
             <div class="row">
@@ -112,7 +112,7 @@
                     ?>
                             <div class="row">
                                 <div class="col-2">
-                                    <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
+                                    <img class="avatar" src="image/no-imagen.jpg" alt="...">
                                     <p><span class="username">Nombre Usuario</span> </p>
                                     <small class="fecha">19-03-2020</small>
                                 </div>
@@ -147,7 +147,7 @@
                             <!-- <input type="submit" value="Comentar"> -->
                             <br>
                             <button class="mb-2 btn btn-submit" type="submit">Comentar</button>
-                            <img src="resources/image/no-imagen.jpg" class="avatar" alt="">
+                            <img src="image/no-imagen.jpg" class="avatar" alt="">
                         </form>
 
                     </div>
@@ -159,7 +159,7 @@
 
 
 
-    <script type="text/javascript" src="extras/slick/slick.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
     <script>
     $(function() {
         $('.img-carousel').slick({

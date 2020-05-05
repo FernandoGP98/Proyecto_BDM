@@ -74,7 +74,7 @@
 
                             <div class="img-carousel">
                                 <div>
-                                    <img class="img-slide" width="100%" height="512px" src="resources/image/no-imagen.jpg" alt="First slide"
+                                    <img class="img-slide" width="100%" height="512px" src="image/no-imagen.jpg" alt="First slide"
                                         id="primera">
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
         });
         </script>
         <script src="js/redactar.js"></script>
-        <script type="text/javascript" src="extras/slick/slick.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
         <script>
         $(function() {
             $('.img-carousel').slick({

@@ -44,7 +44,7 @@
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-2 p-1 d-flex justify-content-center">
-                                        <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                        <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
                                     </div>
                                     <div class="col-5 p-0">
                                         <a href="noticia.php">
@@ -197,7 +197,7 @@
                             for ($i=0; $i < 5; $i++) { 
                         ?>
                             <div class="card col-3 reportero-card">
-                            <img class="card-img-top reportero-imagen" src="resources/image/no-imagen.jpg" alt="Card image">
+                            <img class="card-img-top reportero-imagen" src="image/no-imagen.jpg" alt="Card image">
                             <div class="card-body">
                                 <p class="card-text">Nombre Reportero</p>
                                 <p class="card-text"><b>Firma:</b> Firma Chida</p>
