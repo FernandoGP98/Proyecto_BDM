@@ -43,7 +43,7 @@
                                     </div>
 
                                     <div class="card-img-overlay">
-                                        <img class="image-destacado" src="./image/ultimo_momento_02.png" alt=""
+                                        <img class="image-destacado" src="./resources/image/ultimo_momento_02.png" alt=""
                                             srcset="">
 
                                     </div>
@@ -163,7 +163,7 @@
 
                                     <div class="card-img-overlay">
 
-                                        <img class="image-destacado" src="./image/ultimo_momento_02.png" alt=""
+                                        <img class="image-destacado" src="./resources/image/ultimo_momento_02.png" alt=""
                                             srcset="">
 
                                     </div>
@@ -340,7 +340,7 @@
     <?php include 'templates/footer.php';?>
 
     <!--Slick JS-->
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="extras/slick/slick.min.js"></script>
     <script>
     $(function() {
         $('.carousel').slick({

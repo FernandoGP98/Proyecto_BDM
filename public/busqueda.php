@@ -69,7 +69,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3 p-3 d-flex justify-content-center">
-                                        <img src="image/no-imagen.jpg" width="auto" height="100px" alt="...">
+                                        <img src="resources/image/no-imagen.jpg" width="auto" height="100px" alt="...">
                                         <div class="row">
                                         </div>
                                     </div>
