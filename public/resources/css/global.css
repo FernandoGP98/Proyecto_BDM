@@ -301,3 +301,12 @@ small{
     border-color: rgb(136, 23, 8);
     border-radius: 5px;
 }
+
+.row-seccion{
+    margin-left: 0 !important; 
+    margin-right: 0 !important;
+}
+
+.info-registro, .info-registro-contraseña, .info-registro-correo{
+    color: #910000;
+}

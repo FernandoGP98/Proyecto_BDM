@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Busqueda</title>
     <?php include 'links.php';?>
-    <script src="js/busqueda.js"></script>
+    <script src="resources/js/busqueda.js"></script>
 </head>
 
 <body>
@@ -69,7 +69,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3 p-3 d-flex justify-content-center">
-                                        <img src="image/no-imagen.jpg" width="auto" height="100px" alt="...">
+                                        <img src="resources/image/no-imagen.jpg" width="auto" height="100px" alt="...">
                                         <div class="row">
                                         </div>
                                     </div>

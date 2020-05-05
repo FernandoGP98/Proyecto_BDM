@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <link rel="stylesheet" href="css/reportero.css">
+    <link rel="stylesheet" href="resources/css/reportero.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-md-4 p-1 d-flex justify-content-center">
                                         <a href="noticia.php">
-                                            <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                            <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
                                         </a>
                                     </div>
                                     <div class="col-md-6 p-0">
@@ -64,7 +64,7 @@
     </div>
     <?php include 'templates/footer.php';?>
     <!--Slick JS-->
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="extras/slick/slick.min.js"></script>
     <script>
     $(function() {
         $('.temp').slick({

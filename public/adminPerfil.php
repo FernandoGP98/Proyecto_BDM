@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <link rel="stylesheet" href="css/registrar.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <script src="js/perfil_administrador.js"></script>
-    <script src="js/jscolor.js"></script>
+    <!-- <link rel="stylesheet" href="css/registrar.css">
+    <link rel="stylesheet" href="css/perfil.css"> -->
+    <link rel="stylesheet" href="resources/css/global.css">
+    <link rel="stylesheet" href="resources/css/reportero.css">
+    <script src="resources/js/perfil_administrador.js"></script>
+    <script src="resources/js/jscolor.js"></script>
 </head>
 
 <body>
@@ -44,7 +46,7 @@
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-2 p-1 d-flex justify-content-center">
-                                        <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                        <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
                                     </div>
                                     <div class="col-5 p-0">
                                         <a href="noticia.php">
@@ -163,7 +165,7 @@
                             <h2>Nuevo Usuario</h2>
                             <form action="">
                                 <label for="">E-mail</label>
-                                <input class="form-control" type="email" name="email" placeholder="Ingrese un email">
+                                <input class="form-control" type="email" name="email" placeholder="Ingrese un email" id="email">
 
                                 <label for="">Firma</label>
                                 <input class="form-control" type="text" name="username"
@@ -171,8 +173,10 @@
 
                                 <label for="">Contraseña</label>
                                 <input class="form-control" type="password" name="password"
-                                    placeholder="Ingrese una contraseña">
-
+                                    placeholder="Ingrese una contraseña" id="contraseña">
+                                <small class="info-registro-contraseña">La contraseña debe contener un letra mayuscula, una letra minuscula y un numero</small>
+                
+                                <br>
                                 <label for="">Tipo de Usuario</label>
                                 <select class="form-control" name="" id="">
                                     <option value="0">Administrador</option>
@@ -180,7 +184,7 @@
                                     <option value="2">Usuario</option>
                                 </select>
 
-                                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar"><br>
+                                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar" id="registro"><br>
                             </form>
                             <br>
                         </div>
@@ -197,7 +201,7 @@
                             for ($i=0; $i < 5; $i++) { 
                         ?>
                             <div class="card col-3 reportero-card">
-                            <img class="card-img-top reportero-imagen" src="image/no-imagen.jpg" alt="Card image">
+                            <img class="card-img-top reportero-imagen" src="resources/image/no-imagen.jpg" alt="Card image">
                             <div class="card-body">
                                 <p class="card-text">Nombre Reportero</p>
                                 <p class="card-text"><b>Firma:</b> Firma Chida</p>

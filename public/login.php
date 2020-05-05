@@ -21,16 +21,18 @@
             <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña">
             <div class="row">
                 <div class="col-md-6 text-center m-0 p-0">
-                    <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="perfil.php">Ingresar</a>
+                    <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="MVC/test.php">Ingresar</a>
                 </div>
                 <div class="col-md-6 text-center">
+                    <!-- HASTA DONDE SE ESTO NO ES OBLIGATORIO Y NO ME QUIERO METER EN ESTO XD
                     <div class="pt-4">
                         <input type="checkbox" id="recordar" name="recordar">
                         <label for="recordar">Recordar me</label>
                     </div>
+                    -->
                 </div>
             </div>
-            <br><a style="color:aliceblue" href="/Registro"><u>¿No tienes una cuenta? Registrate!</u></a><br>
+            <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
     </div>
     <?php include 'templates/footer.php';?>

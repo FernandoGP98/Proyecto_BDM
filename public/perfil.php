@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <script src="js/perfil.js"></script>
-    <?php require('MVC/Controllers/obtenerUsuario.php') ?>
+    <script src="resources/js/perfil.js"></script>
+    <?php //require('MVC/Controllers/obtenerUsuario.php') ?>
+    <!-- 
+        COMENTE LO DE OBTENER USUARIO NO PUEDO ACCEDER A LA BD REMOTA
+        ASI QUE POR AHORA LO TENGO ASI, DESPUES CHECO QUE ONDA CON ESO
+    -->
 </head>
 
 <body>
@@ -51,7 +55,7 @@
                         <div class="post-innerbox">
                         <div class="row">
                             <div class="col-2 p-1 d-flex justify-content-center">
-                                <img src="image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
                             </div>
                             <div class="col-6 p-0">
                                 <a href="noticia.php">

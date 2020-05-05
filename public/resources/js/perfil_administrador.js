@@ -3,6 +3,11 @@ $(document).ready(function(){
     var reporteroEliminar;
     var seccionEliminar;
 
+    var checkContraseña = false
+    var checkCorreo = false;
+    $("#registro").attr("disabled", true);
+
+
     $(".noticias-redaccion").show();
     $(".secciones-administrador").hide();
     $(".usuarios-administrador").hide();
@@ -118,5 +123,54 @@ $(document).ready(function(){
 
         //$("#contender-secciones").append(nuevoElemento);
     });
+
+
+    $("#contraseña").keyup(function(e){
+        console.log(contra);
+        var contra = $("#contraseña").val()
+        var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+        console.log(contra);
+        if(reg.test(contra)){
+            console.log(reg.test(contra))
+            $(".info-registro-contraseña").hide(200);
+            $("#contraseña").css("background-color", "#6ae68b");
+            checkContraseña = true;
+            Registro(checkContraseña, checkCorreo);
+        }else{
+            $(".info-registro-contraseña").show(200);
+            $("#contraseña").css("background-color", "#fa5448");
+            checkContraseña = false;
+            Registro(checkContraseña, checkCorreo);
+        }
+    });
+
+    //
+
+    $("#email").keyup(function(e){
+        console.log(correo);
+        var correo = $("#email").val()
+        var reg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        console.log(correo);
+        if(reg.test(correo)){
+            console.log(reg.test(correo))
+            $(".info-registro-correo").hide(200);
+            $("#email").css("background-color", "#6ae68b");
+            checkCorreo = true;
+            Registro(checkContraseña, checkCorreo);
+        }else{
+            $(".info-registro-correo").show(200);
+            $("#email").css("background-color", "#fa5448");
+            checkCorreo = false;
+            Registro(checkContraseña, checkCorreo);
+        }
+    });
+
+    function Registro(v1,v2){
+        if(v1 && v2 == true){
+            $("#registro").attr("disabled", false);
+        }else{
+            $("#registro").attr("disabled", true);
+        }
+    }
 
 });
