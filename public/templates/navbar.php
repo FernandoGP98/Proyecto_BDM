@@ -10,7 +10,7 @@
         <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="adminperfil.php">
-            <img src="./image/no-imagen.jpg" class="nav-avatar" alt="">
+            <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" class="nav-avatar" alt="">
         </a>
         <form class="form-inline my-2 my-lg-0" action="busqueda.php">
             <input id="search-bar" style="display: none" class="form-control mr-sm-2" type="search" placeholder="Buscar"
@@ -25,26 +25,26 @@
         <div class="container">
             <div class="row sections">
             <ul class="navbar-nav mr-auto secciones">
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion1 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #22AB65">
+                    <a class="nav-link" href="seccion.php">Seccion1 <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion2 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #74AB49">
+                    <a class="nav-link" href="seccion.php" >Seccion2 <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion3 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #635CAB">
+                    <a class="nav-link" href="seccion.php" >Seccion3 <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion4 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #5795AB">
+                    <a class="nav-link" href="seccion.php" >Seccion4 <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion5 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #562EAB">
+                    <a class="nav-link" href="seccion.php" >Seccion5 <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion6 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #915FAB">
+                    <a class="nav-link" href="seccion.php" >Seccion6 <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active col">
-                    <a class="nav-link" href="#">Seccion7 <span class="sr-only"></span></a>
+                <li class="nav-item active col" style="background-color: #9A34AB">
+                    <a class="nav-link" href="seccion.php" >Seccion7 <span class="sr-only"></span></a>
                 </li>
             </ul>
             </div>

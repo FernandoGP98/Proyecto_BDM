@@ -75,4 +75,6 @@ $(document).ready(function(){
             $("#registro").attr("disabled", true);
         }
     }
+
+
 });

@@ -24,7 +24,7 @@
                     <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="MVC/test.php">Ingresar</a>
                 </div>
             </div>
-            <br><a style="color:aliceblue" href="/Registro"><u>¿No tienes una cuenta? Registrate!</u></a><br>
+            <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
     </div>
     <?php include 'templates/footer.php';?>

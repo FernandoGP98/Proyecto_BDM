@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <script src="js/perfil.js"></script>
+    <script src="resources/js/perfil.js"></script>
 </head>
 
 <body>

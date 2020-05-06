@@ -25,13 +25,11 @@
 
                 <label for="">Contraseña</label>
                 <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña" id="contraseña">
+                <small class="info-registro">La contraseña debe contener un letra mayuscula, una letra minuscula y un numero</small>
 
-                <small class="info-registro">La contraseña debe contener un letra mayuscula, una letra minuscula y un
-                    numero</small>
+                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrarse" id="registro"><br>
 
-                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrarse"><br>
-
-                <a style="color:aliceblue" href="/Login"><u>¿Ya tienes una cuenta? Inicia Sesion!</u></a><br>
+                <a style="color:aliceblue" href="login.php"><u>¿Ya tienes una cuenta? Inicia Sesion!</u></a><br>
 
             </form>
             <br>
