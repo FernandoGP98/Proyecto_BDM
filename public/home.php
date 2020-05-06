@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include 'links.php';?>
     <!--load styles -->
-    <link rel="stylesheet" href="css/index.css">
     <title>Index</title>
 </head>
 

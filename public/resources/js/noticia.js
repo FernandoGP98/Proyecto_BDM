@@ -1,12 +1,14 @@
 $(document).ready(function(){
 
+    var comentarioEliminar;
+
     $("img.like").hover(function(){
         var like = $(this).attr("like");
 
         if(like == 1){
-            $(this).attr("src","image/like_red.png");
+            $(this).attr("src","resources/image/like_red.png");
         }else if(like == 0){
-            $(this).attr("src","image/like_blue.png");
+            $(this).attr("src","resources/image/like_blue.png");
         }
     });
 
@@ -14,10 +16,17 @@ $(document).ready(function(){
         var like = $(this).attr("like");
 
         if(like == 1){
-            $(this).attr("src","image/like_blue.png");
+            $(this).attr("src","resources/image/like_blue.png");
         }else if(like == 0){
-            $(this).attr("src","image/like_gray.png");
+            $(this).attr("src","resources/image/like_gray.png");
         }
     });
+
+
+    $(".btn-eliminar-comentario").click(function(){
+        comentarioEliminar = $(this).closest(".comentarios");
+        comentarioEliminar.hide(400);
+
+    })
 
 });

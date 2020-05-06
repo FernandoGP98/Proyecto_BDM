@@ -1,18 +1,15 @@
 <?php
 
 class conexion{
-    private $con;
 
     function __contruct(){
-        $this->con = new mysqli("localhost", "root", "", "bdm_01");
+    }
 
-        if ($this->con->connect_error) {
-            die("Connection failed: " . $this->con->connect_error);
-        }
+    public static function getConnection(){
+        return new mysqli("localhost", "root", "", "bdm_01");
     }
 
     function __destruct(){
-        $this->con->close();
     }
 }
 

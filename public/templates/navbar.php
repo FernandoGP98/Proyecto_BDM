@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-logo">
     <div class="logo">
-        <a class="" href="index.php">
+        <a class="" href="home">
             <h1>Noticias</h1>
         </a>
     </div>

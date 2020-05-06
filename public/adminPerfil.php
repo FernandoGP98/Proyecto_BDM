@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'links.php';?>
-    <link rel="stylesheet" href="css/registrar.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <script src="js/perfil_administrador.js"></script>
-    <script src="js/jscolor.js"></script>
+    <!-- <link rel="stylesheet" href="css/registrar.css">
+    <link rel="stylesheet" href="css/perfil.css"> -->
+    <link rel="stylesheet" href="resources/css/global.css">
+    <link rel="stylesheet" href="resources/css/reportero.css">
+    <script src="resources/js/perfil_administrador.js"></script>
+    <script src="resources/js/jscolor.js"></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                     <li><a id="admin-usuarios" href="#">Crear Usuarios</a></li>
                     <li><a id="admin-usuarios-eliminar" href="#">Eliminar Usuarios</a></li>
                 </ul>
-                
+
                 <ul>
                     <li> ** Temporal **</li>
                     <li><a href="perfil.php">Perfil Reportero</a></li>
@@ -76,7 +78,7 @@
                                         <br>
                                         <button class="btn btn-outline-success">Publicar</button>
                                         <br><br>
-                                        <button class="btn btn-outline-danger btn-eliminar" >Eliminar</button>
+                                        <button class="btn btn-outline-danger btn-eliminar">Eliminar</button>
                                     </div>
                                 </div>
                             </div>
@@ -128,28 +130,24 @@
                                 }   
                                 ?>
                         </div>
-
-
                         <hr>
                         <div class="row">
                             <div class="col">
-                            <h3 class="text-center">Crear Seccion</h3>
-                            <br>
-                            <div>
-                                <form action="">
-                                    <label for="">Nombre Seccion:</label>
-                                    <input type="text" class="form-control" id="nuevaSeccion">
-                                    <label for="">Color:</label>
-                                    <input class="jscolor form-control" id="nuevoColor">
-                                    <br>
-                                    <button class="btn btn-outline-success crear-seccion">Crear</button>
-                                </form>
-                            </div>
+                                <h3 class="text-center">Crear Seccion</h3>
+                                <br>
+                                <div>
+                                    <form action="">
+                                        <label for="">Nombre Seccion:</label>
+                                        <input type="text" class="form-control" id="nuevaSeccion">
+                                        <label for="">Color:</label>
+                                        <input class="jscolor form-control" id="nuevoColor">
+                                        <br>
+                                        <button class="btn btn-outline-success crear-seccion">Crear</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <!-- Aparatado de Usuarios -->
@@ -163,7 +161,8 @@
                             <h2>Nuevo Usuario</h2>
                             <form action="">
                                 <label for="">E-mail</label>
-                                <input class="form-control" type="email" name="email" placeholder="Ingrese un email">
+                                <input class="form-control" type="email" name="email" placeholder="Ingrese un email"
+                                    id="email">
 
                                 <label for="">Firma</label>
                                 <input class="form-control" type="text" name="username"
@@ -171,8 +170,11 @@
 
                                 <label for="">Contraseña</label>
                                 <input class="form-control" type="password" name="password"
-                                    placeholder="Ingrese una contraseña">
+                                    placeholder="Ingrese una contraseña" id="contraseña">
+                                <small class="info-registro-contraseña">La contraseña debe contener un letra mayuscula,
+                                    una letra minuscula y un numero</small>
 
+                                <br>
                                 <label for="">Tipo de Usuario</label>
                                 <select class="form-control" name="" id="">
                                     <option value="0">Administrador</option>
@@ -180,7 +182,8 @@
                                     <option value="2">Usuario</option>
                                 </select>
 
-                                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar"><br>
+                                <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar"
+                                    id="registro"><br>
                             </form>
                             <br>
                         </div>
@@ -193,19 +196,20 @@
                     <h1 class="text-center">Eliminar Usuario</h1>
                     <div class="container">
                         <div class="row">
-                        <?php
+                            <?php
                             for ($i=0; $i < 5; $i++) { 
                         ?>
                             <div class="card col-3 reportero-card">
-                            <img class="card-img-top reportero-imagen" src="resources/image/no-imagen.jpg" alt="Card image">
-                            <div class="card-body">
-                                <p class="card-text">Nombre Reportero</p>
-                                <p class="card-text"><b>Firma:</b> Firma Chida</p>
-                                <p class="card-text"><b>Contacto:</b> <span>##########</span></p>
-                                <a href="#" class="btn btn-outline-danger btn-reportero-eliminar">Eliminar</a>
+                                <img class="card-img-top reportero-imagen" src="resources/image/no-imagen.jpg"
+                                    alt="Card image">
+                                <div class="card-body">
+                                    <p class="card-text">Nombre Reportero</p>
+                                    <p class="card-text"><b>Firma:</b> Firma Chida</p>
+                                    <p class="card-text"><b>Contacto:</b> <span>##########</span></p>
+                                    <a href="#" class="btn btn-outline-danger btn-reportero-eliminar">Eliminar</a>
+                                </div>
                             </div>
-                            </div>
-                        <?php
+                            <?php
                             }
                         ?>
                         </div>
@@ -215,71 +219,79 @@
 
             </div>
         </div>
-        <?php include 'templates/footer.php';?>
-
 
         <!-- Modal  Noticias -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar noticia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar noticia</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Quieres eliminar esta noticia?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary cancelar" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger eliminar-noticia"
+                            data-dismiss="modal">Eliminar</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>¿Quieres eliminar esta noticia?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cancelar" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger eliminar-noticia" data-dismiss="modal">Eliminar</button>
-            </div>
-            </div>
-        </div>
         </div>
 
         <!-- Modal Reportero -->
-        <div class="modal fade" id="reporteroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar Reportero</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="modal fade" id="reporteroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Reportero</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Quieres eliminar a este reportero?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary cancelar-reportero"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger eliminar-reportero"
+                            data-dismiss="modal">Eliminar</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>¿Quieres eliminar a este reportero?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cancelar-reportero" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger eliminar-reportero" data-dismiss="modal">Eliminar</button>
-            </div>
-            </div>
-        </div>
         </div>
 
         <!-- Modal Secciones -->
-        <div class="modal fade" id="seccionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar Seccion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>¿Quieres eliminar esta seccion?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cancelar-seccion" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger eliminar-seccion" data-dismiss="modal">Eliminar</button>
-            </div>
+        <div class="modal fade" id="seccionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Seccion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Quieres eliminar esta seccion?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary cancelar-seccion"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger eliminar-seccion"
+                            data-dismiss="modal">Eliminar</button>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
+    <?php include 'templates/footer.php';?>
 </body>
 
 </html>

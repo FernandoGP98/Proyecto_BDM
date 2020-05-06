@@ -6,7 +6,6 @@
     <title>Document</title>
     <?php include 'links.php';?>
     <script src="js/perfil.js"></script>
-    <?php require('MVC/Controllers/obtenerUsuario.php') ?>
 </head>
 
 <body>

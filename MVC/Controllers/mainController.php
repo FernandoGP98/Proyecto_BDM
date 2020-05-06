@@ -1,7 +1,7 @@
 <?php
 class mainController{
     public function index(){
-        echo "Hola index";
+        Response::render("home", ["Titulo"=>"Last Report"]);
     }
 }
 ?>

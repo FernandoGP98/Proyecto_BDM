@@ -23,12 +23,6 @@
                 <div class="col-md-6 text-center m-0 p-0">
                     <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="MVC/test.php">Ingresar</a>
                 </div>
-                <div class="col-md-6 text-center">
-                    <div class="pt-4">
-                        <input type="checkbox" id="recordar" name="recordar">
-                        <label for="recordar">Recordar me</label>
-                    </div>
-                </div>
             </div>
             <br><a style="color:aliceblue" href="/Registro"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
