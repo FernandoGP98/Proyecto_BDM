@@ -26,7 +26,7 @@
             <div class="col-md-9">
                 <div class="info-usuario">
                     <label class="form-check-label" for="">Nombre</label>
-                    <input class="form-control" type="text" name="" id="" value="<?=$usuario;?>">
+                    <input class="form-control" type="text" name="" id="" value="Nombre">
                     <label class="form-check-label" for="">Apellido Paterno</label>
                     <input class="form-control" type="text" name="" id="" value="Paterno">
                     <label class="form-check-label" for="">Apellido Materno</label>

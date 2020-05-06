@@ -24,8 +24,13 @@
                 <input class="form-control" type="text" name="username" placeholder="Ingrese su nombre de usuario">
 
                 <label for="">Contraseña</label>
-                <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña" id="contraseña">
-                <small class="info-registro">La contraseña debe contener un letra mayuscula, una letra minuscula y un numero</small>
+                <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña"
+                    id="contraseña">
+
+                <div class="info-registro">
+                    <small>La contraseña debe contener un letra mayuscula, una letra minuscula y
+                        un numero</small>
+                </div>
 
                 <br><input class="mb-2 btn btn-primary" type="submit" value="Registrarse" id="registro"><br>
 

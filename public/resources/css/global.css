@@ -112,6 +112,10 @@ div.destacado{
     color:#E3E3E3;
 }
 
+.info-registro, .info-registro-contraseña, .info-registro-correo{
+    color: #910000 !important;
+}
+
 /*Noticias*/
 .encabezado h2{
     font-size: 16px;
@@ -305,8 +309,4 @@ small{
 .row-seccion{
     margin-left: 0 !important; 
     margin-right: 0 !important;
-}
-
-.info-registro, .info-registro-contraseña, .info-registro-correo{
-    color: #910000;
 }

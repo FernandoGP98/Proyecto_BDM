@@ -21,7 +21,7 @@
             <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña">
             <div class="row">
                 <div class="col-md-6 text-center m-0 p-0">
-                    <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="MVC/test.php">Ingresar</a>
+                    <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="perfil.php">Ingresar</a>
                 </div>
             </div>
             <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
