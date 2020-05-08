@@ -112,7 +112,7 @@ div.destacado{
     color:#E3E3E3;
 }
 
-.info-registro, .info-registro-contraseña, .info-registro-correo{
+.info-registro small, .info-registro-contraseña, .info-registro-correo{
     color: #910000 !important;
 }
 

@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse mx-auto">
         <div class="container">
             <div class="row sections">
-            <ul class="navbar-nav mr-auto secciones">
+            <ul class="navbar-nav mr-auto secciones text-center" style="width: 100%">
                 <li class="nav-item active col" style="background-color: #22AB65">
                     <a class="nav-link" href="seccion.php">Seccion1 <span class="sr-only"></span></a>
                 </li>

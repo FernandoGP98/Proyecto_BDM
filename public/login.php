@@ -27,7 +27,10 @@
             <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
     </div>
-    <p><?=$var?><p>
+    <!--
+        NO SE QUE ES ESTO O PARA QUE ES 
+        <p><?=$var?><p> 
+    -->
     <?php include 'templates/footer.php';?>
 </body>
 
