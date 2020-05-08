@@ -1,5 +1,5 @@
 <?php
-
+require_once("Conexion.php");
 class usuario{
     private $correo, $contraseña, $firma, $nombre, $apPaterno, $apMaterno, $telefono, $avatar, $tipoUsuario, $activo;
 
@@ -73,8 +73,16 @@ class usuario{
         $this->activo = $p;
     }
 
-    function registrarUsuario(){
-
+    public function registrarUsuario($pCorreo, $pFirma, $pNombre, $pApellidoM, $pApellidoP, 
+    $pTel, $pAvatar, $pTipoUsuario){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+        $sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,?)");
+        $sql->bind_param("ssssssbi", $pCorreo, $pFirma, $pNombre, $pApellidoM, 
+        $pApellidoP, $pTel, $pAvatar, $pTipoUsuario);
+        $sql->execute();
+        $sql->close();
+        $con->close();
     }
 
     function obtenerUsuario(){
