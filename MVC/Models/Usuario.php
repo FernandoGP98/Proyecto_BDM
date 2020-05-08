@@ -73,15 +73,25 @@ class usuario{
         $this->activo = $p;
     }
 
-    public function registrarUsuario($pCorreo, $pFirma, $pNombre, $pApellidoM, $pApellidoP, 
+    public function registrarUsuario($pCorreo, $contra, $pFirma, $pNombre, $pApellidoP, $pApellidoM, 
     $pTel, $pAvatar, $pTipoUsuario){
         $DB= new conexion();
         $con = $DB->getConnection();
-        $sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,?)");
-        $sql->bind_param("ssssssbi", $pCorreo, $pFirma, $pNombre, $pApellidoM, 
-        $pApellidoP, $pTel, $pAvatar, $pTipoUsuario);
+        /*$sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)");
+        $sql->bind_param("sssssssii", $pCorreo, $contra, $pFirma, $pNombre, 
+        $pApellidoP, $pApellidoM, $pTel, $pAvatar, $pTipoUsuario);
         $sql->execute();
-        $sql->close();
+        $sql->close();*/
+
+        $storedProc = "CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)";
+        $stmt = mysqli_prepare($con, $storedProc);
+        mysqli_stmt_bind_param($stmt, "sssssssii",$pCorreo, $contra, $pFirma, $pNombre, 
+        $pApellidoP, $pApellidoM, $pTel, $pAvatar, $pTipoUsuario);
+        //QUE PEDO NO ESTA HACIENDO LO DEL STORE >:0 PERO NO MARCA NINGUN ERROR
+        mysqli_stmt_execute($stmt);
+        return "Ola";
+        mysqli_stmt_close($stmt);
+
         $con->close();
     }
 

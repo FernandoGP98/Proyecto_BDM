@@ -16,7 +16,7 @@
         </div>
         <div class="contact-form">
             <h2>Registrate</h2>
-            <form action="testRegistrar" method="post">
+            <form action="registrarUsuario" method="post">
                 <label for="email">E-mail</label>
                 <input class="form-control" type="email" name="email" placeholder="Ingrese su email" id="email">
 

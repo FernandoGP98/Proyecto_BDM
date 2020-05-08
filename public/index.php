@@ -9,6 +9,7 @@ require APP_PATH."http/routes.php";
 require SYS_PATH."Response.php";
 require APP_PATH."Models/Conexion.php";
 require APP_PATH."Models/test.php";
+require APP_PATH."Models/Usuario.php";
 
 $url = $_GET["url"];
 
