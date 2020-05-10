@@ -28,7 +28,8 @@
         </div>
     </div>
     <!--
-        NO SE QUE ES ESTO O PARA QUE ES 
+        NO SE QUE ES ESTO O PARA QUE ES //JAJAJ al registrarse le puse que se redireccionara al login y 
+        nomas para checar puse que mandara una variable y aqui la pongo
         <p><?=$var?><p> 
     -->
     <?php include 'templates/footer.php';?>
