@@ -31,6 +31,7 @@
         NO SE QUE ES ESTO O PARA QUE ES 
         <p><?=$var?><p> 
     -->
+    <p><?=$var?><p> 
     <?php include 'templates/footer.php';?>
 </body>
 

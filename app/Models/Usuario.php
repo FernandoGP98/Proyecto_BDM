@@ -83,6 +83,8 @@ class usuario{
         $sql->execute();
         $sql->close();*/
 
+        $pAvatar = null;
+        $pTipoUsuario = 1;
         $storedProc = "CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)";
         $stmt = mysqli_prepare($con, $storedProc);
         mysqli_stmt_bind_param($stmt, "sssssssii",$pCorreo, $contra, $pFirma, $pNombre, 
