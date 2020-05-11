@@ -61,7 +61,7 @@ class test{
         return $r;
     }
 
-    public function getTest($id){
+    public function getTest(){
         $DB = new conexion;
         $con = $DB->getConnection();
         $id=1;

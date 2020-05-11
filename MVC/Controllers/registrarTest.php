@@ -7,7 +7,7 @@ class registrarTest{
     }
 
     public function testGet(){
-        $test = Test::getTest(1);
+        $test = Test::getTest();
         Response::render("registrarse", ["response"=> $test]);
     }
 }
