@@ -32,6 +32,7 @@
         nomas para checar puse que mandara una variable y aqui la pongo
         <p><?=$var?><p> 
     -->
+    <p><?=$var?><p> 
     <?php include 'templates/footer.php';?>
 </body>
 

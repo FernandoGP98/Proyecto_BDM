@@ -310,3 +310,12 @@ small{
     margin-left: 0 !important; 
     margin-right: 0 !important;
 }
+
+
+/*General*/
+
+#avatarImg{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
