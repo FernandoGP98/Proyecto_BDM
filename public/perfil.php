@@ -13,8 +13,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 vertical-line-right">
-                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" width="50%" height="auto"
-                    alt="">
+                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg"
+                    alt="" id="avatarImg">
                 <ul>
                     <li><a id="perfil-info" href="#">Informacion</a></li>
                     <li><a id="perfil-post" href="#">Publicaciones</a></li>
@@ -39,6 +39,8 @@
                     <input class="form-control" type="text" name="" id="telefono" value="miTelefono" maxlength="10">
                     <label class="form-check-label" for="">Direccion</label>
                     <input class="form-control" type="text" name="" id="direccion" value="miDireccion">
+                    <label for="form-check-control">Avatar</label>
+                    <input class="form-control" type="file" name="avatar" id="avatar">
                 </div>
                 <div class="publicaciones">
                     <div class="">

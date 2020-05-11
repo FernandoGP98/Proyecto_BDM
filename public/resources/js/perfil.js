@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var EliminarElemento;
+    var imagen;
 
     $(".btn-eliminar").click(function(){
         EliminarElemento = $(this).closest(".post-outbox");
@@ -39,6 +40,30 @@ $(document).ready(function(){
                 (key >= 65 && key <= 90) ||
                 (key >= 97 && key <= 122));
     });
+
+    $("#avatar").change(function() {
+        imagen = $(this).clone();
+        readURL(this, imagen);
+    });
+
+    function readURL(input, intento) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function(e) {
+                $("#avatarImg").attr("src",e.target.result)
+            }
+    
+            /* Add input Hidden para subir al server */
+            // clone22.removeClass("input-multimedia");
+            // clone22.removeAttr("id");
+            // clone22.attr("name","imagenes[]");
+    
+            // $("#contador").html(intento);
+            // $("#imagenes-input").append(clone22);
+            reader.readAsDataURL(input.files[0]);        
+        }
+    }
 
 
 
