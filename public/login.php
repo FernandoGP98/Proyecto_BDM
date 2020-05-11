@@ -15,15 +15,19 @@
         </div>
         <div class="contact-form">
             <h2>Ingresar</h2>
-            <label>Email</label>
-            <input class="form-control" type="text" name="email" placeholder="Ingrese su email">
-            <label>Contraseña</label>
-            <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña">
-            <div class="row">
-                <div class="col-md-6 text-center m-0 p-0">
-                    <a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar" href="perfil.php">Ingresar</a>
+            <form action = "testRegistrar" method="post">
+                <label>Email</label>
+                <input class="form-control" type="text" name="email" placeholder="Ingrese su email">
+                <label>Contraseña</label>
+                <input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña">
+                <div class="row">
+                    <div class="col-md-6 text-center m-0 p-0">
+                        <!--<a class="btn btn-primary mt-3" type="submit" name="" value="Ingresar"
+                            href="perfil.php">Ingresar</a>-->
+                            <input class="btn btn-primary mt-3" type="submit" name="" value="Ingresar">
+                    </div>
                 </div>
-            </div>
+            </form>
             <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
     </div>
@@ -32,8 +36,8 @@
         nomas para checar puse que mandara una variable y aqui la pongo
         <p><?=$var?><p> 
     -->
-    <p><?=$var?><p> 
-    <?php include 'templates/footer.php';?>
+    <p><?=$var?><p>
+            <?php include 'templates/footer.php';?>
 </body>
 
 </html>

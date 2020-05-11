@@ -52,12 +52,39 @@ class test{
         $DB = new conexion;
         $con = $DB->getConnection();
         
-        $sql = $con->prepare("INSERT INTO Test(LastName, FirstName, Address, City) VALUES(?,?,?,?)");
+        //$sql = $con->prepare("INSERT INTO Test(LastName, FirstName, Address, City) VALUES(?,?,?,?)");
+        $sql = $con->prepare("CALL testRegistro(?,?,?,?)");
         $sql->bind_param("ssss", $ln, $fn, $addr, $city);
         $r = $sql->execute();
         $sql->close();
         $con->close();
         return $r;
+    }
+
+    public function getTest($id){
+        $DB = new conexion;
+        $con = $DB->getConnection();
+        $id=1;
+        
+        $sql = $con->prepare('CALL testGet(?)');
+        $sql->bind_param("i", $id);
+        //$sql = $con->prepare("SELECT * from test");
+        $sql->execute();
+        //mysqli_stmt_bind_param($sql, 'i', $i);
+        //mysqli_stmt_execute($sql);
+
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            while($row_data = $result->fetch_assoc()){
+                echo $row_data['LastName'];
+            }
+        }else {
+            # No data actions
+            echo 'No data here :(';
+        }
+        $sql->close();
+        $con->close();
     }
 }
 ?>
