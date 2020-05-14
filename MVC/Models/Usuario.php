@@ -77,29 +77,27 @@ class usuario{
     $pTel, $pAvatar, $pTipoUsuario){
         $DB= new conexion();
         $con = $DB->getConnection();
-        /*$sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)");
+
+
+        $sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)");
         $sql->bind_param("sssssssii", $pCorreo, $contra, $pFirma, $pNombre, 
         $pApellidoP, $pApellidoM, $pTel, $pAvatar, $pTipoUsuario);
-        $sql->execute();
-        $sql->close();*/
-
-        $pAvatar = null;
-        $pTipoUsuario = 1;
-        $storedProc = "CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)";
-        $stmt = mysqli_prepare($con, $storedProc);
-        mysqli_stmt_bind_param($stmt, "sssssssii",$pCorreo, $contra, $pFirma, $pNombre, 
-        $pApellidoP, $pApellidoM, $pTel, $pAvatar, $pTipoUsuario);
-        //QUE PEDO NO ESTA HACIENDO LO DEL STORE >:0 PERO NO MARCA NINGUN ERROR
-        mysqli_stmt_execute($stmt);
-        return "Ola";
-        mysqli_stmt_close($stmt);
-
+        $r=$sql->execute();
+        $sql->close();
         $con->close();
+        return $r;
     }
 
-    function obtenerUsuario(){
-        $temp="Hola soy un usuario desde el Models Usuario, controlado por obtenerUsuario";
-        return $temp;
+    public function obtenerUsuario($pCorreo){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+        //No terminado
+        $sql = $con->prepare("CALL usuarioGet_porCorreo(?)");
+        $sql->bind_param("s", $pCorreo);
+        $r=$sql->execute();
+        $sql->close();
+        $con->close();
+        return $r;
     }
 }
 

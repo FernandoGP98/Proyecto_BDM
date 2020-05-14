@@ -43,7 +43,7 @@
                     id="ApM">
 
                 <label for="Tel">Telefono</label>
-                <input class="form-control" type="numeric" name="telefono" placeholder="Ingrese su telefono"
+                <input class="form-control" type="text" name="telefono" placeholder="Ingrese su telefono"
                     id="Tel">
 
                 <br><input class="mb-2 btn btn-primary" type="submit" value="Registrarse" id="registro"><br>
