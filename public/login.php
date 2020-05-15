@@ -15,7 +15,7 @@
         </div>
         <div class="contact-form">
             <h2>Ingresar</h2>
-            <form action = "testRegistrar" method="post">
+            <form action = "loginUsuario" method="get">
                 <label>Email</label>
                 <input class="form-control" type="text" name="email" placeholder="Ingrese su email">
                 <label>Contraseña</label>

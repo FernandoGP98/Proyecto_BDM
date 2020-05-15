@@ -26,19 +26,17 @@
             <div class="col-md-9">
                 <div class="info-usuario">
                     <label class="form-check-label" for="">Nombre</label>
-                    <input class="form-control" type="text" name="" id="" value="Nombre">
+                    <input class="form-control" type="text" name="" id="" value="<?=$_SESSION['usuario']['nombre']?>">
                     <label class="form-check-label" for="">Apellido Paterno</label>
-                    <input class="form-control" type="text" name="" id="" value="Paterno">
+                    <input class="form-control" type="text" name="" id="" value="<?=$_SESSION['usuario']['apellido_paterno']?>">
                     <label class="form-check-label" for="">Apellido Materno</label>
-                    <input class="form-control" type="text" name="" id="" value="Materno">
+                    <input class="form-control" type="text" name="" id="" value="<?=$_SESSION['usuario']['apellido_materno']?>">
                     <label class="form-check-label" for="">Correo</label>
-                    <input class="form-control" type="text" name="" id="" disabled value="myCorreo@correo.com">
+                    <input class="form-control" type="text" name="" id="" disabled value="<?=$_SESSION['usuario']['correo']?>">
                     <label class="form-check-label" for="">Firma</label>
-                    <input class="form-control" type="text" name="" id="" value="miFirma">
+                    <input class="form-control" type="text" name="" id="" value="<?=$_SESSION['usuario']['firma']?>">
                     <label class="form-check-label" for="">Telefono</label>
-                    <input class="form-control" type="text" name="" id="telefono" value="miTelefono" maxlength="10">
-                    <label class="form-check-label" for="">Direccion</label>
-                    <input class="form-control" type="text" name="" id="direccion" value="miDireccion">
+                    <input class="form-control" type="text" name="" id="telefono" value="<?=$_SESSION['usuario']['telefono']?>" maxlength="10">
                     <label for="form-check-control">Avatar</label>
                     <input class="form-control" type="file" name="avatar" id="avatar">
                 </div>
@@ -85,6 +83,8 @@
         </div>
     </div>
     <?php include 'templates/footer.php';?>
+    
+    <?php print_r($_SESSION['usuario'])?>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

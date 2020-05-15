@@ -6,9 +6,9 @@ class UsuarioControl{
         Response::render("login", ["var"=>$us]);
     }
 
-    public function obtener_porCorreo(){
-        $us = Usuario::obtenerUsuario($_GET["email"]);
-        Respone::render("perfil", ["usuario"=>$us]);
+    public function obtener_porCorreoContra(){
+        Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
+        Response::render("perfil");
     }
 }
 ?>
