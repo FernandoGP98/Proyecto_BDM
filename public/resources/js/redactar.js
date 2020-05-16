@@ -1,7 +1,10 @@
+$(document).ready(function(){
+
 var imagen = 0;
 var clone22;
 
 $("#multimedia").change(function() {
+    console.log("entro");
     imagen = imagen + 1;
     clone22 = $(this).clone();
     readURL(this, imagen);
@@ -49,3 +52,5 @@ function readURL(input, intento) {
         reader.readAsDataURL(input.files[0]);        
     }
 }
+
+});
