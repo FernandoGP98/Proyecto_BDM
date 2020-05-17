@@ -10,6 +10,13 @@ require SYS_PATH."Response.php";
 require APP_PATH."Models/Conexion.php";
 require APP_PATH."Models/test.php";
 require APP_PATH."Models/Usuario.php";
+require APP_PATH."Models/Comentario.php";
+require APP_PATH."Models/Imagen.php";
+require APP_PATH."Models/Like.php";
+require APP_PATH."Models/Noticia.php";
+require APP_PATH."Models/PalabraClave.php";
+require APP_PATH."Models/Seccion.php";
+require APP_PATH."Models/Video.php";
 
 $url = $_GET["url"];
 
@@ -19,7 +26,7 @@ try{
     $controllerName=$action["controller"];
     $method=$action["method"];
 
-    require APP_PATH."controllers/".$controllerName.".php";
+    require APP_PATH."Controllers/".$controllerName.".php";
     $controller = new $controllerName();
     $controller->$method();
 

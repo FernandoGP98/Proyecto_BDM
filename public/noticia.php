@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Noticia</title>
     <?php include 'links.php';?>
     <script src="resources/js/noticia.js"></script>
 </head>

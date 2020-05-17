@@ -19,7 +19,7 @@
                     <h2>Redactar noticia</h2>
                     <form action="noticiaRegistro" method="POST">
                         <label for="">Titulo</label>
-                        <input class="form-control" type="text" name="titulo" placeholder="Titulo">
+                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" value="<?= $algo ?>">
                         <br>
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
