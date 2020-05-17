@@ -10,7 +10,7 @@ class NoticiaControl{
         //echo $_POST["texto"];
 
         
-        $noticia = Noticia::registro($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
+        $noticia = NoticiaConsulta::registro($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
         null , $_POST["estatus"], $_POST["autor"]);
 
         Response::render("editarNoticia", ["noticia"=>$noticia]);
@@ -25,8 +25,9 @@ class NoticiaControl{
     }
 
     public function obtenerNoticia(){
-        $noticia = Noticia::get($_GET["id"]);
-        Response::render("editarNoticia", ["nota"=>$noticia]);
+        //$noticia = new Noticia();
+        $noticia = NoticiaConsulta::get($_GET["id"]);
+        Response::render("editarNoticia",["nota"=>$noticia]);
 
         //$noticia = Noticia::get($_GET["id"]);
         //echo $noticia;

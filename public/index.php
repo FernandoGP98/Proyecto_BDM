@@ -14,6 +14,7 @@ require APP_PATH."Models/Comentario.php";
 require APP_PATH."Models/Imagen.php";
 require APP_PATH."Models/Like.php";
 require APP_PATH."Models/Noticia.php";
+require APP_PATH."Models/NoticiaConsulta.php";
 require APP_PATH."Models/PalabraClave.php";
 require APP_PATH."Models/Seccion.php";
 require APP_PATH."Models/Video.php";

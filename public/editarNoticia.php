@@ -19,27 +19,27 @@
                     <h2>Redactar noticia</h2>
                     <form action="noticiaRegistro" method="POST">
                         <label for="">Titulo</label>
-                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" value="<?= $algo ?>">
+                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" value="<?= $nota->titulo ?>">
                         <br>
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
                         <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30"
-                            rows="5"></textarea>
+                            rows="5"><?= $nota->texto ?></textarea>
                         <br>
 
                         <label for="">Nota</label>
                         <!-- <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia"> -->
                         <textarea id="texto" class="form-control" name="texto" id="" cols="30" rows="15"
-                            placeholder="Noticia"></textarea>
+                            placeholder="Noticia"><?= $nota->texto ?></textarea>
                         <br>
 
                         <label for="">Lugar del acontecimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="textarea" name="lugar"
-                            id="">
+                            id="" value="<?= $nota->lugar ?>">
 
                         <label for="">Fecha de Acontesimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="date" name="fecha"
-                            id="" value="null">
+                            id="" value="null" value="<?= $nota->fechaAcontesimiento ?>">
 
                         <label for="">Seccion</label>
                         <div class="dropdown show">
@@ -105,8 +105,8 @@
                         </div>
                         
 
-                        <input type="text" value="3" name="autor">
-                        <input type="text" value="1" name="estatus">
+                        <input type="text" value="<?= $nota->autor ?>" name="autor">
+                        <input type="text" value="<?= $nota->estatus ?>" name="estatus">
                         <div class="text-center">
                             <input class="mb-2 btn btn-submit" type="submit" value="Enviar">
                         </div>
@@ -114,12 +114,21 @@
                     </form>
                 </div>
             </div>
+            <div id=anterior>
+                <?= $nota->texto ?>
+            </div>
         </div>
         <?php include 'templates/footer.php';?>
         <script>
         tinymce.init({
-            selector: '#texto'
+            selector: '#texto',
+            setup: function(editor) {
+                editor.on('init', function() {
+                tinymce.activeEditor.setContent("#anterior");
+            });
+            }
         });
+
         </script>
         <script src="js/redactar.js"></script>
         <script type="text/javascript" src="extras/slick/slick.min.js"></script>
