@@ -25,9 +25,8 @@ class NoticiaControl{
     }
 
     public function obtenerNoticia(){
-        $tes ="asdas";
         $noticia = Noticia::get($_GET["id"]);
-        Response::render("editarNoticia", ["algo"=>$noticia.["Texto"]]);
+        Response::render("editarNoticia", ["nota"=>$noticia]);
 
         //$noticia = Noticia::get($_GET["id"]);
         //echo $noticia;
