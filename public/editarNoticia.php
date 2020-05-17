@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+  <!-- MIS LINKS-->
+    <script script src="resources/js/redactar.js"></script>
+  
+
     <?php include 'links.php';?>
-    <script src="resources/js/redactar.js"></script>
+
+  
 </head>
 
 <body>
     <?php include 'templates/navbar.php';?>
-
     <div class="container">
         <div class="row d-flex justify-content-md-center">
             <div class="col-md-10">
@@ -24,7 +29,7 @@
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
                         <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30"
-                            rows="5"><?= $nota->texto ?></textarea>
+                            rows="5"><?= $nota->descripcion ?></textarea>
                         <br>
 
                         <label for="">Nota</label>
@@ -39,7 +44,8 @@
 
                         <label for="">Fecha de Acontesimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="date" name="fecha"
-                            id="" value="null" value="<?= $nota->fechaAcontesimiento ?>">
+                            id="" value="<?= $nota->fechaAcontesimiento ?>">
+                        
 
                         <label for="">Seccion</label>
                         <div class="dropdown show">
@@ -114,7 +120,7 @@
                     </form>
                 </div>
             </div>
-            <div id=anterior>
+            <div id=anterior hidden>
                 <?= $nota->texto ?>
             </div>
         </div>
@@ -124,11 +130,11 @@
             selector: '#texto',
             setup: function(editor) {
                 editor.on('init', function() {
-                tinymce.activeEditor.setContent("#anterior");
             });
             }
         });
 
+        //tinymce.activeEditor.setContent('<span>algo mas</span>');
         </script>
         <script src="js/redactar.js"></script>
         <script type="text/javascript" src="extras/slick/slick.min.js"></script>
