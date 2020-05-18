@@ -49,9 +49,15 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Seccion1</a>
-                                <a class="dropdown-item" href="#">Seccion2</a>
-                                <a class="dropdown-item" href="#">Seccion3</a>
+                            <?php
+                                    foreach ($secciones as $item) {
+                                        $seccion = new Seccion();
+                                        $seccion = $item;
+                                ?>
+                                <a class="dropdown-item" href="#"><?= $seccion->nombre?></a>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
 
@@ -64,9 +70,15 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Seccion1</a>
-                                <a class="dropdown-item" href="#">Seccion2</a>
-                                <a class="dropdown-item" href="#">Seccion3</a>
+                            <?php
+                                    foreach ($palabras as $item) {
+                                        $palabra = new Seccion();
+                                        $palabra = $item;
+                                ?>
+                                <a class="dropdown-item" href="#"><?= $palabra->PalabraClave?></a>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="contenedor-imagenes" style="width: 100%;">

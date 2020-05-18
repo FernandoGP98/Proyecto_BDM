@@ -96,7 +96,9 @@
                         <hr>
                         <div id="contender-secciones">
                             <?php
-                                for ($i=0; $i < 5; $i++) { 
+                                foreach ($secciones as $item) {
+                                    $seccion = new Seccion();
+                                    $seccion = $item;
                                 ?>
                             <div class="row secciones-lista">
                                 <div class="col">
@@ -104,26 +106,32 @@
                                     #
                                 </div>
                                 <div class="col text-center">
-                                    Seccion Nombre
+                                    <?= $seccion->nombre?>
                                 </div>
                                 <div class="col text-center muestra-color">
-                                    <div class="color-muestra-final"></div>
+                                    <div class="color-muestra-final" style="background-color: #<?=$seccion->color?>;"></div>
                                 </div>
                                 <div class="col">
                                     <div class="boton-modificar" id="modificar-color">
                                         <button class="btn btn-outline-warning">Modificar Color</button>
                                     </div>
                                     <div class="selec-color">
-                                        <label for="">Seleccionar Color:</label>
-                                        <input class="jscolor" value="ab2567">
-                                        <br>
-                                        <button class="btn btn-outline-success btn-guardar">Guardar</button>
+                                        <form action="editarSeccion" method="$_GET">
+                                            <label for="">Seleccionar Color:</label>
+                                            <input class="jscolor" value="<?=$seccion->color?>" name="color">
+                                            <br>
+                                            <button class="btn btn-outline-success btn-guardar submit">Guardar</button>
+                                            <input type="hidden" name="idSeccion" class="idSeccionI" value="<?=$seccion->id?>">
+                                        </form>
                                     </div>
 
                                 </div>
                                 <div class="col">
+                                    <input type="hidden" name="" class="idSeccionI" value="<?=$seccion->id?>">
+                                    <input type="hidden" class="seccionNombreI" value="<?= $seccion->nombre?>">
                                     <button class="btn btn-outline-danger btn-eliminar-seccion">Eliminar</button>
                                 </div>
+                                
                             </div>
 
                             <?php
@@ -136,11 +144,11 @@
                                 <h3 class="text-center">Crear Seccion</h3>
                                 <br>
                                 <div>
-                                    <form action="">
+                                    <form action="crearSeccion" method="POST">
                                         <label for="">Nombre Seccion:</label>
-                                        <input type="text" class="form-control" id="nuevaSeccion">
+                                        <input type="text" class="form-control" id="nuevaSeccion" name="nombreSeccion">
                                         <label for="">Color:</label>
-                                        <input class="jscolor form-control" id="nuevoColor">
+                                        <input class="jscolor form-control" id="nuevoColor" name="colorSeccion">
                                         <br>
                                         <button class="btn btn-outline-success crear-seccion">Crear</button>
                                     </form>
@@ -270,7 +278,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Seccion</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar <span id="seccionNombre">Seccion</span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -281,8 +289,11 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary cancelar-seccion"
                             data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger eliminar-seccion"
-                            data-dismiss="modal">Eliminar</button>
+                            <form action="eliminarSeccion" method="POST" id="seccionEliminada">
+                                <input type="text" name="idSeccion" id="eliminarSeccionID" value="">
+                                <button type="submit" class="btn btn-danger eliminar-seccion"
+                                data-dismiss="modal">Eliminar</button>
+                            </form>
                     </div>
                 </div>
             </div>
