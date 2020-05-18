@@ -15,6 +15,6 @@ Router::add("test/registro", "testController", "registro");
 //Noticias
 Router::add("noticia","NoticiaControl","index");
 Router::add("noticiaRegistro","NoticiaControl","registrarNoticia");
-Router::add("noticia/editar","NoticiaControl","obtenerNoticia");
+Router::add("noticiaEditar","NoticiaControl","obtenerNoticia");
 Router::add("noticiasTodas","NoticiaControl","todasNotas");
 ?>

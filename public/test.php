@@ -42,5 +42,7 @@
     <?php 
     }
     ?>
+
+    <a href="noticiaEditar?id=1">Obtener Noticia</a>
 </body>
 </html>
