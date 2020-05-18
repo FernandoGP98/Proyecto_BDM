@@ -15,11 +15,12 @@
         <div class="row d-flex justify-content-center">
             <div class="mt-md-5 col-md-10">
                 <div class="card busqueda-card">
-                    <form class="form-inline my-2 my-lg-0" action="busqueda.php" style="padding: 30px;">
+                    <form class="form-inline my-2 my-lg-0" action="buscar" style="padding: 30px;" method="GET">
                         <div class="row" style="width:100%">
                             <div class="col-md-10">
                                 <input id="search-bar" style="width:100%; height:auto; font-size: 40px;"
-                                    class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                                    class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" 
+                                    name="texto">
                             </div>
                             <div class="col-md-2">
                                 <a id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red"
@@ -29,7 +30,7 @@
                         <div class="row mt-3" style="width: 100%">
                             <div class="col-md-9">
                                 <label class="justify-content-md-start" for="">Tipo de busqueda</label>
-                                <select name="" id="custom-busqueda" class="form-control">
+                                <select name="opcion" id="custom-busqueda" class="form-control">
                                     <option value="0" selected>Titulo</option>
                                     <option value="1">Palabra Clave</option>
                                     <option value="2">Rango de Fecha</option>
@@ -39,11 +40,11 @@
                         <div class="row mt-3 rango-fechas" style="width: 100%">
                             <div class="col-3">
                                 <label for="">Desde:</label>
-                                <input type="date" name="" id="fecha-inicio" class="form-control">
+                                <input type="date" name="desdeFecha" id="fecha-inicio" class="form-control">
                             </div>
                             <div class="col-3">
                                 <label for="">Hasta:</label>
-                                <input type="date" name="" id="fecha-fin" class="form-control">
+                                <input type="date" name="hastaFecha" id="fecha-fin" class="form-control">
                             </div>
                         </div>
                     </form>
@@ -58,14 +59,16 @@
                     <br>
                     <div class="card">
                         <?php
-                                for ($i=0; $i < 5; $i++) { 
-                                ?>
+                                foreach ($notas as $item) {
+                                    $nota = new Noticia();
+                                    $nota = $item;
+                        ?>
                         <div class="post-outbox">
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-md-2 p-3 d-flex justify-content-end">
                                         <small>
-                                            06.03.2020 / 14:43
+                                            <?= $nota->lugar?> / <?= $nota->fechaPublicacion?>
                                         </small>
                                     </div>
                                     <div class="col-md-3 p-3 d-flex justify-content-center">
@@ -74,15 +77,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 p-2">
-                                        <a href="noticia.php">
-                                            <h3 class="mb-1">Titulo</h3>
+                                        <a href="noticia?id=<?= $nota->id?>">
+                                            <h3 class="mb-1"><?= $nota->titulo?></h3>
                                         </a>
                                         <div>
-                                            <small>Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                                                archivos de texto.
-                                                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde
-                                                el año 1500,
-                                                cuando un impresor </small>
+                                            <small><?= $nota->descripcion?></small>
                                         </div>
                                     </div>
                                 </div>

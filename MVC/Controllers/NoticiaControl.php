@@ -3,7 +3,9 @@
 class NoticiaControl{
 
     public function index(){
-        Response::render("redactar");
+        $secciones = Seccion::getAll();
+        $palabras = PalabraClave::getAll();
+        Response::render("redactar", ["secciones"=>$secciones, "palabras"=>$palabras]);
     }
 
     public function registrarNoticia(){
@@ -27,11 +29,32 @@ class NoticiaControl{
     public function obtenerNoticia(){
         //$noticia = new Noticia();
         $noticia = Noticia::get($_GET["id"]);
-        Response::render("editarNoticia",["nota"=>$noticia]);
+        $secciones = Seccion::getAll();
+        $palabras = PalabraClave::getAll();
+        Response::render("editarNoticia",["nota"=>$noticia, "secciones"=>$secciones, "palabras"=>$palabras]);
+    }
+
+    public function verNoticia(){
+        $noticia = Noticia::get($_GET["id"]);
+        $secciones = Seccion::getAll();
+        Response::render("noticia",["nota"=>$noticia, "secciones"=>$secciones]);
     }
 
     public function todasNotas(){
         $notas = Noticia::getAll();
         Response::render("test", ["notas"=>$notas]);
+    }
+
+    public function buscar(){
+        $notas = Noticia::busquedaTexto($_GET["texto"]);
+        $secciones = Seccion::getAll();
+        Response::render("busqueda",["secciones"=>$secciones, "notas"=>$notas]);
+    }
+
+    public function busquedaOpcion(){
+
+        $secciones = Seccion::getAll();
+        $notas = Noticia::busquedaOpcion($_GET["opcion"], $_GET["texto"], $_GET["desdeFecha"], $_GET["hastaFecha"]);
+        Response::render("busqueda",["secciones"=>$secciones, "notas"=>$notas]);
     }
 }

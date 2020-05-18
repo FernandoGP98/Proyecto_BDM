@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="encabezado col-md-12 text-center">
-                <h1>Titulo</h1>
+                <h1><?=$nota->titulo?></h1>
                 <hr>
-                <h2>Descripcion</h2>
+                <h2><?=$nota->descripcion?></h2>
                 <hr>
             </div>
         </div>
@@ -57,23 +57,18 @@
                     </span>
                     <div class="fecha_creacion">
                         <p>
-                            Nuevo Leon / 06.03.2020 14:43
+                        <?=$nota->lugar?> / <?=$nota->fechaAcontesimiento?>
                         </p>
                     </div>
                     <div class="nota">
-                        <p>El titular de la <b>Comisión Coordinadora de Institutos Nacionales de Salud y Hospitales de
-                                Alta
-                                Especialidad (CCINSHAE), Gustavo Reyes Terán,</b> señaló que el uso de cubrebocas es
-                            únicamente para el personal de salud y pacientes diagnosticados con el nuevo <b
-                                style="color: rgb(31, 73, 125);"><a
-                                    href="https://www.milenio.com/buscador?text=coronavirus">coronavirus</a></b>.</p>
+                        <?=$nota->texto?>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="seccion col-md-12">
                     <p><b>Seccion: </b>
-                        <a class="mr-3" href="">Nacional</a>
+                        <a class="mr-3" href=""><?=$nota->seccion?></a>
                 </div>
             </div>
 
@@ -81,9 +76,6 @@
                 <div class="palabras-clave col-md-12">
                     <p><b>Tags relacionados: </b>
                         <a class="mr-3" href="">Coronavirus</a>
-                        <a class="mr-3" href="">Palabra2</a>
-                        <a class="mr-3" href="">Palabra3</a>
-                        <a class="mr-3" href="">Palabra4</a></p>
                 </div>
             </div>
 

@@ -10,5 +10,10 @@ class UsuarioControl{
         Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
         Response::render("perfil");
     }
+
+    public function administrador(){
+        $secciones = Seccion::getAll();
+        Response::render("adminPerfil", ["secciones"=>$secciones]);
+    }
 }
 ?>

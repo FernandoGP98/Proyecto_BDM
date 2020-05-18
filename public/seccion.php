@@ -17,9 +17,9 @@
             <div class="col-12">
                 <hr class="nextSection" style="margin: auto">
                 <!-- Obtenemos el nombre y el color de la seccion -->
-                <div class="row row-seccion" style="background-color: #ABA234" style="margin-left: 0 !important; margin-right: 0">
+                <div class="row row-seccion" style="background-color: #<?= $titulo->color?>" style="margin-left: 0 !important; margin-right: 0">
                     <div class="col-12 text-center" >
-                        <h2>Seccion Nombre</h2>
+                        <h2><?= $titulo->nombre?></h2>
                     </div>
                 </div>
                 <hr class="inSection" style="margin: auto">
@@ -27,14 +27,16 @@
                     <br>
                     <div class="card">
                         <?php
-                                for ($i=0; $i < 10; $i++) { 
+                                foreach ($notas as $item) {
+                                    $nota = new Noticia();
+                                    $nota = $item;
                                 ?>
                         <div class="post-outbox">
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-md-2 p-3 d-flex justify-content-end">
                                         <small>
-                                            06.03.2020 / 14:43
+                                        <?= $nota->fechaPublicacion?>
                                         </small>
                                     </div>
                                     <div class="col-md-3 p-3 d-flex justify-content-center">
@@ -43,15 +45,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 p-2">
-                                        <a href="noticia.php">
-                                            <h3 class="mb-1">Titulo</h3>
+                                        <a href="noticia?id=<?= $nota->id?>">
+                                            <h3 class="mb-1"><?= $nota->titulo?></h3>
                                         </a>
                                         <div>
-                                            <small>Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                                                archivos de texto.
-                                                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde
-                                                el año 1500,
-                                                cuando un impresor </small>
+                                            <small><?= $nota->descripcion?></small>
                                         </div>
                                     </div>
                                 </div>

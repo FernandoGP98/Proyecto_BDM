@@ -1,7 +1,10 @@
 $(document).ready(function(){
     var elementoEliminar;
     var reporteroEliminar;
+    
     var seccionEliminar;
+    var seccionNombre ="tst";
+    var seccionID ="te";
 
     var checkContraseña = false
     var checkCorreo = false;
@@ -98,6 +101,10 @@ $(document).ready(function(){
 
     $(".btn-eliminar-seccion").click(function(){
         seccionEliminar = $(this).closest(".secciones-lista");
+        seccionNombre = seccionEliminar.find(".seccionNombreI").val();
+        seccionID = seccionEliminar.find(".idSeccionI").val();
+        $("#seccionNombre").html(seccionNombre)
+        $("#eliminarSeccionID").val(seccionID)
         $(this).attr("data-toggle","modal");
         $(this).attr("data-target","#seccionModal");
         $(this).click();
@@ -106,7 +113,9 @@ $(document).ready(function(){
 
     $(".eliminar-seccion").click(function(){
         //alert(elementoEliminar.innerHtml());
+        var form = $("#seccionEliminada");
         seccionEliminar.hide(400);
+        form.submit();
     });
 
     $(".cancelar-seccion").click(function(){
