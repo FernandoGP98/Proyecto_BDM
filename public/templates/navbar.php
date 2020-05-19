@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-logo">
     <div class="logo">
         <a class="" href="home">

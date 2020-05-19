@@ -86,13 +86,12 @@ class Seccion{
 
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
-            session_start();
             if(isset($_SESSION['secciones'])){
                 unset($_SESSION['secciones']);
             }
+            $_SESSION['secciones']=array();
             while($row_data = $result->fetch_assoc()){
                 
-                $_SESSION['secciones']=array();
                 $_SESSION['secciones'][$row_data["id_Seccion"]]=array(
                     'id'=> $row_data["id_Seccion"],
                     'nombre'=>$row_data["seccion_nombre"],
@@ -100,6 +99,7 @@ class Seccion{
                     'orden'=>$row_data["orden"],
                     'activa'=>$row_data["activa"]
                 );
+                
                 /*$nota = new Seccion();
                 $nota->id = $row_data["id_Seccion"];
                 $nota->nombre = $row_data["seccion_nombre"];

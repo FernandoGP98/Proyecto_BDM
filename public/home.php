@@ -26,7 +26,7 @@
                     <div class="col-12">
                         <div class="carousel">
                             <div class="noticia-card card destacado">
-                                <a href="noticia.php">
+                                <a href="noticia">
                                     <img class="card-img-top"
                                         src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                         alt="Card image cap">
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="noticia-card card">
-                                <a href="noticia.php">
+                                <a href="noticia">
                                     <img class="card-img-top"
                                         src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                         alt="Card image cap">
@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="noticia-card card">
-                                <a href="noticia.php">
+                                <a href="noticia">
                                     <img class="card-img-top"
                                         src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                         alt="Card image cap">
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="noticia-card card">
-                                <a href="noticia.php">
+                                <a href="noticia">
                                     <img class="card-img-top"
                                         src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                         alt="Card image cap">
@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="noticia-card card">
-                                <a href="noticia.php">
+                                <a href="noticia">
                                     <img class="card-img-top"
                                         src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                         alt="Card image cap">
@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="noticia-card card">
-                                <a href="noticia.php">
+                                <a href="noticia">
                                     <img class="card-img-top"
                                         src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                                         alt="Card image cap">

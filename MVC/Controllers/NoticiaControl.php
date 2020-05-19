@@ -29,14 +29,14 @@ class NoticiaControl{
     public function obtenerNoticia(){
         //$noticia = new Noticia();
         $noticia = Noticia::get($_GET["id"]);
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         $palabras = PalabraClave::getAll();
         Response::render("editarNoticia",["nota"=>$noticia, "secciones"=>$secciones, "palabras"=>$palabras]);
     }
 
     public function verNoticia(){
         $noticia = Noticia::get($_GET["id"]);
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         Response::render("noticia",["nota"=>$noticia, "secciones"=>$secciones]);
     }
 
@@ -47,13 +47,13 @@ class NoticiaControl{
 
     public function buscar(){
         $notas = Noticia::busquedaTexto($_GET["texto"]);
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         Response::render("busqueda",["secciones"=>$secciones, "notas"=>$notas]);
     }
 
     public function busquedaOpcion(){
 
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         $notas = Noticia::busquedaOpcion($_GET["opcion"], $_GET["texto"], $_GET["desdeFecha"], $_GET["hastaFecha"]);
         Response::render("busqueda",["secciones"=>$secciones, "notas"=>$notas]);
     }

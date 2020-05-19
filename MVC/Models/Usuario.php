@@ -95,11 +95,9 @@ class usuario{
         $sql = $con->prepare("CALL usuarioGet_porCorreoContra(?,?)");
         $sql->bind_param("ss", $pCorreo, $pContra);
         $sql->execute();
-
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
             while($row_data = $result->fetch_assoc()){
-                session_start();
                 $_SESSION['usuario']=array(
                     "id_Usuario"=>$row_data['id_Usuario'],
                     "correo"=>$row_data['correo'],

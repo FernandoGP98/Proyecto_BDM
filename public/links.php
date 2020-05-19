@@ -1,4 +1,3 @@
-<meta Content-Type="image/jpg;base64">
 
 <!--Bootstrap-->
 
