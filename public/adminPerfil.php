@@ -26,6 +26,10 @@
                     <li><a id="admin-secciones" href="#">Secciones</a></li>
                     <li><a id="admin-usuarios" href="#">Crear Usuarios</a></li>
                     <li><a id="admin-usuarios-eliminar" href="#">Eliminar Usuarios</a></li>
+                    <?php
+                    unset($_SESSION['usuario']);
+
+                    ?>
                 </ul>
 
                 <ul>

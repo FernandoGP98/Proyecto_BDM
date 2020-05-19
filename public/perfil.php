@@ -83,8 +83,6 @@
         </div>
     </div>
     <?php include 'templates/footer.php';?>
-    
-    <?php print_r($_SESSION['usuario'])?>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

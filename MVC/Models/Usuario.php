@@ -110,6 +110,7 @@ class usuario{
                     "apellido_materno"=>$row_data['apellido_materno'],
                     "telefono"=>$row_data['telefono'],
                     "avatar"=>$row_data['avatar'],
+                    "imagen"=>$row_data['imagen'],
                     "tipoUsuario"=>$row_data['tipoUsuario'],
                     "activo"=>$row_data['activo']
                 );

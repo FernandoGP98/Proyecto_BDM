@@ -28,6 +28,11 @@ i{
 .sections{
     width: 100%;
 }
+
+.btn_navLR{
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+}
 /*INDEX*/
 body{
     background-color: rgb(245, 245, 245);

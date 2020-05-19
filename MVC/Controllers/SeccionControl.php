@@ -24,8 +24,9 @@ class SeccionControl{
     public function seccion(){
         //$notas;
         $test = Seccion::get($_GET["id"]);
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         $notas = Noticia::getSeccion($_GET["id"]);
-        Response::render("seccion", ["titulo"=>$test, "secciones"=>$secciones, "notas"=>$notas]);
+        //Response::render("seccion", ["titulo"=>$test, "secciones"=>$secciones, "notas"=>$notas]);
+        Response::render("seccion", ["titulo"=>$test, "notas"=>$notas]);
     }
 }

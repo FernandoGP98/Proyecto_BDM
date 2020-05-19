@@ -1,3 +1,5 @@
+<meta Content-Type="image/jpg;base64">
+
 <!--Bootstrap-->
 
 <link rel="stylesheet" type="text/css" href="extras/bootstrap-4.4.1-dist/css/bootstrap.min.css">

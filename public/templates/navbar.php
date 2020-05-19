@@ -6,16 +6,28 @@
     </div>
 
     <div class="collapse navbar-collapse d-flex justify-content-end">
+        <?php
+            if(isset($_SESSION['usuario'])){
+        ?>
         <a class="mr-3 my-2 my-sm-0" href="redactar"><i class="fas fa-pen-fancy"></i></a>
-        <a class="btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
-        <a class="btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
+        <?php } ?>
+        <?php
+            if(!isset($_SESSION['usuario'])){
+        ?>
+        <a class="btn_navLR btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
+        <a class="btn_navLR btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
+        <?php } ?>
+        <?php
+            if(isset($_SESSION['usuario'])){
+        ?>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador">
-            <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" class="nav-avatar" alt="">
+            <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>" class="nav-avatar" alt="">
         </a>
+        <?php } ?>
         <form class="form-inline my-2 my-lg-0" action="busqueda" method="GET">
             <input id="search-bar" style="display: none" class="form-control mr-sm-2" type="search" placeholder="Buscar"
                 aria-label="Search" name="texto">
-            <a id="search-btn" class="ml-md-2 mr-md-2" type="button" ><i class="fas fa-search"> </i></a>
+            <a id="search-btn" class="ml-md-2 mr-md-2" type="button"><i class="fas fa-search"> </i></a>
         </form>
     </div>
 </nav>
@@ -24,30 +36,43 @@
     <div class="collapse navbar-collapse mx-auto">
         <div class="container">
             <div class="row sections">
-            <ul class="navbar-nav mr-auto secciones text-center" style="width: 100%">
-            <?php
+                <ul class="navbar-nav mr-auto secciones text-center" style="width: 100%">
+                    <!--<?php/*
                 foreach ($secciones as $item) {
                     $seccion = new Seccion();
-                    $seccion = $item;
+                    $seccion = $item;*/
             ?>
             <li class="nav-item active col" style="background-color: #<?= $seccion->color?>">
                     <a class="nav-link" href="seccion?id=<?= $seccion->id?>"><?= $seccion->nombre?> <span class="sr-only"></span></a>
                 </li>
             <?php
-            }
+            //}
             ?>
-            </ul>
+            -->
+                    <?php
+                    if(isset($_SESSION['secciones'])){
+                        for ($i=1; $i <= count($_SESSION['secciones']); $i++) { 
+                    ?>
+                    <li class="nav-item active col" style="background-color: #<?= $_SESSION['secciones'][$i]['color']?>">
+                        <a class="nav-link" href="seccion?id=<?=$_SESSION['secciones'][$i]['id']?>"><?= $_SESSION['secciones'][$i]['nombre']?> <span
+                                class="sr-only"></span></a>
+                    </li>
+                    <?php 
+                        }
+                    }
+                    ?>
+                </ul>
             </div>
         </div>
     </div>
 </nav>
 <script>
-    $("#search-btn").click(function(){
-        if ($("i").hasClass("fa-search")) {
-            $(".fa-search").removeClass("fa-search").addClass("fa-times-circle");   
-        }else{
-            $(".fa-times-circle").removeClass("fa-times-circle").addClass("fa-search");
-        }
-        $("#search-bar").toggle("swing").show();
-    });
+$("#search-btn").click(function() {
+    if ($("i").hasClass("fa-search")) {
+        $(".fa-search").removeClass("fa-search").addClass("fa-times-circle");
+    } else {
+        $(".fa-times-circle").removeClass("fa-times-circle").addClass("fa-search");
+    }
+    $("#search-bar").toggle("swing").show();
+});
 </script>

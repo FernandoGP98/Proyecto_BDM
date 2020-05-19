@@ -86,16 +86,28 @@ class Seccion{
 
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
-            
+            session_start();
+            if(isset($_SESSION['secciones'])){
+                unset($_SESSION['secciones']);
+            }
             while($row_data = $result->fetch_assoc()){
-                $nota = new Seccion();
+                
+                $_SESSION['secciones']=array();
+                $_SESSION['secciones'][$row_data["id_Seccion"]]=array(
+                    'id'=> $row_data["id_Seccion"],
+                    'nombre'=>$row_data["seccion_nombre"],
+                    'color'=>$row_data["color"],
+                    'orden'=>$row_data["orden"],
+                    'activa'=>$row_data["activa"]
+                );
+                /*$nota = new Seccion();
                 $nota->id = $row_data["id_Seccion"];
                 $nota->nombre = $row_data["seccion_nombre"];
                 $nota->color = $row_data["color"];
                 $nota->orden = $row_data["orden"];
                 $nota->activa = $row_data["activa"];
             
-                array_push($items, $nota);
+                array_push($items, $nota);*/
 
             }
         }else {
@@ -104,7 +116,7 @@ class Seccion{
         }
         $sql->close();
         $con->close();
-        return $items;
+        //return $items;
     }
 
 }
