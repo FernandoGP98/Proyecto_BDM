@@ -63,7 +63,6 @@ class Noticia{
             
         }else {
             # No data actions
-            echo 'No data here :(';
         }
         $sql->close();
         $con->close();
@@ -75,7 +74,31 @@ class Noticia{
     }
 
     public function delete($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
 
+        //delete from seccion where id_seccion=1;
+        $sql = $con->prepare("delete from noticia where id_Noticia = ?");
+        $sql->bind_param("i", $id);
+        $r=$sql->execute();
+        $sql->close();
+        $con->close();
+
+        return $r;
+    }
+
+    public function softDelete($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        //delete from seccion where id_seccion=1;
+        $sql = $con->prepare("update noticia set activa=0  id_Noticia = ?");
+        $sql->bind_param("i", $id);
+        $r=$sql->execute();
+        $sql->close();
+        $con->close();
+
+        return $r;
     }
 
     public function getAll(){
@@ -111,7 +134,6 @@ class Noticia{
             }
         }else {
             # No data actions
-            echo 'No data here :(';
         }
         $sql->close();
         $con->close();
@@ -153,7 +175,6 @@ class Noticia{
             }
         }else {
             # No data actions
-            echo 'No data here :(';
         }
         $sql->close();
         $con->close();
@@ -197,7 +218,6 @@ class Noticia{
             }
         }else {
             # No data actions
-            echo 'No data here :(';
         }
         $sql->close();
         $con->close();
@@ -237,7 +257,45 @@ class Noticia{
             }
         }else {
             # No data actions
-            echo 'No data here :(';
+        }
+        $sql->close();
+        $con->close();
+        return $items;
+    }
+
+    public function getByUser($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $items = [];
+
+        $sql = $con->prepare("select * from noticia where autor = ?");
+        $sql->bind_param("d", $id);
+        $sql->execute();
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            
+            while($row_data = $result->fetch_assoc()){
+                $nota = new Noticia();
+                $nota->id = $row_data["id_Noticia"];
+                $nota->titulo = $row_data["Titulo"];
+                $nota->fechaPublicacion = $row_data["FechaPublicacion"];
+                $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
+                $nota->lugar = $row_data["Lugar"];
+                $nota->descripcion = $row_data["Descripcion"];
+                $nota->texto = $row_data["Texto"];
+                $nota->destacada = $row_data["destacada"];
+                $nota->activa = $row_data["activa"];
+                $nota->seccion = $row_data["seccion"];
+                $nota->estatus = $row_data["estatus"];
+                $nota->autor = $row_data["autor"];
+
+
+                array_push($items, $nota);
+
+            }
+        }else {
+            # No data actions
         }
         $sql->close();
         $con->close();

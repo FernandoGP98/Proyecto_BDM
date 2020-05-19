@@ -1,3 +1,10 @@
+<?php
+    echo session_status();
+    if(session_status() != 2){
+        session_start();
+    }
+    //session_start();
+?>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-logo">
     <div class="logo">
         <a class="" href="home">
@@ -7,19 +14,23 @@
 
     <div class="collapse navbar-collapse d-flex justify-content-end">
         <?php
-            if(isset($_SESSION['usuario'])){
+        if(isset($_SESSION['usuario'])){
+            if(($_SESSION['usuario']['tipoUsuario']==2)){
         ?>
         <a class="mr-3 my-2 my-sm-0" href="redactar"><i class="fas fa-pen-fancy"></i></a>
-        <?php } ?>
+        <?php }} ?>
         <?php
             if(!isset($_SESSION['usuario'])){
         ?>
-        <a class="btn_navLR btn btn-outline-succes my-2 my-sm-0" href="login.php">Ingresar</a>
-        <a class="btn_navLR btn btn-outline-succes my-2 my-sm-0" href="registrarse.php">Registrarse</a>
+        <a class="btn_navLR btn btn-outline-succes my-2 my-sm-0" href="login">Ingresar</a>
+        <a class="btn_navLR btn btn-outline-succes my-2 my-sm-0" href="registrarse">Registrarse</a>
         <?php } ?>
         <?php
             if(isset($_SESSION['usuario'])){
         ?>
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador?id=<?=$_SESSION["usuario"]["id_Usuario"]?>">
+            <?=( $_SESSION["usuario"]["firma"])?>
+        </a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador">
             <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>" class="nav-avatar" alt="">
         </a>
@@ -37,21 +48,9 @@
         <div class="container">
             <div class="row sections">
                 <ul class="navbar-nav mr-auto secciones text-center" style="width: 100%">
-                    <!--<?php/*
-                foreach ($secciones as $item) {
-                    $seccion = new Seccion();
-                    $seccion = $item;*/
-            ?>
-            <li class="nav-item active col" style="background-color: #<?= $seccion->color?>">
-                    <a class="nav-link" href="seccion?id=<?= $seccion->id?>"><?= $seccion->nombre?> <span class="sr-only"></span></a>
-                </li>
-            <?php
-            //}
-            ?>
-            -->
                     <?php
                     if(isset($_SESSION['secciones'])){
-                        for ($i=1; $i <= count($_SESSION['secciones']); $i++) { 
+                        for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
                     ?>
                     <li class="nav-item active col" style="background-color: #<?= $_SESSION['secciones'][$i]['color']?>">
                         <a class="nav-link" href="seccion?id=<?=$_SESSION['secciones'][$i]['id']?>"><?= $_SESSION['secciones'][$i]['nombre']?> <span

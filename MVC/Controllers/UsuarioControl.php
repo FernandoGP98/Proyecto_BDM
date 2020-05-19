@@ -7,13 +7,47 @@ class UsuarioControl{
     }
 
     public function obtener_porCorreoContra(){
-        Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
-        Response::render("perfil");
+        $id = Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
+
+        if($_SESSION["usuario"]["tipoUsuario"] == 1){
+            Response::render("adminPerfil");
+
+        }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
+            $notas = Noticia::getByUser($id);
+            Response::render("perfil",["notas"=>$notas]);
+
+        }else if($_SESSION["usuario"]["tipoUsuario"] == 3){
+            Response::render("perfilRegistrado");
+        }
     }
 
     public function administrador(){
-        $secciones = Seccion::getAll();
-        Response::render("adminPerfil", ["secciones"=>$secciones]);
+        session_start();
+        //$secciones = Seccion::getAll();
+        if($_SESSION["usuario"]["tipoUsuario"] == 1){
+            Response::render("adminPerfil");
+        }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
+            $notas = Noticia::getByUser($_SESSION["usuario"]["id_Usuario"]);
+            Response::render("perfil",["notas"=>$notas]);
+        }else if($_SESSION["usuario"]["tipoUsuario"] == 3){
+            Response::render("perfilRegistrado");
+        }
+    }
+
+    public function logout(){
+        session_start();
+        if(isset($_SESSION['usuario'])){
+            unset($_SESSION['usuario']);
+        }
+        Response::render("login");
+    }
+
+    public function login(){
+        Response::render("login");
+    }
+
+    public function registrarse(){
+        Response::render("registrarse");
     }
 }
 ?>

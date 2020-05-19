@@ -3,9 +3,9 @@
 class NoticiaControl{
 
     public function index(){
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         $palabras = PalabraClave::getAll();
-        Response::render("redactar", ["secciones"=>$secciones, "palabras"=>$palabras]);
+        Response::render("redactar", ["palabras"=>$palabras]);
     }
 
     public function registrarNoticia(){
@@ -23,21 +23,23 @@ class NoticiaControl{
     }
 
     public function deleteNoticia(){
-
+        $delete = Noticia::delete($_POST["idNoticia2"]);
+        $notas = Noticia::getByUser($_POST["userID"]);
+        Response::render("perfil", ["notas"=>$notas]);
     }
 
     public function obtenerNoticia(){
         //$noticia = new Noticia();
         $noticia = Noticia::get($_GET["id"]);
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
         $palabras = PalabraClave::getAll();
-        Response::render("editarNoticia",["nota"=>$noticia, "secciones"=>$secciones, "palabras"=>$palabras]);
+        Response::render("editarNoticia",["nota"=>$noticia, "palabras"=>$palabras]);
     }
 
     public function verNoticia(){
         $noticia = Noticia::get($_GET["id"]);
-        $secciones = Seccion::getAll();
-        Response::render("noticia",["nota"=>$noticia, "secciones"=>$secciones]);
+        //$secciones = Seccion::getAll();
+        Response::render("noticia",["nota"=>$noticia]);
     }
 
     public function todasNotas(){
@@ -47,14 +49,15 @@ class NoticiaControl{
 
     public function buscar(){
         $notas = Noticia::busquedaTexto($_GET["texto"]);
-        $secciones = Seccion::getAll();
-        Response::render("busqueda",["secciones"=>$secciones, "notas"=>$notas]);
+        //$secciones = Seccion::getAll();
+        Response::render("busqueda",["notas"=>$notas]);
     }
 
     public function busquedaOpcion(){
-
-        $secciones = Seccion::getAll();
+        //$secciones = Seccion::getAll();
+        $fechaBase = "2020-05-01";
+        //if($_GET["has"])
         $notas = Noticia::busquedaOpcion($_GET["opcion"], $_GET["texto"], $_GET["desdeFecha"], $_GET["hastaFecha"]);
-        Response::render("busqueda",["secciones"=>$secciones, "notas"=>$notas]);
+        Response::render("busqueda",["notas"=>$notas]);
     }
 }

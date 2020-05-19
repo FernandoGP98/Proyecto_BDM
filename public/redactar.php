@@ -17,29 +17,29 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="noticiaRegistro" method="POST">
+                    <form action="noticiaRegistro" method="POST" id="formNota">
                         <label for="">Titulo</label>
-                        <input class="form-control" type="text" name="titulo" placeholder="Titulo">
+                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" id="pTituto">
                         <br>
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
-                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30"
+                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30" id="pDescripcion"
                             rows="5"></textarea>
                         <br>
 
                         <label for="">Nota</label>
                         <!-- <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia"> -->
-                        <textarea id="texto" class="form-control" name="texto" id="" cols="30" rows="15"
+                        <textarea id="texto" class="form-control" name="texto"  cols="30" rows="15"
                             placeholder="Noticia"></textarea>
                         <br>
 
                         <label for="">Lugar del acontecimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="textarea" name="lugar"
-                            id="">
+                            id="pLugar">
 
                         <label for="">Fecha de Acontesimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="date" name="fecha"
-                            id="" value="null">
+                            id="pFecha" value="null">
 
                         <label for="">Seccion</label>
                         <div class="dropdown show">
@@ -49,15 +49,16 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <?php
-                                    foreach ($secciones as $item) {
-                                        $seccion = new Seccion();
-                                        $seccion = $item;
-                                ?>
-                                <a class="dropdown-item" href="#"><?= $seccion->nombre?></a>
                                 <?php
+                                    if(isset($_SESSION['secciones'])){
+                                        for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
+                                    ?>
+                                    <a class="dropdown-item" href="#"><?= $_SESSION['secciones'][$i]['nombre']?></a>
+                                <?php 
+                                    }
                                 }
                                 ?>
+                                
                             </div>
                         </div>
 
@@ -71,6 +72,7 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <?php
+                            if($palabras != null){
                                     foreach ($palabras as $item) {
                                         $palabra = new Seccion();
                                         $palabra = $item;
@@ -78,6 +80,7 @@
                                 <a class="dropdown-item" href="#"><?= $palabra->PalabraClave?></a>
                                 <?php
                                 }
+                            }
                                 ?>
                             </div>
                         </div>
@@ -117,10 +120,11 @@
                         </div>
                         
 
-                        <input type="text" value="3" name="autor">
-                        <input type="text" value="1" name="estatus">
+                        <input type="text" value="<?=$_SESSION["usuario"]["id_Usuario"]?>" name="autor">
+                        <input type="text" value="1" name="estatus" id="estatusNota">
                         <div class="text-center">
-                            <input class="mb-2 btn btn-submit" type="submit" value="Enviar">
+                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota" hidden></input>
+                            <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota" hidden>
                         </div>
 
                     </form>

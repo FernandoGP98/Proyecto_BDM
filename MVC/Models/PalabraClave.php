@@ -52,8 +52,7 @@ class PalabraClave{
 
             }
         }else {
-            # No data actions
-            echo 'No data here :(';
+            $items = null;
         }
         $sql->close();
         $con->close();

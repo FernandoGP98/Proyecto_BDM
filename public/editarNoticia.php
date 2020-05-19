@@ -7,10 +7,8 @@
     <title>Document</title>
     
   <!-- MIS LINKS-->
-    <script script src="resources/js/redactar.js"></script>
-  
-
-    <?php include 'links.php';?>
+  <?php include 'links.php';?>
+    <script src="resources/js/redactar.js"></script>
 
   
 </head>
@@ -22,13 +20,14 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="noticiaRegistro" method="POST">
+                    <form action="noticiaRegistro" method="POST" id="formNota">
                         <label for="">Titulo</label>
-                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" value="<?= $nota->titulo ?>">
+                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" 
+                        id="" value="<?= $nota->titulo ?>">
                         <br>
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
-                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30"
+                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30" id=""
                             rows="5"><?= $nota->descripcion ?></textarea>
                         <br>
 
@@ -40,12 +39,11 @@
 
                         <label for="">Lugar del acontecimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="textarea" name="lugar"
-                            id="" value="<?= $nota->lugar ?>">
+                        id="" value="<?= $nota->lugar ?>">
 
                         <label for="">Fecha de Acontesimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="date" name="fecha"
-                            id="" value="<?= $nota->fechaAcontesimiento ?>">
-                        
+                        id="" value="<?= $nota->fechaAcontesimiento ?>">                        
 
                         <label for="">Seccion</label>
                         <div class="dropdown show">
@@ -55,9 +53,15 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Seccion1</a>
-                                <a class="dropdown-item" href="#">Seccion2</a>
-                                <a class="dropdown-item" href="#">Seccion3</a>
+                            <?php
+                                    if(isset($_SESSION['secciones'])){
+                                        for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
+                                    ?>
+                                    <a class="dropdown-item" href="#"><?= $_SESSION['secciones'][$i]['nombre']?></a>
+                                <?php 
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
 
@@ -70,9 +74,17 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Seccion1</a>
-                                <a class="dropdown-item" href="#">Seccion2</a>
-                                <a class="dropdown-item" href="#">Seccion3</a>
+                            <?php
+                            if($palabras != null){
+                                    foreach ($palabras as $item) {
+                                        $palabra = new Seccion();
+                                        $palabra = $item;
+                                ?>
+                                <a class="dropdown-item" href="#"><?= $palabra->PalabraClave?></a>
+                                <?php
+                                }
+                            }
+                                ?>
                             </div>
                         </div>
                         <div class="contenedor-imagenes" style="width: 100%;">
@@ -111,10 +123,11 @@
                         </div>
                         
 
-                        <input type="text" value="<?= $nota->autor ?>" name="autor">
-                        <input type="text" value="<?= $nota->estatus ?>" name="estatus">
+                        <input type="text" value="<?=$nota->autor?>" name="autor">
+                        <input type="text" value="1" name="estatus" id="estatusNota">
                         <div class="text-center">
-                            <input class="mb-2 btn btn-submit" type="submit" value="Enviar">
+                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota"></input>
+                            <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota">
                         </div>
 
                     </form>
