@@ -53,7 +53,7 @@
                                         <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
                                     </div>
                                     <div class="col-5 p-0">
-                                        <a href="noticia.php">
+                                        <a href="noticia?id=<?=$nota->id?>">
                                             <h4 class="mb-1"><?= $nota->titulo?></h4>
                                         </a>
                                         <div>

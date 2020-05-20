@@ -122,9 +122,16 @@
                                             Lorem Ipsum.</p>
                                     </div>
                                 </div>
+                                <?php
+                                    if(isset($_SESSION['usuario'])){
+                                        if($_SESSION['usuario']['id_Usuario'] == $nota->autor || $_SESSION['usuario']['tipoUsuario'] == $nota->autor){
+                                ?>
                                 <div class="row">
                                     <button class="mb-1 btn btn-submit btn-eliminar-comentario"><i class="fas fa-trash-alt"></i></button>
                                 </div>
+                                <?php
+                                    }}
+                                ?>
                                 <hr>
                             </div>
                             <?php
@@ -132,7 +139,9 @@
                     ?>
                         </div>
 
-
+                        <?php
+                            if(isset($_SESSION['usuario'])){
+                        ?>
                         <div class="card-header">
                             <h5 class="text-center">Comentar</h5>
                         </div>
@@ -142,12 +151,97 @@
                             <!-- <input type="submit" value="Comentar"> -->
                             <br>
                             <button class="mb-2 btn btn-submit" type="submit">Comentar</button>
-                            <img src="resources/image/no-imagen.jpg" class="avatar" alt="">
+                            <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>" class="avatar" alt="">
                         </form>
-
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+            <div class="row d-flex justify-content-center">
+            <div class="col-12">
+                <hr class="nextSection">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Recomendados</h2>
+                    </div>
+                </div>
+                <hr class="inSection">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12">
+                        <div class="carousel">
+                            <div class="noticia-card card">
+                                <a href="noticia.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Titulo Noticia 1 </h5>
+
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="noticia.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Titulo Noticia 2 </h5>
+
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="noticia.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Titulo Noticia 3 </h5>
+
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="noticia-card card">
+                                <a href="noticia.php">
+                                    <img class="card-img-top"
+                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                        alt="Card image cap">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo Noticia 4</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="inSection">
+            </div>
+        </div>
         </div>
     </div>
     <?php include 'templates/footer.php';?>
@@ -159,6 +253,14 @@
     $(function() {
         $('.img-carousel').slick({
             slidesToShow: 1,
+            dots: true,
+            centerMode: true,
+        });
+    });
+
+    $(function() {
+        $('.carousel').slick({
+            slidesToShow: 3,
             dots: true,
             centerMode: true,
         });
