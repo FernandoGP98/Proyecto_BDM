@@ -10,7 +10,8 @@ class UsuarioControl{
         $id = Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
 
         if($_SESSION["usuario"]["tipoUsuario"] == 1){
-            Response::render("adminPerfil");
+            $notas = Noticia::getAll();
+            Response::render("adminPerfil", ["notas"=>$notas]);
 
         }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
             $notas = Noticia::getByUser($id);
@@ -25,10 +26,13 @@ class UsuarioControl{
         session_start();
         //$secciones = Seccion::getAll();
         if($_SESSION["usuario"]["tipoUsuario"] == 1){
-            Response::render("adminPerfil");
+            $notas = Noticia::getAll();
+            Response::render("adminPerfil", ["notas"=>$notas]);
+
         }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
             $notas = Noticia::getByUser($_SESSION["usuario"]["id_Usuario"]);
             Response::render("perfil",["notas"=>$notas]);
+
         }else if($_SESSION["usuario"]["tipoUsuario"] == 3){
             Response::render("perfilRegistrado");
         }
