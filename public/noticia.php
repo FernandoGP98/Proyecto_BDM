@@ -99,27 +99,21 @@
                         <div class="comentarios-in">
 
                             <?php
-                        for ($i=0; $i < 5; $i++) { 
+                            foreach ($comentarios as $item) {
+                            $comentario = new Comentario();
+                                $comentario = $item;
                     ?>      
                     <div class="comentarios">
                                 <div class="row">
                                     <div class="col-2">
                                         <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
-                                        <p><span class="username">Nombre Usuario</span> </p>
-                                        <small class="fecha">19-03-2020</small>
+                                        <p><span class="username"><?=$comentario->usuario?></span> </p>
+                                        <small class="fecha"><?=$comentario->fecha?></small>
                                     </div>
                                     <div class="col">
-                                        <p class="comentario-publicado" id="comentario-publicado">Lorem Ipsum es simplemente
-                                            el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el
-                                            texto de relleno estándar de las industrias desde el año 1500, cuando un
-                                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
-                                            galería de textos y los mezcló de tal manera que logró hacer un libro de textos
-                                            especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de
-                                            relleno en documentos electrónicos, quedando esencialmente igual al original.
-                                            Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales
-                                            contenian pasajes de Lorem Ipsum, y más recientemente con software de
-                                            autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de
-                                            Lorem Ipsum.</p>
+                                        <p class="comentario-publicado" id="comentario-publicado">
+                                            <?=$comentario->comentario?>
+                                        </p>
                                     </div>
                                 </div>
                                 <?php
@@ -145,11 +139,13 @@
                         <div class="card-header">
                             <h5 class="text-center">Comentar</h5>
                         </div>
-                        <form action="" method="post">
+                        <form action="comentario" method="post">
                             <textarea name="NuevoComentario" id="NuevoComentario" cols="30" rows="5"
                                 placeholder="Opina algo sobre el tema"></textarea>
                             <!-- <input type="submit" value="Comentar"> -->
                             <br>
+                            <input type="hidden" name="idUsuario" id="" value="<?=$_SESSION['usuario']['id_Usuario']?>">
+                            <input type="hidden" name="noticia" id="" value="<?=$nota->id?>">
                             <button class="mb-2 btn btn-submit" type="submit">Comentar</button>
                             <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>" class="avatar" alt="">
                         </form>

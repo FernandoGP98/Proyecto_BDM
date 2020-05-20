@@ -3,9 +3,12 @@
 class ComentarioControl{
 
     public function registro(){
-        $com = Comentario::registroComentario($_POST["noticia"],$_POST["usuario"],$_POST["comentario"]);
-        $comentarios = Comentario::getComentario($_POST["noticia"]);
-        //Response::render("login", ["var"=>$us]);
+        $com = Comentario::registroComentario($_POST["noticia"],$_POST["idUsuario"],$_POST["NuevoComentario"]);
+        //$comentarios = Comentario::getComentarios($_POST["noticia"]);
+        //$noticia = Noticia::get($_POST["noticia"]);
+
+        header("Location: noticia?id=".$_POST["noticia"], 301);
+        //Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios]);
     }
 
     public function delete(){

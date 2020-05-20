@@ -8,7 +8,8 @@ Router::add("loginUsuario", "UsuarioControl", "obtener_porCorreoContra");
 
 Router::add("index", "mainController", "index");
 
-
+//Comentarios
+Router::add("comentario","ComentarioControl","registro");
 
 //Noticias
 Router::add("redactar","NoticiaControl","index");

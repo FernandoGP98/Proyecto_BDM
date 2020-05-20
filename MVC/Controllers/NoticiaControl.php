@@ -11,9 +11,16 @@ class NoticiaControl{
     public function registrarNoticia(){
         //echo $_POST["texto"];
 
+        $palabra = $_POST["palabraClave"];
+        $nuevaPalabra =$_POST["nuevaPalabra"];
+
+        if($palabra == "nueva"){
+            $palabra = $nuevaPalabra;
+            PalabraClave::registro($palabra);
+        }
         
         $noticia = Noticia::registro($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
-        null , $_POST["estatus"], $_POST["autor"]);
+        $_POST["seccion"] , $_POST["estatus"], $_POST["autor"]);
 
         Response::render("redactar");
     }
@@ -38,8 +45,9 @@ class NoticiaControl{
 
     public function verNoticia(){
         $noticia = Noticia::get($_GET["id"]);
+        $comentarios = Comentario::getComentarios($_GET["id"]);
         //$secciones = Seccion::getAll();
-        Response::render("noticia",["nota"=>$noticia]);
+        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios]);
     }
 
     public function todasNotas(){

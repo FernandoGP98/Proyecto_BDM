@@ -13,6 +13,15 @@ var valFecha = false;
 
 //$("#terminarNota").removeAttr('hidden');
 
+$("#palabraClave").change(function(){
+    var valor = $(this).val();
+    if(valor == "nueva"){
+        $("#palabranueva").removeAttr("hidden");
+    }else{
+        $("#palabranueva").attr("hidden", true);
+    }
+});
+
 $("#pTituto").change(function(){
     if($(this).val() != ""){
         valTitulo = true;

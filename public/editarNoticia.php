@@ -46,47 +46,47 @@
                         id="" value="<?= $nota->fechaAcontesimiento ?>">                        
 
                         <label for="">Seccion</label>
-                        <div class="dropdown show">
-                            <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Secciones
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <?php
-                                    if(isset($_SESSION['secciones'])){
-                                        for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
-                                    ?>
-                                    <a class="dropdown-item" href="#"><?= $_SESSION['secciones'][$i]['nombre']?></a>
-                                <?php 
+                        <select name="seccion" id="custom-busqueda" class="form-control">
+                        <?php
+                                if(isset($_SESSION['secciones'])){
+                                    for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
+                                        if($_SESSION['secciones'][$i]['id'] == $nota->seccion){
+                                ?>
+                                    <option class="dropdown-item" value="<?= $_SESSION['secciones'][$i]['id']?>" selected>
+                                    <?= $_SESSION['secciones'][$i]['nombre']?>
+                                    </option>
+                                <?php
+                                    }else{
+                                ?>
+                                    <option class="dropdown-item" value="<?= $_SESSION['secciones'][$i]['id']?>">
+                                    <?= $_SESSION['secciones'][$i]['nombre']?>
+                                    </option>
+                            <?php 
                                     }
                                 }
-                                ?>
-                            </div>
-                        </div>
-
-                        <label for="">Palabras clave</label>
-                        <input class="form-control" style="display:block; width:100%;" type="textarea" name="" id="">
-                        <div class="dropdown show" style="margin-top:15px;">
-                            <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Palabras
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <?php
-                            if($palabras != null){
-                                    foreach ($palabras as $item) {
-                                        $palabra = new Seccion();
-                                        $palabra = $item;
-                                ?>
-                                <a class="dropdown-item" href="#"><?= $palabra->PalabraClave?></a>
-                                <?php
-                                }
                             }
+                            ?>
+                        </select>
+
+                        <label for="">Palabra clave</label>
+                        <input class="form-control" style="display:block; width:100%;" type="text" 
+                        name="nuevaPalabra" id="palabranueva" placeholder="Palabra..." hidden>
+
+                        <select name="palabraClave" id="palabraClave" class="form-control">
+                        <?php
+                            if($palabras != null){
+                                foreach ($palabras as $item) {
+                                    $palabra = new Seccion();
+                                        $palabra = $item;
+                                        //if($palabra->id == $nota->palabra){}
                                 ?>
-                            </div>
-                        </div>
+                                <option value="<?=$palabra->id?>"><?= $palabra->PalabraClave?></option>
+                            <?php
+                            }
+                        }
+                        ?>
+                        <option value="nueva" id="nuevaSelect"><i>Nueva Palabra</i></option>
+                        </select>
                         <div class="contenedor-imagenes" style="width: 100%;">
                             <label for="">Imagenes</label>
                             <input type="file" name="fileImagenes[]" id="multimedia"

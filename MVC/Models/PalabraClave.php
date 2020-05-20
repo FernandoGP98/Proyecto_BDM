@@ -16,7 +16,7 @@ class PalabraClave{
         $r=$sql->execute();
         $sql->close();
         $con->close();
-        return $r;
+        //return $r;
     }
 
     public function get($id){
