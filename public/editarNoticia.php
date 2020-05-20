@@ -7,10 +7,8 @@
     <title>Document</title>
     
   <!-- MIS LINKS-->
-    <script script src="resources/js/redactar.js"></script>
-  
-
-    <?php include 'links.php';?>
+  <?php include 'links.php';?>
+    <script src="resources/js/redactar.js"></script>
 
   
 </head>
@@ -22,13 +20,14 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="noticiaRegistro" method="POST">
+                    <form action="noticiaRegistro" method="POST" id="formNota">
                         <label for="">Titulo</label>
-                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" value="<?= $nota->titulo ?>">
+                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" 
+                        id="" value="<?= $nota->titulo ?>">
                         <br>
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
-                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30"
+                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30" id=""
                             rows="5"><?= $nota->descripcion ?></textarea>
                         <br>
 
@@ -40,41 +39,54 @@
 
                         <label for="">Lugar del acontecimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="textarea" name="lugar"
-                            id="" value="<?= $nota->lugar ?>">
+                        id="" value="<?= $nota->lugar ?>">
 
                         <label for="">Fecha de Acontesimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="date" name="fecha"
-                            id="" value="<?= $nota->fechaAcontesimiento ?>">
-                        
+                        id="" value="<?= $nota->fechaAcontesimiento ?>">                        
 
                         <label for="">Seccion</label>
-                        <div class="dropdown show">
-                            <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Secciones
-                            </button>
+                        <select name="seccion" id="custom-busqueda" class="form-control">
+                        <?php
+                                if(isset($_SESSION['secciones'])){
+                                    for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
+                                        if($_SESSION['secciones'][$i]['id'] == $nota->seccion){
+                                ?>
+                                    <option class="dropdown-item" value="<?= $_SESSION['secciones'][$i]['id']?>" selected>
+                                    <?= $_SESSION['secciones'][$i]['nombre']?>
+                                    </option>
+                                <?php
+                                    }else{
+                                ?>
+                                    <option class="dropdown-item" value="<?= $_SESSION['secciones'][$i]['id']?>">
+                                    <?= $_SESSION['secciones'][$i]['nombre']?>
+                                    </option>
+                            <?php 
+                                    }
+                                }
+                            }
+                            ?>
+                        </select>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Seccion1</a>
-                                <a class="dropdown-item" href="#">Seccion2</a>
-                                <a class="dropdown-item" href="#">Seccion3</a>
-                            </div>
-                        </div>
+                        <label for="">Palabra clave</label>
+                        <input class="form-control" style="display:block; width:100%;" type="text" 
+                        name="nuevaPalabra" id="palabranueva" placeholder="Palabra..." hidden>
 
-                        <label for="">Palabras clave</label>
-                        <input class="form-control" style="display:block; width:100%;" type="textarea" name="" id="">
-                        <div class="dropdown show" style="margin-top:15px;">
-                            <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Palabras
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Seccion1</a>
-                                <a class="dropdown-item" href="#">Seccion2</a>
-                                <a class="dropdown-item" href="#">Seccion3</a>
-                            </div>
-                        </div>
+                        <select name="palabraClave" id="palabraClave" class="form-control">
+                        <?php
+                            if($palabras != null){
+                                foreach ($palabras as $item) {
+                                    $palabra = new Seccion();
+                                        $palabra = $item;
+                                        //if($palabra->id == $nota->palabra){}
+                                ?>
+                                <option value="<?=$palabra->id?>"><?= $palabra->PalabraClave?></option>
+                            <?php
+                            }
+                        }
+                        ?>
+                        <option value="nueva" id="nuevaSelect"><i>Nueva Palabra</i></option>
+                        </select>
                         <div class="contenedor-imagenes" style="width: 100%;">
                             <label for="">Imagenes</label>
                             <input type="file" name="fileImagenes[]" id="multimedia"
@@ -111,10 +123,11 @@
                         </div>
                         
 
-                        <input type="text" value="<?= $nota->autor ?>" name="autor">
-                        <input type="text" value="<?= $nota->estatus ?>" name="estatus">
+                        <input type="text" value="<?=$nota->autor?>" name="autor">
+                        <input type="text" value="1" name="estatus" id="estatusNota">
                         <div class="text-center">
-                            <input class="mb-2 btn btn-submit" type="submit" value="Enviar">
+                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota"></input>
+                            <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota">
                         </div>
 
                     </form>

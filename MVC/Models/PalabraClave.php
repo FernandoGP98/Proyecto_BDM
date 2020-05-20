@@ -16,7 +16,7 @@ class PalabraClave{
         $r=$sql->execute();
         $sql->close();
         $con->close();
-        return $r;
+        //return $r;
     }
 
     public function get($id){
@@ -52,8 +52,7 @@ class PalabraClave{
 
             }
         }else {
-            # No data actions
-            echo 'No data here :(';
+            $items = null;
         }
         $sql->close();
         $con->close();

@@ -26,10 +26,7 @@
                     <li><a id="admin-secciones" href="#">Secciones</a></li>
                     <li><a id="admin-usuarios" href="#">Crear Usuarios</a></li>
                     <li><a id="admin-usuarios-eliminar" href="#">Eliminar Usuarios</a></li>
-                    <?php
-                    unset($_SESSION['usuario']);
-
-                    ?>
+                    <li><a id="admin-usuarios" href="logout">Cerrar Session</a></li>
                 </ul>
 
                 <ul>
@@ -44,8 +41,11 @@
                     <br>
                     <div class="card">
                         <?php
-                                for ($i=0; $i < 5; $i++) { 
-                                ?>
+                                foreach ($notas as $item) {
+                                    $nota = new Noticia();
+                                    $nota = $item;
+                                
+                        ?>
                         <div class="post-outbox">
                             <div class="post-innerbox">
                                 <div class="row">
@@ -53,30 +53,23 @@
                                         <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
                                     </div>
                                     <div class="col-5 p-0">
-                                        <a href="noticia.php">
-                                            <h4 class="mb-1">Titulo</h4>
+                                        <a href="noticia?id=<?=$nota->id?>">
+                                            <h4 class="mb-1"><?= $nota->titulo?></h4>
                                         </a>
                                         <div>
-                                            <small>Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                                                archivos de texto.
-                                                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde
-                                                el año 1500,
-                                                cuando un impresor (N. del T. persona que se dedica a la imprenta)
-                                                desconocido usó una
-                                                galería de textos y los mezcló de tal manera que logró hacer un libro de
-                                                textos especimen. </small>
+                                            <small><?= $nota->descripcion?></small>
                                         </div>
                                     </div>
 
                                     <div class="col-md-2 text-center">
                                         <br>
                                         <h5>Reportero</h5>
-                                        <p>Firma Reportero</p>
+                                        <p><?= $nota->autor?></p>
                                     </div>
 
                                     <div class="col-md-1 text-center">
                                         <p class="estatus">Estatus</p>
-                                        <small>Edicion</small>
+                                        <small><?= $nota->estatus?></small>
                                     </div>
                                     <div class="col-md-1 text-center">
                                         <br>
@@ -100,9 +93,7 @@
                         <hr>
                         <div id="contender-secciones">
                             <?php
-                                foreach ($secciones as $item) {
-                                    $seccion = new Seccion();
-                                    $seccion = $item;
+                                for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
                                 ?>
                             <div class="row secciones-lista">
                                 <div class="col">
@@ -110,10 +101,10 @@
                                     #
                                 </div>
                                 <div class="col text-center">
-                                    <?= $seccion->nombre?>
+                                    <?= $_SESSION['secciones'][$i]['nombre']?>
                                 </div>
                                 <div class="col text-center muestra-color">
-                                    <div class="color-muestra-final" style="background-color: #<?=$seccion->color?>;"></div>
+                                    <div class="color-muestra-final" style="background-color: #<?=$_SESSION['secciones'][$i]['color']?>;"></div>
                                 </div>
                                 <div class="col">
                                     <div class="boton-modificar" id="modificar-color">
@@ -122,17 +113,17 @@
                                     <div class="selec-color">
                                         <form action="editarSeccion" method="$_GET">
                                             <label for="">Seleccionar Color:</label>
-                                            <input class="jscolor" value="<?=$seccion->color?>" name="color">
+                                            <input class="jscolor" value="<?=$_SESSION['secciones'][$i]['color']?>" name="color">
                                             <br>
                                             <button class="btn btn-outline-success btn-guardar submit">Guardar</button>
-                                            <input type="hidden" name="idSeccion" class="idSeccionI" value="<?=$seccion->id?>">
+                                            <input type="hidden" name="idSeccion" class="idSeccionI" value="<?=$_SESSION['secciones'][$i]['id']?>">
                                         </form>
                                     </div>
 
                                 </div>
                                 <div class="col">
-                                    <input type="hidden" name="" class="idSeccionI" value="<?=$seccion->id?>">
-                                    <input type="hidden" class="seccionNombreI" value="<?= $seccion->nombre?>">
+                                    <input type="hidden" name="" class="idSeccionI" value="<?=$_SESSION['secciones'][$i]['id']?>">
+                                    <input type="hidden" class="seccionNombreI" value="<?= $_SESSION['secciones'][$i]['nombre']?>">
                                     <button class="btn btn-outline-danger btn-eliminar-seccion">Eliminar</button>
                                 </div>
                                 

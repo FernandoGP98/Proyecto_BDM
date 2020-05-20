@@ -40,11 +40,11 @@
                         <div class="row mt-3 rango-fechas" style="width: 100%">
                             <div class="col-3">
                                 <label for="">Desde:</label>
-                                <input type="date" name="desdeFecha" id="fecha-inicio" class="form-control">
+                                <input type="date" name="desdeFecha" id="fecha-inicio" class="form-control" value="2020-05-01">
                             </div>
                             <div class="col-3">
                                 <label for="">Hasta:</label>
-                                <input type="date" name="hastaFecha" id="fecha-fin" class="form-control">
+                                <input type="date" name="hastaFecha" id="fecha-fin" class="form-control" value="2020-05-01">
                             </div>
                         </div>
                     </form>

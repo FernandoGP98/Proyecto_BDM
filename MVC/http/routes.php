@@ -8,9 +8,8 @@ Router::add("loginUsuario", "UsuarioControl", "obtener_porCorreoContra");
 
 Router::add("index", "mainController", "index");
 
-
-Router::add("test/registro", "testController", "registro");
-
+//Comentarios
+Router::add("comentario","ComentarioControl","registro");
 
 //Noticias
 Router::add("redactar","NoticiaControl","index");
@@ -18,6 +17,7 @@ Router::add("noticiaRegistro","NoticiaControl","registrarNoticia");
 Router::add("noticiaEditar","NoticiaControl","obtenerNoticia");
 Router::add("noticiasTodas","NoticiaControl","todasNotas");
 Router::add("noticia","NoticiaControl","verNoticia");
+Router::add("borrarNota","NoticiaControl","deleteNoticia");
 
 //Busquda
 Router::add("busqueda","NoticiaControl","buscar");
@@ -25,6 +25,9 @@ Router::add("buscar","NoticiaControl","busquedaOpcion");
 
 //Usuario
 Router::add("perfil_administrador","UsuarioControl","administrador");
+Router::add("logout","UsuarioControl","logout");
+Router::add("login","UsuarioControl","login");
+Router::add("registrarse","UsuarioControl","registrarse");
 
 //Secciones
 Router::add("editarSeccion", "SeccionControl","editarSeccion");

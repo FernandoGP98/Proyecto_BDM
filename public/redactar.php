@@ -17,70 +17,61 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="noticiaRegistro" method="POST">
+                    <form action="noticiaRegistro" method="POST" id="formNota">
                         <label for="">Titulo</label>
-                        <input class="form-control" type="text" name="titulo" placeholder="Titulo">
+                        <input class="form-control" type="text" name="titulo" placeholder="Titulo" id="pTituto">
                         <br>
                         <label for="">Descripcion</label>
                         <!-- <input class="form-control" type="textarea" name="descripcion" placeholder="Descripcion"> -->
-                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30"
+                        <textarea name="descripcion" class="form-control" placeholder="Descripcion" cols="30" id="pDescripcion"
                             rows="5"></textarea>
                         <br>
 
                         <label for="">Nota</label>
                         <!-- <input id="texto" class="form-control" type="textarea" name="texto" placeholder="Noticia"> -->
-                        <textarea id="texto" class="form-control" name="texto" id="" cols="30" rows="15"
+                        <textarea id="texto" class="form-control" name="texto"  cols="30" rows="15"
                             placeholder="Noticia"></textarea>
                         <br>
 
                         <label for="">Lugar del acontecimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="textarea" name="lugar"
-                            id="">
+                            id="pLugar">
 
                         <label for="">Fecha de Acontesimiento</label>
                         <input class="form-control" style="display:block; width:100%;" type="date" name="fecha"
-                            id="" value="null">
+                            id="pFecha" value="null">
 
                         <label for="">Seccion</label>
-                        <div class="dropdown show">
-                            <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Secciones
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <?php
-                                    foreach ($secciones as $item) {
-                                        $seccion = new Seccion();
-                                        $seccion = $item;
+                        <select name="seccion" id="custom-busqueda" class="form-control">
+                        <?php
+                                if(isset($_SESSION['secciones'])){
+                                    for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
                                 ?>
-                                <a class="dropdown-item" href="#"><?= $seccion->nombre?></a>
-                                <?php
+                                <option class="dropdown-item" value="<?= $_SESSION['secciones'][$i]['id']?>"><?= $_SESSION['secciones'][$i]['nombre']?></option>
+                            <?php 
                                 }
-                                ?>
-                            </div>
-                        </div>
+                            }
+                            ?>
+                        </select>
 
-                        <label for="">Palabras clave</label>
-                        <input class="form-control" style="display:block; width:100%;" type="textarea" name="" id="">
-                        <div class="dropdown show" style="margin-top:15px;">
-                            <button class="btn btn-drop dropdown-toggle" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Palabras
-                            </button>
+                        <label for="">Palabra clave</label>
+                        <input class="form-control" style="display:block; width:100%;" type="text" 
+                        name="nuevaPalabra" id="palabranueva" placeholder="Palabra..." hidden>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <?php
-                                    foreach ($palabras as $item) {
-                                        $palabra = new Seccion();
+                        <select name="palabraClave" id="palabraClave" class="form-control">
+                        <?php
+                            if($palabras != null){
+                                foreach ($palabras as $item) {
+                                    $palabra = new Seccion();
                                         $palabra = $item;
                                 ?>
-                                <a class="dropdown-item" href="#"><?= $palabra->PalabraClave?></a>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
+                                <option value="<?=$palabra->id?>"><?= $palabra->PalabraClave?></option>
+                            <?php
+                            }
+                        }
+                        ?>
+                        <option value="nueva" id="nuevaSelect"><i>Nueva Palabra</i></option>
+                        </select>
                         <div class="contenedor-imagenes" style="width: 100%;">
                             <label for="">Imagenes</label>
                             <input type="file" name="fileImagenes[]" id="multimedia"
@@ -117,10 +108,11 @@
                         </div>
                         
 
-                        <input type="text" value="3" name="autor">
-                        <input type="text" value="1" name="estatus">
+                        <input type="text" value="<?=$_SESSION["usuario"]["id_Usuario"]?>" name="autor">
+                        <input type="text" value="1" name="estatus" id="estatusNota">
                         <div class="text-center">
-                            <input class="mb-2 btn btn-submit" type="submit" value="Enviar">
+                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota" hidden></input>
+                            <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota" hidden>
                         </div>
 
                     </form>

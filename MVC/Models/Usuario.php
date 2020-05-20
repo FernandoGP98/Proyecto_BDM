@@ -95,8 +95,12 @@ class usuario{
         $sql = $con->prepare("CALL usuarioGet_porCorreoContra(?,?)");
         $sql->bind_param("ss", $pCorreo, $pContra);
         $sql->execute();
+
+        //$id=null;
+
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
+            session_start();
             while($row_data = $result->fetch_assoc()){
                 $_SESSION['usuario']=array(
                     "id_Usuario"=>$row_data['id_Usuario'],
@@ -112,22 +116,8 @@ class usuario{
                     "tipoUsuario"=>$row_data['tipoUsuario'],
                     "activo"=>$row_data['activo']
                 );
-                /*array_push($_SESSION['usuario'], $row_data['id_Usuario'], $row_data['correo'],
-                $row_data['contraseña'], $row_data['firma'], $row_data['nombre'], $row_data['apellido_paterno'],
-                $row_data['apellido_materno'], $row_data['telefono'], $row_data['avatar'], $row_data['tipoUsuario'],
-                $row_data['activo']);*/
-                /*$_SESSION["id_Usuario"]=$row_data['id_Usuario'];
-                $_SESSION["correo"]=$row_data['correo'];
-                $_SESSION["contraseña"]=$row_data['contraseña'];
-                $_SESSION["firma"]=$row_data['firma'];
-                $_SESSION["nombre"]=$row_data['nombre'];
-                $_SESSION["apellido_paterno"]=$row_data['apellido_paterno'];
-                $_SESSION["apellido_materno"]=$row_data['apellido_materno'];
-                $_SESSION["telefono"]=$row_data['telefono'];
-                $_SESSION["id_avatar"]=$row_data['avatar'];
-                $_SESSION["id_tipoUsuario"]=$row_data['tipoUsuario'];
-                $_SESSION["activo"]=$row_data['activo'];*/
             }
+            //$id=$row_data['tipoUsuario'];
         }else {
             # No data actions
             echo 'No data here :(';
@@ -135,8 +125,38 @@ class usuario{
 
         $sql->close();
         $con->close();
-        //return $result;
+        return $_SESSION['usuario']['id_Usuario'];
     }
+
+    public function findUser($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+        //No terminado
+        $sql = $con->prepare("select tipoUsuario from usuario where id_Usuario = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $id=null;
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            //session_start();
+            while($row_data = $result->fetch_assoc()){
+                $_SESSION['usuario']=array(
+                    $id = $row_data['tipoUsuario']
+                );
+            }
+            //$id=$row_data['tipoUsuario'];
+        }else {
+            # No data actions
+            echo 'No data here :(';
+        }
+
+        $sql->close();
+        $con->close();
+        return $id;
+    }
+    
 }
 
 

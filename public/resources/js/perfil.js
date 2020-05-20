@@ -1,9 +1,15 @@
 $(document).ready(function(){
     var EliminarElemento;
     var imagen;
+    var noticiaNombre;
+    var noticiaID;
 
     $(".btn-eliminar").click(function(){
         EliminarElemento = $(this).closest(".post-outbox");
+        noticiaNombre = EliminarElemento.find(".noticiaNombreI").val();
+        noticiaID = EliminarElemento.find(".idNoticiaI").val();
+        $("#seccionNombreII").html(noticiaNombre)
+        $("#eliminarNoticiaIDII").val(noticiaID)
         $(this).attr("data-toggle","modal");
         $(this).attr("data-target","#exampleModal");
         $(this).click();
@@ -11,7 +17,9 @@ $(document).ready(function(){
 
     $(".eliminar-noticia").click(function(){
         //alert(elementoEliminar.innerHtml());
+        var form = $("#notaEliminada");
         EliminarElemento.hide(400);
+        form.submit();
     });
 
     $(".cancelar").click(function(){
@@ -19,10 +27,10 @@ $(document).ready(function(){
     });
 
     $("#telefono").keypress(function(e){
-     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
         //$("#errmsg").html("Digits Only").show().fadeOut("slow");
-               return false;
+            return false;
     }
     });
 

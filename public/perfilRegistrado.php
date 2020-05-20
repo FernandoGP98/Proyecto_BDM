@@ -17,7 +17,6 @@
                     alt="" id="avatarImg">
                 <ul>
                     <li><a id="perfil-info" href="#">Informacion</a></li>
-                    <li><a id="perfil-post" href="#">Publicaciones</a></li>
                     <li><a href="logout">Cerrar Sesion</a></li>
                     <li><a href="">Eliminar cuenta</a></li>
                 </ul>
@@ -40,48 +39,8 @@
                     <label for="form-check-control">Avatar</label>
                     <input class="form-control" type="file" name="avatar" id="avatar">
                 </div>
-                <div class="publicaciones">
-                    <div class="">
-                    </div>
-                    <?php
-                        foreach ($notas as $item) {
-                            $nota = new Noticia();
-                            $nota = $item;
-                    ?>
-                    <div class="post-outbox">
-                        <div class="post-innerbox">
-                        <div class="row">
-                            <div class="col-2 p-1 d-flex justify-content-center">
-                                <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
-                            </div>
-                            <div class="col-6 p-0">
-                                <a href="noticia?id=<?=$nota->id?>">
-                                <h4 class="mb-1"><?= $nota->titulo?></h4>
-                                </a>
-                                <div>
-                                    <small><?= $nota->descripcion?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                            <a href="noticiaEditar?id=<?=$nota->id?>"><button class="btn btn-outline-warning mod">Editar</button></a>
-                            <br><br>
-                            <input type="hidden" name="" class="idNoticiaI" value="<?=$nota->id?>">
-                            <input type="hidden" name="" class="noticiaNombreI" value="<?=$nota->titulo?>">
-                                <button class="btn btn-outline-danger mod btn-eliminar" >Eliminar</button>
-                            </div>
-                            <div class="col-md-2 text-right">
-                                <p class="estatus">Estatus:</p>
-                                <small><?= $nota->estatus?></small>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    ?>
-                </div>
             </div>
-        </div>
+        </>
     </div>
     <?php include 'templates/footer.php';?>
 
@@ -90,7 +49,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Eliminar <span id="seccionNombreII">Noticia</span></h5>
+            <h5 class="modal-title" id="exampleModalLabel">Eliminar noticia</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -100,11 +59,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary cancelar" data-dismiss="modal">Cancelar</button>
-            <form action="borrarNota" method="POST" id="notaEliminada">
-                <input type="text" name="idNoticia2" id="eliminarNoticiaIDII" value="">
-                <input type="text" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
-                <button type="submit" class="btn btn-danger eliminar-noticia" data-dismiss="modal">Eliminar</button>
-            </form>
+            <button type="button" class="btn btn-danger eliminar-noticia" data-dismiss="modal">Eliminar</button>
         </div>
         </div>
     </div>
