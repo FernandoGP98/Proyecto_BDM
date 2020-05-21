@@ -119,3 +119,73 @@ create table if not exists NoticiaVideo(
     constraint fk_NoticiaVideo_Noticia foreign key (noticia) references Noticia(id_Noticia),
     constraint fk_NoticiaVideo_Video foreign key (video) references Video(id_Video)
 );
+
+/*STORE PROCEDURES*/
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaBusqueda_ByTitulo`(IN p varchar(50))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion,
+  estatus, autor, destacada, activa from noticia where Titulo Like p;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaDelete_ById`(IN p int(10))
+BEGIN
+  delete from noticia where id_Noticia = p;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaGet_All`()
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion,
+  estatus, autor, destacada, activa from noticia;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaGet_ById`(IN p int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion,
+  estatus, autor, destacada, activa from noticia where id_Noticia = p;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaGet_BySeccion`(IN p int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion,
+  estatus, autor, destacada, activa from noticia where seccion = p;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaGet_ByUser`(IN p int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion,
+  estatus, autor, destacada, activa from noticia where autor = p;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaRedactar`(IN pTitulo varchar(50), IN pFechaAcontesimiento date,
+IN pLugar varchar(250), IN pDescripcion varchar(250), IN pTexto text, 
+IN pseccion int(10), IN pstatus int(10), IN pautor int(10))
+BEGIN
+  insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor) 
+        values (pTitulo, pFechaAcontesimiento, pLugar, pDescripcion, pTexto, pseccion, pestatus, pautor);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaSoftDelete_ById`(IN p int(10))
+BEGIN
+  update noticia set activa=0 where id_Noticia = p;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usuarioRegistro`(IN pCorreo varchar(100), IN pContra varchar(30), IN pFirma varchar(20),
+IN pNombre varchar(20), IN pApPaterno varchar(20), IN pApMaterno varchar(20), IN pTelefono varchar(15),
+IN pAvatar int(10), IN pTipoUsuario varchar(10))
+BEGIN
+  INSERT INTO usuario (correo, contraseña, firma, nombre, apellido_paterno, apellido_materno, telefono,avatar, tipoUsuario,activo)
+  VALUES (pCorreo, pContra, pFirma, pNombre, pApPaterno, pApMaterno, pTelefono, pAvatar, pTipoUsuario, 0);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usuarioRegistro`(IN pCorreo varchar(100), IN pContra varchar(30), IN pFirma varchar(20),
+IN pNombre varchar(20), IN pApPaterno varchar(20), IN pApMaterno varchar(20), IN pTelefono varchar(15),
+IN pAvatar int(10), IN pTipoUsuario varchar(10))
+BEGIN
+  INSERT INTO usuario (correo, contraseña, firma, nombre, apellido_paterno, apellido_materno, telefono,avatar, tipoUsuario,activo)
+  VALUES (pCorreo, pContra, pFirma, pNombre, pApPaterno, pApMaterno, pTelefono, pAvatar, pTipoUsuario, 0);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usuarioTipoUsuario_ById`(IN p int(10))
+BEGIN
+  select tipoUsuario from usuario where id_Usuario = p;
+END
