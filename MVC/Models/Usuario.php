@@ -132,7 +132,8 @@ class usuario{
         $DB= new conexion();
         $con = $DB->getConnection();
         //No terminado
-        $sql = $con->prepare("select tipoUsuario from usuario where id_Usuario = ?");
+        //$sql = $con->prepare("select tipoUsuario from usuario where id_Usuario = ?");
+        $sql = $con->prepare("CALL usuarioTipoUsuario_ById(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 

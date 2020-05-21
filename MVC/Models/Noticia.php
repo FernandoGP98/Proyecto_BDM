@@ -21,8 +21,9 @@ class Noticia{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor) 
-        values (?,?,?,?,?,?,?,?);");
+        /*$sql = $con->prepare("insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor) 
+        values (?,?,?,?,?,?,?,?);");*/
+        $sql = $con->prepare("CALL noticiaRedactar(?,?,?,?,?,?,?,?)");
         $sql->bind_param("sssssiii", $pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pAutor);
         $r=$sql->execute();
         $sql->close();
@@ -36,7 +37,8 @@ class Noticia{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("select * from noticia where id_Noticia = ?");
+        //$sql = $con->prepare("select * from noticia where id_Noticia = ?");
+        $sql = $con->prepare("CALL noticiaGet_ById(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -78,7 +80,8 @@ class Noticia{
         $con = $DB->getConnection();
 
         //delete from seccion where id_seccion=1;
-        $sql = $con->prepare("delete from noticia where id_Noticia = ?");
+        //$sql = $con->prepare("delete from noticia where id_Noticia = ?");
+        $sql = $con->prepare("CALL noticiaDelete_ById(?)");
         $sql->bind_param("i", $id);
         $r=$sql->execute();
         $sql->close();
@@ -92,7 +95,8 @@ class Noticia{
         $con = $DB->getConnection();
 
         //delete from seccion where id_seccion=1;
-        $sql = $con->prepare("update noticia set activa=0  id_Noticia = ?");
+        //$sql = $con->prepare("update noticia set activa=0 where id_Noticia = ?");
+        $sql = $con->prepare("CALL noticiaSoftDelete_ById(?)");
         $sql->bind_param("i", $id);
         $r=$sql->execute();
         $sql->close();
@@ -107,7 +111,7 @@ class Noticia{
 
         $items = [];
 
-        $sql = $con->prepare("select * from noticia");
+        $sql = $con->prepare("CALL noticiaGet_All()");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -147,7 +151,8 @@ class Noticia{
 
         $items = [];
 
-        $sql = $con->prepare("select * from noticia where seccion = ?");
+        //$sql = $con->prepare("select * from noticia where seccion = ?");
+        $sql = $con->prepare("CALL noticiaGet_BySeccion(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -190,7 +195,8 @@ class Noticia{
 
         $string = "%";
         $string = $string.$texto.$string;
-        $sql = $con->prepare("select * from noticia where Titulo Like ?");
+        //$sql = $con->prepare("select * from noticia where Titulo Like ?");
+        $sql = $con->prepare("CALL noticiaBusqueda_ByTitulo(?)");
         $sql->bind_param("s", $string);
         $sql->execute();
         echo $string;
@@ -269,7 +275,8 @@ class Noticia{
 
         $items = [];
 
-        $sql = $con->prepare("select * from noticia where autor = ?");
+        //$sql = $con->prepare("select * from noticia where autor = ?");
+        $sql = $con->prepare("CALL noticiaGet_ByUser(?)");
         $sql->bind_param("d", $id);
         $sql->execute();
         $result = $sql->get_result();

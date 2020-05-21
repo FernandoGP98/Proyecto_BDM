@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 vertical-line-right">
-                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg"
+                <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>"
                     alt="" id="avatarImg">
                 <ul>
                     <li><a id="perfil-info" href="#">Informacion</a></li>
