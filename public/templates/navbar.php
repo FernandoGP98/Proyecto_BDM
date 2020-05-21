@@ -1,5 +1,4 @@
 <?php
-    echo session_status();
     if(session_status() != 2){
         session_start();
     }
@@ -50,7 +49,7 @@
                 <ul class="navbar-nav mr-auto secciones text-center" style="width: 100%">
                     <?php
                     if(isset($_SESSION['secciones'])){
-                        for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
+                        for ($i=0; $i < count($_SESSION['secciones']); $i++) {
                     ?>
                     <li class="nav-item active col" style="background-color: #<?= $_SESSION['secciones'][$i]['color']?>">
                         <a class="nav-link" href="seccion?id=<?=$_SESSION['secciones'][$i]['id']?>"><?= $_SESSION['secciones'][$i]['nombre']?> <span
