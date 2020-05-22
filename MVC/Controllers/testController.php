@@ -11,32 +11,40 @@ class testController{
     }
 
     public function imagen(){
-        $check = getimagesize($_FILES["image"]["tmp_name"]);
-        if((isset($_FILES['miArchivo'])) && ($_FILES['miArchivo'] !='')){
-            $file = $_FILES['miArchivo']; //Asignamos el contenido del parametro a una variable para su mejor manejo
-            
-            $temName = $file['tmp_name']; //Obtenemos el directorio temporal en donde se ha almacenado el archivo;
-            $fileName = $file['name']; //Obtenemos el nombre del archivo
-            $fileExtension = substr(strrchr($fileName, '.'), 1); //Obtenemos la extensiÃ³n del archivo.
-            
-            //Comenzamos a extraer la informaciÃ³n del archivo
-            $fp = fopen($temName, "rb");//abrimos el archivo con permiso de lectura
-            $contenido = fread($fp, filesize($temName));//leemos el contenido del archivo
-            //Una vez leido el archivo se obtiene un string con caracteres especiales.
-            $contenido = addslashes($contenido);//se escapan los caracteres especiales
-            fclose($fp);//Cerramos el archivo
+        $count = count($_FILES['myFile']["name"]);
 
-            $a = Imagen::registro($contenido);
+        for ($i=0; $i < $count; $i++) { 
+            if(!empty($_FILES["myFile"]["name"][$i])){
+                $name = $_FILES["myFile"]["name"][$i];
+                $type = $_FILES["myFile"]["type"][$i];
+                $data = file_get_contents($_FILES["myFile"]["tmp_name"][$i]);
+                $data2 = addslashes($data);
+                
+                $insert = Imagen::registro($data2);
+                $data = null;
+                $data2 = null;
+            }
         }
-    
+
+        if(!empty($_FILES["video"]["name"])){
+            
+            $nuevoNombre = uniqid() .".mp4";
+            $rutaDeGuardado = "public/resources/video". "/" . $nuevoNombre;
+            $rutaFinal = "resources/video". "/" . $nuevoNombre;
+            move_uploaded_file($_FILES["video"]["tmp_name"], $rutaDeGuardado);
+
+            $inserVideo = Video::registro($rutaFinal);
+        }
+        
+        header("Location: test", 301);
 
     }
 
     public function test(){
-        $imagenes = Imagen::get(1);
-        echo '<img src="data:image/jpeg;base64,'.base64_encode($imagenes) .' "/>';
-        echo $imagenes->imagen;
-        Response::render("test",["imagenes"=>$imagenes]);
+        $imagenes = Imagen::getAll();
+        //echo '<img src="data:image/jpeg;base64,'.base64_encode($imagenes->imagen) .' "/>';
+        $videos = Video::getAll();
+        Response::render("test",["imagenes"=>$imagenes, "videos"=>$videos]);
     }
 }
 ?>

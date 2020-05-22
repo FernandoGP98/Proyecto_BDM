@@ -9,8 +9,6 @@ class NoticiaControl{
     }
 
     public function registrarNoticia(){
-        //echo $_POST["texto"];
-
         $palabra = $_POST["palabraClave"];
         $nuevaPalabra =$_POST["nuevaPalabra"];
 
@@ -21,6 +19,32 @@ class NoticiaControl{
         
         $noticia = Noticia::registro($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
         $_POST["seccion"] , $_POST["estatus"], $_POST["autor"]);
+
+
+        $count = count($_FILES['imagenes']["name"]);
+        //echo $count;
+        for ($i=0; $i < $count; $i++) { 
+            if(!empty($_FILES["imagenes"]["name"][$i])){
+                $name = $_FILES["imagenes"]["name"][$i];
+                $type = $_FILES["imagenes"]["type"][$i];
+                $data = file_get_contents($_FILES["imagenes"]["tmp_name"][$i]);
+                $data2 = addslashes($data);
+                
+                $insert = Imagen::registro($data2);
+                $data = null;
+                $data2 = null;
+            }
+        }
+
+        if(!empty($_FILES["video"]["name"])){
+            
+            $nuevoNombre = uniqid() .".mp4";
+            $rutaDeGuardado = "public/resources/video". "/" . $nuevoNombre;
+            $rutaFinal = "resources/video". "/" . $nuevoNombre;
+            move_uploaded_file($_FILES["video"]["tmp_name"], $rutaDeGuardado);
+
+            $inserVideo = Video::registro($rutaFinal);
+        }
 
         header("Location: redactar", 301);
     }

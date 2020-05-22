@@ -17,7 +17,7 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="noticiaRegistro" method="POST" id="formNota">
+                    <form action="noticiaRegistro" method="POST" id="formNota" enctype="multipart/form-data">
                         <label for="">Titulo</label>
                         <input class="form-control" type="text" name="titulo" placeholder="Titulo" id="pTituto">
                         <br>
@@ -114,7 +114,7 @@
                             <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota" hidden></input>
                             <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota" hidden>
                         </div>
-
+                        
                     </form>
                 </div>
             </div>

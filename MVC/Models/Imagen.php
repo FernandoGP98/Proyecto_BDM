@@ -12,10 +12,9 @@ class Imagen{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-
-        $sql = $con->prepare("insert into imagen (imagen) values (?);");
-        $sql->bind_param("s", $pimagen);
+        $sql = $con->prepare("call spImagen('$pimagen')");
         $r=$sql->execute();
+
         $sql->close();
         $con->close();
         return $r;
@@ -26,8 +25,8 @@ class Imagen{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("select * from imagen where id_Imagen = 1;");
-        //$sql->bind_param("i", $id);
+        $sql = $con->prepare("select * from imagen where id_Imagen = ?;");
+        $sql->bind_param("i", $id);
         $sql->execute();
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
