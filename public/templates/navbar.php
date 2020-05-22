@@ -31,7 +31,17 @@
             <?=( $_SESSION["usuario"]["firma"])?>
         </a>
         <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador">
-            <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>" class="nav-avatar" alt="">
+            <?php
+                if($_SESSION["usuario"]["avatar"] == null){
+                    echo $_SESSION["usuario"]["avatar"];
+            ?>
+            <img src="resources/image/no-imagen.jpg" class="nav-avatar" alt="no avatar">
+            <?php 
+            }else{
+            ?>
+            <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>" class="nav-avatar" alt="no cargo">
+            <?php } ?>
+            
         </a>
         <?php } ?>
         <form class="form-inline my-2 my-lg-0" action="busqueda" method="GET">

@@ -13,8 +13,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 vertical-line-right">
+                <?php
+                if($_SESSION["usuario"]["avatar"] == null){
+                        echo $_SESSION["usuario"]["avatar"];
+                ?>
+                <img src="resources/image/no-imagen.jpg"
+                    alt="" id="avatarImg">
+                <?php 
+                }else{
+                ?>
                 <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>"
                     alt="" id="avatarImg">
+                <?php } ?>
                 <ul>
                     <li><a id="perfil-info" href="#">Informacion</a></li>
                     <li><a id="perfil-post" href="#">Publicaciones</a></li>

@@ -160,7 +160,7 @@
                 <hr class="nextSection">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2>Recomendados</h2>
+                        <h2>Relacionados</h2>
                     </div>
                 </div>
                 <hr class="inSection">

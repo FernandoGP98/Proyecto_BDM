@@ -48,6 +48,7 @@ class usuario{
                 );
             }
             //$id=$row_data['tipoUsuario'];
+            echo $row_data['avatar'];
         }else {
             # No data actions
             echo 'No data here :(';
