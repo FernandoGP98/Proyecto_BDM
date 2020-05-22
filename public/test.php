@@ -6,43 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
-        foreach ($notas as $row) {
-            $noticia = new Noticia();
-            $noticia = $row;
-        
-    ?>
-        <div>
-            <hr>
-        <?= $noticia->id ?>
-        <br>
-        <?= $noticia->titulo ?>
-        <br>
-        <?= $noticia->fechaPublicacion ?>
-        <br>
-        <input type="date" name="" id="" value="<?= $noticia->fechaAcontesimiento ?>">
-        <br>
-        <?= $noticia->lugar ?>
-        <br>
-        <?= $noticia->descripcion ?>
-        <br>
-        <?= $noticia->texto ?>
-        <br>
-        <?= $noticia->destacada ?>
-        <br>
-        <?= $noticia->activa ?>
-        <br>
-        <?= $noticia->seccion ?>
-        <br>
-        <?= $noticia->status ?>
-        <br>
-        <?= $noticia->autor ?>
-            <hr>
-        </div>
-    <?php 
-    }
-    ?>
 
-    <a href="noticiaEditar?id=1">Obtener Noticia</a>
+<form action="test_imagen" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="image"/>
+        <input type="submit" name="submit" value="UPLOAD"/>
+    </form>
+
+    <img src="data:image/jpeg;base64,<?=base64_encode($test->imagen)?>" class="nav-avatar" alt="no carga">
+
 </body>
 </html>

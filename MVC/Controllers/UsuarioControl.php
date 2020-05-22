@@ -6,12 +6,23 @@ class UsuarioControl{
         Response::render("login", ["var"=>$us]);
     }
 
+    public function registroByAdmin(){
+        $us = Usuario::registrarUsuario($_POST["email"], $_POST["password"], $_POST["username"], 
+        "", "", "", "", null, $_POST["tipoUsuario"]);
+
+        $seccion = Seccion::update($_GET["idSeccion"], $_GET["color"]);
+        Seccion::getAll();
+        header("Location: perfil_administrador?id=".$_SESSION['usuario']['id_Usuario'], 301);
+    }
+
     public function obtener_porCorreoContra(){
         $id = Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
 
         if($_SESSION["usuario"]["tipoUsuario"] == 1){
             $notas = Noticia::getAll();
-            Response::render("adminPerfil", ["notas"=>$notas]);
+            $tiposUsuario = TipoUsuario::getAll();
+            $users = usuario::getAll();
+            Response::render("adminPerfil", ["notas"=>$notas,"tiposUsuario"=>$tiposUsuario, "users"=>$users]);
 
         }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
             $notas = Noticia::getByUser($id);
@@ -27,7 +38,9 @@ class UsuarioControl{
         //$secciones = Seccion::getAll();
         if($_SESSION["usuario"]["tipoUsuario"] == 1){
             $notas = Noticia::getAll();
-            Response::render("adminPerfil", ["notas"=>$notas]);
+            $tiposUsuario = TipoUsuario::getAll();
+            $users = usuario::getAll();
+            Response::render("adminPerfil", ["notas"=>$notas,"tiposUsuario"=>$tiposUsuario, "users"=>$users]);
 
         }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
             $notas = Noticia::getByUser($_SESSION["usuario"]["id_Usuario"]);
@@ -52,6 +65,12 @@ class UsuarioControl{
 
     public function registrarse(){
         Response::render("registrarse");
+    }
+
+    public function borrarUsuario(){
+        $us = usuario::borrarUsuario($_POST["idUsuario2"]);
+
+        header("Location: perfil_administrador?id=".$_POST["userID"], 301);
     }
 }
 ?>

@@ -20,7 +20,7 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="noticiaRegistro" method="POST" id="formNota">
+                    <form action="guardar" method="POST" id="formNota">
                         <label for="">Titulo</label>
                         <input class="form-control" type="text" name="titulo" placeholder="Titulo" 
                         id="" value="<?= $nota->titulo ?>">
@@ -78,11 +78,19 @@
                                 foreach ($palabras as $item) {
                                     $palabra = new Seccion();
                                         $palabra = $item;
-                                        //if($palabra->id == $nota->palabra){}
+                                        if($palabra->id == $nota->palabra){
                                 ?>
-                                <option value="<?=$palabra->id?>"><?= $palabra->PalabraClave?></option>
+                                <option class="dropdown-item" value="<?= $palabra->id?>" selected>
+                                    <?= $palabra->PalabraClave?>
+                                    </option>
+                                <?php
+                                    }else{
+                                ?>
+                                    <option class="dropdown-item" value="<?= $palabra->id?>">
+                                    <?= $palabra->PalabraClave?>
+                                    </option>
                             <?php
-                            }
+                            }}
                         }
                         ?>
                         <option value="nueva" id="nuevaSelect"><i>Nueva Palabra</i></option>
@@ -123,8 +131,9 @@
                         </div>
                         
 
-                        <input type="text" value="<?=$nota->autor?>" name="autor">
+                        <input type="text" value="<?=$nota->id?>" name="idNoticia">
                         <input type="text" value="1" name="estatus" id="estatusNota">
+                        <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
                         <div class="text-center">
                             <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota"></input>
                             <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota">

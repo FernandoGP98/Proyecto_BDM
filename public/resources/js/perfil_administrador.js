@@ -1,6 +1,12 @@
 $(document).ready(function(){
     var elementoEliminar;
     var reporteroEliminar;
+
+    var noticiaNombre;
+    var noticiaID;
+
+    var usuarioNombre;
+    var usuarioID;
     
     var seccionEliminar;
     var seccionNombre ="tst";
@@ -63,7 +69,11 @@ $(document).ready(function(){
     $(".btn-eliminar").click(function(){
         
         elementoEliminar = $(this).closest(".post-outbox");
+        noticiaNombre = elementoEliminar.find(".noticiaNombreI").val();
+        noticiaID = elementoEliminar.find(".idNoticiaI").val();
         //$(this).closest(".post-outbox").hide(400);
+        $("#noticiaNombreII").html(noticiaNombre);
+        $("#idNoticia2").val(noticiaID);
         $(this).attr("data-toggle","modal");
         $(this).attr("data-target","#exampleModal");
         $(this).click();
@@ -71,7 +81,9 @@ $(document).ready(function(){
 
     $(".eliminar-noticia").click(function(){
         //alert(elementoEliminar.innerHtml());
+        var form = $("#notaEliminar");
         elementoEliminar.hide(400);
+        form.submit();
     });
 
     $(".cancelar").click(function(){
@@ -79,8 +91,16 @@ $(document).ready(function(){
     });
 
     $(".btn-reportero-eliminar").click(function(){
+        /* 
+            var usuarioNombre;
+            var usuarioID;
+        */
         reporteroEliminar = $(this).closest(".reportero-card");
+        usuarioNombre = reporteroEliminar.find(".firmaUsuario").val();
+        usuarioID = reporteroEliminar.find(".idUsuario").val();
         //reporteroEliminar.hide(400);
+        $("#idUsuario2").val(usuarioID);
+        $("#usuarioNombreII").html(usuarioNombre);
         $(this).attr("data-toggle","modal");
         $(this).attr("data-target","#reporteroModal");
         $(this).click();
@@ -89,7 +109,9 @@ $(document).ready(function(){
 
     $(".eliminar-reportero").click(function(){
         //alert(elementoEliminar.innerHtml());
+        var form = $("#borrarUsuario");
         reporteroEliminar.hide(400);
+        form.submit();
     });
 
     $(".cancelar-reportero").click(function(){
@@ -183,3 +205,15 @@ $(document).ready(function(){
     }
 
 });
+
+/*
+$.ajax({
+    type:'metodo en el que se enviara o se pedira',
+    url:'url en donde se enviara o se solicitara algo',
+    data: lo que se enviara o solicitara,
+    beforeSend:' si quieres hacer algo antes de que se envie , como notificar al usuario',
+    succes:' si todo funciono bien , puedes hacer algo',
+    error:' por si ocurre un error',
+    timeout: cuanto tiempo quieres que tarde en enviarse el ajax  como maximo, si tarda mas de lo que pusiste , inmediatamenet marca error
+});
+*/

@@ -1,77 +1,7 @@
 <?php
 require_once("Conexion.php");
 class usuario{
-    private $correo, $contraseña, $firma, $nombre, $apPaterno, $apMaterno, $telefono, $avatar, $tipoUsuario, $activo;
-
-    function getCorreo(){
-        return $this->correo;
-    }
-    function setCorreo($p){
-        $this->correo = $p;
-    }
-
-    function getContraseña(){
-        return $this->contraseña;
-    }
-    function setContraseña($p){
-        $this->contraseña = $p;
-    }
-
-    function getFirma(){
-        return $this->firma;
-    }
-    function setFirma($p){
-        $this->firma = $p;
-    }
-
-    function getNombre(){
-        return $this->nombre;
-    }
-    function setNombre($p){
-        $this->nombre = $p;
-    }
-
-    function getApPaterno(){
-        return $this->apPaterno;
-    }
-    function setApPaterno($p){
-        $this->apPaterno = $p;
-    }
-
-    function getApMaterno(){
-        return $this->apMaterno;
-    }
-    function setApMaterno($p){
-        $this->apMaterno = $p;
-    }
-
-    function getTelefono(){
-        return $this->telefono;
-    }
-    function setTelefono($p){
-        $this->telefono = $p;
-    }
-
-    function getAvatar(){
-        return $this->avatar;
-    }
-    function setAvatar($p){
-        $this->avatar = $p;
-    }
-
-    function getTipoUsuario(){
-        return $this->tipoUsuario;
-    }
-    function setTipoUsuario($p){
-        $this->tipoUsuario = $p;
-    }
-
-    function getActivo(){
-        return $this->activo;
-    }
-    function setActivo($p){
-        $this->activo = $p;
-    }
+    public $id, $correo, $contraseña, $firma, $nombre, $apPaterno, $apMaterno, $telefono, $avatar, $tipoUsuario, $activo;
 
     public function registrarUsuario($pCorreo, $contra, $pFirma, $pNombre, $pApellidoP, $pApellidoM, 
     $pTel, $pAvatar, $pTipoUsuario){
@@ -157,7 +87,60 @@ class usuario{
         $con->close();
         return $id;
     }
+
+    public function getAll(){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $items = [];
+
+        $sql = $con->prepare("select * from usuario where activo = 1 and tipoUsuario != 1");
+        $sql->execute();
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            
+            while($row_data = $result->fetch_assoc()){
+                $nota = new usuario();
+                $nota->id = $row_data['id_Usuario'];
+                $nota->correo = $row_data['correo'];
+                $nota->contraseña= $row_data['contraseña'];
+                $nota->firma = $row_data['firma'];
+                $nota->nombre = $row_data['nombre'];
+                $nota->apPaterno = $row_data['apellido_paterno'];
+                $nota->apMaterno = $row_data['apellido_materno'];
+                $nota->telefono = $row_data['telefono'];
+                $nota->avatar = $row_data['avatar'];
+                //$nota->avatar = $row_data['imagen'];
+                $nota->tipoUsuario = $row_data['tipoUsuario'];
+                $nota->activo = $row_data['activo'];
+
+                /*
+                $id, $correo, $contraseña, $firma, $nombre, 
+                $apPaterno, $apMaterno, $telefono, 
+                $avatar, $tipoUsuario, $activo;
+                */
+                array_push($items, $nota);
+            }
+        }else {
+            # No data actions
+        }
+        $sql->close();
+        $con->close();
+        return $items;
+    }
     
+    public function borrarUsuario($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $sql = $con->prepare("update usuario set activo = 0 where id_Usuario = ?");
+        $sql->bind_param("i", $id);
+        $r=$sql->execute();
+        $sql->close();
+        $con->close();
+        return $r;
+    }
 }
 
 

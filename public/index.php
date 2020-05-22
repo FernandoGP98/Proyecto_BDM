@@ -17,6 +17,7 @@ require APP_PATH."Models/Noticia.php";
 require APP_PATH."Models/PalabraClave.php";
 require APP_PATH."Models/Seccion.php";
 require APP_PATH."Models/Video.php";
+require APP_PATH."Models/TipoUsuario.php";
 
 $url = $_GET["url"];
 

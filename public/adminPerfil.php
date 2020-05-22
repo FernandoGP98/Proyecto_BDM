@@ -73,8 +73,14 @@
                                     </div>
                                     <div class="col-md-1 text-center">
                                         <br>
-                                        <button class="btn btn-outline-success">Publicar</button>
+                                        <form action="publicar" method="POST">
+                                            <input type="hidden" name="idNoticia" id="" value="<?=$nota->id?>">
+                                            <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                                            <button class="btn btn-outline-success submit">Publicar</button>
+                                        </form>
                                         <br><br>
+                                        <input type="hidden" name="" class="idNoticiaI" value="<?=$nota->id?>">
+                                        <input type="hidden" name="" class="noticiaNombreI" value="<?=$nota->titulo?>">
                                         <button class="btn btn-outline-danger btn-eliminar">Eliminar</button>
                                     </div>
                                 </div>
@@ -162,7 +168,7 @@
                         </div>
                         <div class="contact-form">
                             <h2>Nuevo Usuario</h2>
-                            <form action="">
+                            <form action="registroByAdmin" method="POST" id="adminRegistro">
                                 <label for="">E-mail</label>
                                 <input class="form-control" type="email" name="email" placeholder="Ingrese un email" id="email">
 
@@ -177,12 +183,18 @@
                 
                                 <br>
                                 <label for="">Tipo de Usuario</label>
-                                <select class="form-control" name="" id="">
-                                    <option value="0">Administrador</option>
-                                    <option value="1">Reportero</option>
-                                    <option value="2">Usuario</option>
+                                <select class="form-control" name="tipoUsuario" id="">
+                                    <?php
+                                        foreach ($tiposUsuario as $item) {
+                                            $nota = new usuario();
+                                            $nota = $item;
+                                        
+                                    ?>
+                                    <option value="<?=$nota->id?>"><?=$nota->tipoUsuario?></option>
+                                    <?php
+                                        }
+                                    ?>
                                 </select>
-
                                 <br><input class="mb-2 btn btn-primary" type="submit" value="Registrar" id="registro"><br>
                             </form>
                             <br>
@@ -197,21 +209,26 @@
                     <div class="container">
                         <div class="row">
                             <?php
-                            for ($i=0; $i < 5; $i++) { 
-                        ?>
+                            //users
+                            foreach ($users as $item) {
+                                $nota = new usuario();
+                                $nota = $item;
+                            ?>
                             <div class="card col-3 reportero-card">
                                 <img class="card-img-top reportero-imagen" src="resources/image/no-imagen.jpg"
                                     alt="Card image">
                                 <div class="card-body">
-                                    <p class="card-text">Nombre Reportero</p>
-                                    <p class="card-text"><b>Firma:</b> Firma Chida</p>
-                                    <p class="card-text"><b>Contacto:</b> <span>##########</span></p>
+                                    <p class="card-text"><?=$nota->nombre?> <?=$nota->apPaterno?> <?=$nota->apMaterno?></p>
+                                    <p class="card-text"><b>Firma:</b> <?=$nota->firma?></p>
+                                    <p class="card-text"><b>Contacto:</b> <span><?=$nota->telefono?></span></p>
+                                    <input type="text" name="" class="idUsuario" value="<?=$nota->id?>">
+                                    <input type="hidden" name="" class="firmaUsuario" value="<?=$nota->firma?>">
                                     <a href="#" class="btn btn-outline-danger btn-reportero-eliminar">Eliminar</a>
                                 </div>
                             </div>
                             <?php
                             }
-                        ?>
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -226,7 +243,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar noticia</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar <span id="noticiaNombreII">Noticia</span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -236,8 +253,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary cancelar" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger eliminar-noticia"
-                            data-dismiss="modal">Eliminar</button>
+                        <form action="borrarNota" method="POST" id="notaEliminar">
+                            <input type="text" name="idNoticia2" id="idNoticia2" value="">
+                            <input type="text" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                            <button type="button" class="btn btn-danger eliminar-noticia"       
+                                data-dismiss="modal">Eliminar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -249,19 +270,24 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Reportero</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar <span id="usuarioNombreII"></span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>¿Quieres eliminar a este reportero?</p>
+                        <p>¿Quieres eliminar a este usuario?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary cancelar-reportero"
-                            data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger eliminar-reportero"
+                        data-dismiss="modal">Cancelar</button>
+                        <form action="borrarUsuario" method="POST" id="borrarUsuario">
+                            <input type="text" name="idUsuario2" id="idUsuario2" value="">
+                            <input type="text" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                            <button type="button" class="btn btn-danger eliminar-reportero"
                             data-dismiss="modal">Eliminar</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>

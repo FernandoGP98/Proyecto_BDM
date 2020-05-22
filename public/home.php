@@ -144,30 +144,6 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
                         <div class="carousel">
-                            <div class="noticia-card card destacado">
-                                <a href="noticia.php">
-                                    <img class="card-img-top"
-                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                        alt="Card image cap">
-
-
-                                    <div class="card-body">
-
-                                        <h5 class="card-title">Titulo Noticia 1 </h5>
-
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up
-                                            the bulk of the card's content.</p>
-                                    </div>
-
-                                    <div class="card-img-overlay">
-
-                                        <img class="image-destacado" src="./resources/image/ultimo_momento_02.png"
-                                            alt="" srcset="">
-
-                                    </div>
-                                </a>
-                            </div>
                             <?php foreach ($noticias as $item) {
                                 $nota = new Noticia();
                                 $nota = $item;
