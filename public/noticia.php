@@ -72,14 +72,14 @@
             <div class="row">
                 <div class="seccion col-md-12">
                     <p><b>Seccion: </b>
-                        <a class="mr-3" href=""><?=$nota->nombreSeccion?></a>
+                        <a class="mr-3" href="seccion?id=<?=$nota->seccion?>"><?=$nota->nombreSeccion?></a>
                 </div>
             </div>
 
             <div class="row">
                 <div class="palabras-clave col-md-12">
                     <p><b>Tags relacionados: </b>
-                        <a class="mr-3" href=""><?=$nota->palabraNombre?></a>
+                        <small><?=$nota->palabraNombre?></small>
                 </div>
             </div>
 
@@ -110,7 +110,17 @@
                     <div class="comentarios">
                                 <div class="row">
                                     <div class="col-2">
-                                        <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
+                                    <?php
+                                        if($comentario->imagen == null){
+                                            //echo $_SESSION["usuario"]["imagen"];
+                                    ?>
+                                    <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
+                                    <?php 
+                                    }else{
+                                    ?>
+                                    <img class="avatar" src="data:image/jpeg;base64,<?=base64_encode($comentario->imagen)?>" alt="...">
+                                    <?php } ?>
+                                        
                                         <p><span class="username"><?=$comentario->usuario?></span> </p>
                                         <small class="fecha"><?=$comentario->fecha?></small>
                                     </div>

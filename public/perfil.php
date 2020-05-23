@@ -13,17 +13,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 vertical-line-right">
-                <?php
-                if($_SESSION["usuario"]["avatar"] == null){
-                        echo $_SESSION["usuario"]["avatar"];
+            <?php
+                    if($_SESSION["usuario"]["imagen"] == null){
+                        //echo $_SESSION["usuario"]["imagen"];
                 ?>
-                <img src="resources/image/no-imagen.jpg"
-                    alt="" id="avatarImg">
+                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" 
+                width="50%" height="auto" alt="">
                 <?php 
                 }else{
                 ?>
+            
                 <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>"
-                    alt="" id="avatarImg">
+                    width="50%" height="auto" alt="">
                 <?php } ?>
                 <ul>
                     <li><a id="perfil-info" href="#">Informacion</a></li>

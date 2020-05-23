@@ -19,19 +19,26 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 vertical-line-right text-center">
-                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" width="50%" height="auto"
-                    alt="">
+                
+                <?php
+                    if($_SESSION["usuario"]["imagen"] == null){
+                        //echo $_SESSION["usuario"]["imagen"];
+                ?>
+                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" 
+                width="50%" height="auto" alt="">
+                <?php 
+                }else{
+                ?>
+            
+                <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>"
+                    width="50%" height="auto" alt="">
+                <?php } ?>
                 <ul>
                     <li><a id="admin-redaccion" href="#">Noticias en Redaccion</a></li>
                     <li><a id="admin-secciones" href="#">Secciones</a></li>
                     <li><a id="admin-usuarios" href="#">Crear Usuarios</a></li>
                     <li><a id="admin-usuarios-eliminar" href="#">Eliminar Usuarios</a></li>
                     <li><a id="admin-usuarios" href="logout">Cerrar Session</a></li>
-                </ul>
-
-                <ul>
-                    <li> ** Temporal **</li>
-                    <li><a href="perfil.php">Perfil Reportero</a></li>
                 </ul>
             </div>
             <div class="col-8">

@@ -4,6 +4,7 @@
     algunas literalmente solo le hice un alter a los Stored que ya tenias,
     pero no recuerdo cuales eran xD
 */
+
 /*===================================================================================================*/
 /*===================================================================================================*/
 use bdm_01;
@@ -146,7 +147,7 @@ before delete on seccion
 for each row
 begin
 
-	update noticia set seccion=null where seccion=old.id_Seccion;
+	update noticia set seccion=null, activa = 0 where seccion=old.id_Seccion;
 
 end =)
 delimiter ;
@@ -203,3 +204,119 @@ END
 DELIMITER ;
 /*===================================================================================================*/
 /*===================================================================================================*/
+/*
+	Funcion
+     - obtiene el orden (posicion) de la ultima seccion le suma y lo regresa
+     * se usa para cuando se cree una nueva seccion
+*/
+DELIMITER //
+CREATE FUNCTION fNuevoOrden() 
+RETURNS int 
+DETERMINISTIC
+BEGIN
+	declare norden int;
+    set norden = (select orden from Seccion order by orden desc limit 1) + 1;
+    return (norden);
+END //
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Stored - Insert/Update seccion
+		- Segun la opcion inserta o actualiza una seccion
+        - Si actualiza el orden hace todo el proceso para modificar el resto de secciones afectadas
+*/
+delimiter =)
+create procedure pSeccion(
+	in opcion int,
+	in pId int,
+    in pNombre varchar(30),
+    in pColor varchar(8),
+	in pOrden int,
+    in pActiva int
+)
+begin
+declare oldOrden int;
+
+	if (opcion = 1) then
+		insert into seccion (seccion_nombre, color, orden, activa) values (pNombre, pColor, fNuevoOrden(), 1);
+    end if;
+    if(opcion = 2) then
+		set oldOrden = (select orden from seccion where id_Seccion = pId);
+		
+		if(oldOrden != pOrden) then
+			if(pOrden < oldOrden) then
+				update seccion set orden = (orden + 1) where orden between pOrden and oldOrden;
+			end if;
+			if(pOrden > oldOrden) then
+				update seccion set orden = (orden - 1) where orden between oldOrden and pOrden;
+			end if;
+		end if;
+		update seccion set orden = pOrden, color = pColor, activa = pActiva where id_Seccion = pId;
+        
+    end if;
+
+end =)
+delimiter ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	View - Usuario con Imagen
+*/
+create view vUsuario as
+select U.id_Usuario, U.correo, U.contraseña, U.firma, U.nombre, U.apellido_materno, 
+U.apellido_paterno, U.telefono, U.tipoUsuario, U.activo, I.imagen 
+from usuario as U
+left join imagen as I
+on U.avatar = I.id_Imagen;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	View - Comentario/Usuario/Imagen
+*/
+create view vComentario as 
+select c.id_Comentario, c.comentario, c.fecha, c.noticia, a.firma, a.avatar, i.imagen 
+from comentarios as c
+inner join usuario as a
+on c.usuario = a.id_Usuario
+left join imagen as i
+on i.id_Imagen = a.avatar;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Stored - Obtener comentarios
+		uso de la vista vComentarios
+*/
+delimiter =)
+create procedure obtenerComentarios(
+	in noticiaID int
+)
+begin
+	select id_Comentario, comentario, fecha, noticia, firma, imagen 
+	from vComentario where noticia = noticiaID;
+end =)
+delimiter ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////Modificaciones de Stored ya creado /////////////////////////////////////////////////////*/
+/*////////////////////--los ire poniendo segun me acuerde--////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usuarioGet_porCorreoContra`(
+	in correo2 varchar(50),
+	IN contraseña2 VARCHAR(255)
+)
+BEGIN
+	select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
+	from vUsuario
+    where correo = correo2 and contraseña = contraseña2; 
+END;
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/

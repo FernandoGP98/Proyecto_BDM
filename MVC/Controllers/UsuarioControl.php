@@ -3,14 +3,21 @@ class UsuarioControl{
     public function registrar(){
         $us = Usuario::registrarUsuario($_POST["email"], $_POST["password"], $_POST["username"], 
         $_POST["nombre"], $_POST["ApPaterno"], $_POST["ApMaterno"], strval($_POST["telefono"]), 1, 1);
-        Response::render("login", ["var"=>$us]);
+        
+        echo $us;
+        if($us == null){
+            echo "null";
+            Response::render("registrarse",["error"=>false, "correo"=>$_POST["email"]]);
+        }
+
+        //Response::render("login", ["var"=>$us]);
     }
 
     public function registroByAdmin(){
         $us = Usuario::registrarUsuario($_POST["email"], $_POST["password"], $_POST["username"], 
         "", "", "", "", null, $_POST["tipoUsuario"]);
 
-        $seccion = Seccion::update($_GET["idSeccion"], $_GET["color"]);
+        $seccion = Seccion::update(2,$_GET["idSeccion"], $_GET["color"],$_GET["orden"],1);
         Seccion::getAll();
         header("Location: perfil_administrador?id=".$_SESSION['usuario']['id_Usuario'], 301);
     }
@@ -18,18 +25,22 @@ class UsuarioControl{
     public function obtener_porCorreoContra(){
         $id = Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
 
-        if($_SESSION["usuario"]["tipoUsuario"] == 1){
-            $notas = Noticia::getAll();
-            $tiposUsuario = TipoUsuario::getAll();
-            $users = usuario::getAll();
-            Response::render("adminPerfil", ["notas"=>$notas,"tiposUsuario"=>$tiposUsuario, "users"=>$users]);
+        if($id != false){
+            if($_SESSION["usuario"]["tipoUsuario"] == 1){
+                $notas = Noticia::getAll();
+                $tiposUsuario = TipoUsuario::getAll();
+                $users = usuario::getAll();
+                Response::render("adminPerfil", ["notas"=>$notas,"tiposUsuario"=>$tiposUsuario, "users"=>$users]);
 
-        }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
-            $notas = Noticia::getByUser($id);
-            Response::render("perfil",["notas"=>$notas]);
+            }else if($_SESSION["usuario"]["tipoUsuario"] == 2){
+                $notas = Noticia::getByUser($id);
+                Response::render("perfil",["notas"=>$notas]);
 
-        }else if($_SESSION["usuario"]["tipoUsuario"] == 3){
-            Response::render("perfilRegistrado");
+            }else if($_SESSION["usuario"]["tipoUsuario"] == 3){
+                Response::render("perfilRegistrado");
+            }
+        }else{
+            Response::render("login",["error"=>true]);
         }
     }
 

@@ -12,8 +12,13 @@
     <?php include 'templates/navbar.php';?>
     <div class="row d-flex justify-content-center">
         <div class="loginBackground">
+        
         </div>
         <div class="contact-form">
+            <?php if(isset($error)){ ?>
+            <p style="color:#910000">Correo y/o contraseña incorrecta o el Usuario ya no existe</p>
+            <?php }?>
+            
             <h2>Ingresar</h2>
             <form action = "loginUsuario" method="get">
                 <label>Email</label>
@@ -36,7 +41,6 @@
         nomas para checar puse que mandara una variable y aqui la pongo
         <p><?=$var?><p> 
     -->
-    <p><?=$var?><p>
             <?php include 'templates/footer.php';?>
 </body>
 

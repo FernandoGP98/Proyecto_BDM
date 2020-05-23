@@ -3,7 +3,7 @@ Router::add("home", "mainController", "index");
 Router::add("testRegistrar", "registrarTest", "registrar");
 Router::add("getTest", "registrarTest", "testGet");
 
-Router::add("registrarUsuario", "UsuarioControl", "registrar");
+
 Router::add("loginUsuario", "UsuarioControl", "obtener_porCorreoContra");
 
 Router::add("index", "mainController", "index");
@@ -33,6 +33,7 @@ Router::add("login","UsuarioControl","login");
 Router::add("registrarse","UsuarioControl","registrarse");
 Router::add("registroByAdmin","UsuarioControl","registroByAdmin");
 Router::add("borrarUsuario","UsuarioControl","borrarUsuario");
+Router::add("registrarUsuario", "UsuarioControl", "registrar");
 
 
 //Secciones

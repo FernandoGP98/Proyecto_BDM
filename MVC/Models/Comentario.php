@@ -8,6 +8,7 @@ class Comentario{
     public $fecha;
     public $noticia;
     public $usuario;
+    public $imagen;
 
     public function registroComentario($pNoticia, $pUsuario, $pComentario){
         $DB= new conexion();
@@ -28,7 +29,7 @@ class Comentario{
 
         $items = [];
 
-        $sql = $con->prepare("select * from comentarios where noticia = ?");
+        $sql = $con->prepare("call obtenerComentarios(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -41,7 +42,8 @@ class Comentario{
                 $nota->comentario = $row_data["comentario"];
                 $nota->fecha = $row_data["fecha"];
                 $nota->noticia = $row_data["noticia"];
-                $nota->usuario = $row_data["usuario"];
+                $nota->usuario = $row_data["firma"];
+                $nota->imagen = $row_data["imagen"];
 
                 array_push($items, $nota);
             }

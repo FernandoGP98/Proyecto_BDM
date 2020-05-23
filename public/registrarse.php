@@ -19,6 +19,10 @@
             <form action="registrarUsuario" method="post">
                 <label for="email">E-mail</label>
                 <input class="form-control" type="email" name="email" placeholder="Ingrese su email" id="email">
+                <?php if(isset($error)){ ?>
+                    <small style="color:#910000">El correo: <?="<b>".$correo."</b>"?> ya esta en uso</small>
+                    <br>
+                <?php } ?>
 
                 <label for="firma">Firma</label>
                 <input class="form-control" type="text" name="username" placeholder="Ingrese su nombre de usuario"

@@ -15,7 +15,7 @@ class usuario{
         $r=$sql->execute();
         $sql->close();
         $con->close();
-        return $r;
+        return $r; //si falla regresa null,false,"(vacio)"
     }
 
     public function obtenerUsuario($pCorreo, $pContra){
@@ -32,26 +32,29 @@ class usuario{
         if ($result->num_rows>=1) {
             session_start();
             while($row_data = $result->fetch_assoc()){
-                $_SESSION['usuario']=array(
-                    "id_Usuario"=>$row_data['id_Usuario'],
-                    "correo"=>$row_data['correo'],
-                    "contraseña"=>$row_data['contraseña'],
-                    "firma"=>$row_data['firma'],
-                    "nombre"=>$row_data['nombre'],
-                    "apellido_paterno"=>$row_data['apellido_paterno'],
-                    "apellido_materno"=>$row_data['apellido_materno'],
-                    "telefono"=>$row_data['telefono'],
-                    "avatar"=>$row_data['avatar'],
-                    "imagen"=>$row_data['imagen'],
-                    "tipoUsuario"=>$row_data['tipoUsuario'],
-                    "activo"=>$row_data['activo']
-                );
+                if($row_data["activo"]== 0){
+                    return false;
+                }else{
+                    $_SESSION['usuario']=array(
+                        "id_Usuario"=>$row_data['id_Usuario'],
+                        "correo"=>$row_data['correo'],
+                        "contraseña"=>$row_data['contraseña'],
+                        "firma"=>$row_data['firma'],
+                        "nombre"=>$row_data['nombre'],
+                        "apellido_paterno"=>$row_data['apellido_paterno'],
+                        "apellido_materno"=>$row_data['apellido_materno'],
+                        "telefono"=>$row_data['telefono'],
+                        "imagen"=>$row_data['imagen'],
+                        "tipoUsuario"=>$row_data['tipoUsuario'],
+                        "activo"=>$row_data['activo']
+                    );
+                }
             }
             //$id=$row_data['tipoUsuario'];
             echo $row_data['avatar'];
         }else {
             # No data actions
-            echo 'No data here :(';
+            return false;
         }
 
         $sql->close();
