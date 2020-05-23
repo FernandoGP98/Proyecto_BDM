@@ -325,14 +325,14 @@ class Noticia{
     }
 
     //update bdm_01.noticia set estatus=3 where id_Noticia=12;
-    public function publicar($id){
+    public function publicar($id, $destacado){
         $DB= new conexion();
         $con = $DB->getConnection();
 
         //delete from seccion where id_seccion=1;
         //$sql = $con->prepare("delete from noticia where id_Noticia = ?");
-        $sql = $con->prepare("update noticia set estatus = 3 where id_Noticia = ?");
-        $sql->bind_param("i", $id);
+        $sql = $con->prepare("update noticia set estatus = 3, destacada = ? where id_Noticia = ?");
+        $sql->bind_param("ii", $destacado,$id);
         $r=$sql->execute();
         $sql->close();
         $con->close();

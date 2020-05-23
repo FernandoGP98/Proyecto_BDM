@@ -148,7 +148,33 @@
                                 $nota = new Noticia();
                                 $nota = $item;
                                 if($nota->seccion == $_SESSION['secciones'][$i]['id']){
+                                    if($nota->destacada == 1){
                             ?>
+                                <div class="noticia-card card destacado">
+                                <a href="noticia?id=<?=$nota->id?>">
+                                    <img class="card-img-top"
+                                        src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
+                                        alt="Card image cap">
+
+
+                                    <div class="card-body">
+
+                                        <h5 class="card-title"><?=$nota->titulo?></h5>
+
+                                        <p class="card-text"><?=$nota->descripcion?></p>
+                                    </div>
+                                    <div>
+                                        <small><?="".$nota->palabraNombre?></small>
+                                    </div>
+                                    <div class="card-img-overlay">
+                                        <img class="image-destacado" src="./resources/image/ultimo_momento_02.png"
+                                            alt="" srcset="">
+                                    </div>
+                                </a>
+                            </div>
+                            <?php  }else{
+                            ?>
+                            
                                     <div class="noticia-card card">
                                         <a href="noticia?id=<?=$nota->id?>">
                                             <img class="card-img-top"
@@ -168,7 +194,7 @@
                                         </a>
                                     </div>
                             <?php
-                                } 
+                                }} 
                             } 
                             ?>
 

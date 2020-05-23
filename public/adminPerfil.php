@@ -74,6 +74,8 @@
                                         <form action="publicar" method="POST">
                                             <input type="hidden" name="idNoticia" id="" value="<?=$nota->id?>">
                                             <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                                            <label for=""><small>Destacada</small></label>
+                                            <input type="checkbox" class="form-control" name="destacada" id="">
                                             <button class="btn btn-outline-success submit">Publicar</button>
                                         </form>
                                         <br><br>

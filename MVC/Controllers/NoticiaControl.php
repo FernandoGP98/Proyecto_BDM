@@ -108,7 +108,12 @@ class NoticiaControl{
     }
 
     public function publicar(){
-        $nota = Noticia::publicar($_POST["idNoticia"]);
+        $destacado = 0;
+        if(isset($_POST["destacada"])){
+            $destacado = 1;
+        }
+
+        $nota = Noticia::publicar($_POST["idNoticia"],$destacado);
         header("Location: perfil_administrador?id=".$_POST["userID"], 301);
     }
 }
