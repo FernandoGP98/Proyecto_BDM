@@ -102,7 +102,7 @@
                             <div class="row secciones-lista">
                                 <div class="col">
                                     Orden
-                                    #
+                                    #<?=$_SESSION['secciones'][$i]['orden']?>
                                 </div>
                                 <div class="col text-center">
                                     <?= $_SESSION['secciones'][$i]['nombre']?>
@@ -119,6 +119,19 @@
                                             <label for="">Seleccionar Color:</label>
                                             <input class="jscolor" value="<?=$_SESSION['secciones'][$i]['color']?>" name="color">
                                             <br>
+                                            <select name="orden" id="">
+                                            <?php
+                                                for ($j=0; $j < count($_SESSION['secciones']); $j++) { 
+                                                    if($_SESSION["secciones"][$i]["orden"] == $_SESSION["secciones"][$j]["orden"]){
+                                            ?>
+                                                <option value="<?=$_SESSION["secciones"][$j]["orden"]?>" selected><?=$_SESSION["secciones"][$j]["orden"]?></option>
+                                                <?php
+                                                    }else{
+                                                ?>
+                                                <option value="<?=$_SESSION["secciones"][$j]["orden"]?>"><?=$_SESSION["secciones"][$j]["orden"]?></option>
+                                                <?php }}
+                                                ?>
+                                            </select>
                                             <button class="btn btn-outline-success btn-guardar submit">Guardar</button>
                                             <input type="hidden" name="idSeccion" class="idSeccionI" value="<?=$_SESSION['secciones'][$i]['id']?>">
                                         </form>

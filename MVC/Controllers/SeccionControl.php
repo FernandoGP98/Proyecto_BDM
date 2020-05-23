@@ -3,7 +3,7 @@
 class SeccionControl{
 
     public function registarSeccion(){
-        $seccion = Seccion::registro($_POST["nombreSeccion"], $_POST["colorSeccion"]);
+        $seccion = Seccion::registro(1,$_POST["nombreSeccion"], $_POST["colorSeccion"],1);
         //$secciones = Seccion::getAll();
         Seccion::getAll();
 
@@ -13,7 +13,7 @@ class SeccionControl{
     }
 
     public function editarSeccion(){
-        $seccion = Seccion::update($_GET["idSeccion"], $_GET["color"]);
+        $seccion = Seccion::update(2,$_GET["idSeccion"], $_GET["color"],$_GET["orden"],1);
         Seccion::getAll();
         //$secciones = Seccion::getAll();
         //Response::render("adminPerfil");

@@ -9,13 +9,13 @@ class Seccion{
     public $orden;
     public $activa;
 
-    public function registro($pNombre, $pColor){
+    public function registro($opcion, $pNombre, $pColor, $activa){
         $DB= new conexion();
         $con = $DB->getConnection();
 
-
-        $sql = $con->prepare("insert into seccion (seccion_nombre, color) values (?,?);");
-        $sql->bind_param("ss", $pNombre, $pColor);
+        //insert into seccion (seccion_nombre, color) values (?,?);
+        $sql = $con->prepare("Call pSeccion(?,null,?,?,null,?)");
+        $sql->bind_param("issi", $opcion,$pNombre, $pColor,$activa);
         $r=$sql->execute();
         $sql->close();
         $con->close();
@@ -50,13 +50,13 @@ class Seccion{
         return $nota;
     }
 
-    public function update($id, $pColor){
+    public function update($opcion,$id, $pColor,$orden, $activa){
         $DB= new conexion();
         $con = $DB->getConnection();
 
-
-        $sql = $con->prepare("update seccion set color=? where id_Seccion = ?;");
-        $sql->bind_param("si", $pColor, $id);
+        //update seccion set color=? where id_Seccion = ?;
+        $sql = $con->prepare("call pSeccion(?,?,null,?,?,?)");
+        $sql->bind_param("iisii", $opcion,$id,$pColor,$orden,$activa);
         $r=$sql->execute();
         $sql->close();
         $con->close();
@@ -83,7 +83,7 @@ class Seccion{
 
         $items = [];
 
-        $sql = $con->prepare("select * from seccion");
+        $sql = $con->prepare("select * from seccion order by orden;");
         $sql->execute();
 
         $result = $sql->get_result();
