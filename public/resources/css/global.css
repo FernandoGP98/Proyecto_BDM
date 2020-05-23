@@ -50,6 +50,7 @@ hr.inSection{
     padding: 10px;
     border-bottom-left-radius: 5%;
     border-top-right-radius: 5%;
+    height: 200px;
 }
 
 .carousel .noticia-image{
@@ -122,6 +123,11 @@ div.destacado{
 }
 
 /*Noticias*/
+.imagenNoticia{
+    height: 700px;
+    width: 100%;
+}
+
 .encabezado h2{
     font-size: 16px;
     line-height: 24px;
@@ -324,3 +330,4 @@ small{
     width: 120px;
     height: 120px;
 }
+

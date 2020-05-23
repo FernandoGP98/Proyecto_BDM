@@ -50,12 +50,10 @@
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-2 p-1 d-flex justify-content-center">
-                                        <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                        <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="150px" alt="...">
                                     </div>
                                     <div class="col-5 p-0">
-                                        <a href="noticia?id=<?=$nota->id?>">
-                                            <h4 class="mb-1"><?= $nota->titulo?></h4>
-                                        </a>
+                                        <h4 class="mb-1"><?= $nota->titulo?></h4>
                                         <div>
                                             <small><?= $nota->descripcion?></small>
                                         </div>

@@ -76,4 +76,33 @@ class Imagen{
         $con->close();
         return $items;
     }
+
+    public function noticiaImagenes($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $items = [];
+
+        $sql = $con->prepare("call obtenerImagenesNoticia(?)");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            
+            while($row_data = $result->fetch_assoc()){
+                $nota = new Imagen();
+                $nota->id = $row_data["id_Imagen"];
+                $nota->imagen = $row_data["imagen"];
+            
+                array_push($items, $nota);
+
+            }
+        }else {
+            $items = null;
+        }
+        $sql->close();
+        $con->close();
+        return $items;
+    }
 }

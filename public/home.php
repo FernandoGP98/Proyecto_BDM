@@ -147,12 +147,12 @@
                             <?php foreach ($noticias as $item) {
                                 $nota = new Noticia();
                                 $nota = $item;
-                                if($nota->seccion == $_SESSION['secciones'][$i]['id'] && $nota->activa == 1 && $nota->estatus == 3){
+                                if($nota->seccion == $_SESSION['secciones'][$i]['id']){
                             ?>
                                     <div class="noticia-card card">
-                                        <a href="noticia.php">
+                                        <a href="noticia?id=<?=$nota->id?>">
                                             <img class="card-img-top"
-                                                src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                                src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
                                                 alt="Card image cap">
 
                                             <div class="card-body">
@@ -160,6 +160,10 @@
                                                 <h5 class="card-title"><?= $nota->titulo ?> </h5>
 
                                                 <p class="card-text"><?= $nota->descripcion ?></p>
+
+                                                <div>
+                                                <small><?=$nota->palabraNombre?></small>
+                                                </div>
                                             </div>
                                         </a>
                                     </div>

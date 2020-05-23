@@ -62,26 +62,28 @@
                         <div class="post-innerbox">
                         <div class="row">
                             <div class="col-2 p-1 d-flex justify-content-center">
-                                <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="50px" alt="...">
                             </div>
                             <div class="col-6 p-0">
-                                <a href="noticia?id=<?=$nota->id?>">
                                 <h4 class="mb-1"><?= $nota->titulo?></h4>
-                                </a>
                                 <div>
                                     <small><?= $nota->descripcion?></small>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                            <a href="noticiaEditar?id=<?=$nota->id?>"><button class="btn btn-outline-warning mod">Editar</button></a>
-                            <br><br>
-                            <input type="hidden" name="" class="idNoticiaI" value="<?=$nota->id?>">
-                            <input type="hidden" name="" class="noticiaNombreI" value="<?=$nota->titulo?>">
-                                <button class="btn btn-outline-danger mod btn-eliminar" >Eliminar</button>
+                                <?php if($nota->estatus == 1){
+                                ?>
+                                    <a href="noticiaEditar?id=<?=$nota->id?>"><button class="btn btn-outline-warning mod">Editar</button></a>
+                                <br><br>
+                                <input type="hidden" name="" class="idNoticiaI" value="<?=$nota->id?>">
+                                <input type="hidden" name="" class="noticiaNombreI" value="<?=$nota->titulo?>">
+                                    <button class="btn btn-outline-danger mod btn-eliminar" >Eliminar</button>
+                                <?php }?>
+                                
                             </div>
                             <div class="col-md-2 text-right">
                                 <p class="estatus">Estatus:</p>
-                                <small><?= $nota->estatus?></small>
+                                <small><?= $nota->estatusNombre?></small>
                             </div>
                         </div>
                         </div>

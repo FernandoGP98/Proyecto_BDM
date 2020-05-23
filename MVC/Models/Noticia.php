@@ -13,18 +13,25 @@ class Noticia{
     public $destacada;
     public $activa;
     public $seccion;
+    public $nombreSeccion;
     public $estatus;
+    public $estatusNombre;
     public $autor;
+    public $firma;
+    public $palabra;
+    public $palabraNombre;
+    public $video;
+    public $imagen;
 
-    public function registro($pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pAutor){
+    public function registro($pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pAutor, $pPalabra){
         $DB= new conexion();
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor) 
-        values (?,?,?,?,?,?,?,?);");
+        $sql = $con->prepare("insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor, palabra) 
+        values (?,?,?,?,?,?,?,?,?);");
         //$sql = $con->prepare("CALL noticiaRedactar(?,?,?,?,?,?,?,?);");
-        $sql->bind_param("sssssiii", $pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pAutor);
+        $sql->bind_param("sssssiiii", $pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pAutor, $pPalabra);
         $r=$sql->execute();
         $sql->close();
         $con->close();
@@ -38,7 +45,7 @@ class Noticia{
 
 
         //$sql = $con->prepare("select * from noticia where id_Noticia = ?");
-        $sql = $con->prepare("CALL noticiaGet_ById(?)");
+        $sql = $con->prepare("select * from vVerNoticia where id_Noticia = ?");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -58,11 +65,12 @@ class Noticia{
                 $nota->seccion = $row_data["seccion"];
                 $nota->estatus = $row_data["estatus"];
                 $nota->autor = $row_data["autor"];
+                $nota->nombreSeccion = $row_data["seccion_nombre"];
+                $nota->firma = $row_data["firma"];
+                $nota->palabra = $row_data["palabra"];
+                $nota->palabraNombre = $row_data["PalabraClave"];
+                $nota->video = $row_data["direccion_video"];
 
-
-                //array_push($noticias, $final);
-
-            
         }else {
             # No data actions
         }
@@ -122,7 +130,8 @@ class Noticia{
 
         $items = [];
 
-        $sql = $con->prepare("CALL noticiaGet_All()");
+        //CALL noticiaGet_All()
+        $sql = $con->prepare("select * from vNoticiaCard where estatus = 2 and activa = 1");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -133,15 +142,16 @@ class Noticia{
                 $nota->id = $row_data["id_Noticia"];
                 $nota->titulo = $row_data["Titulo"];
                 $nota->fechaPublicacion = $row_data["FechaPublicacion"];
-                $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
-                $nota->lugar = $row_data["Lugar"];
+
+
                 $nota->descripcion = $row_data["Descripcion"];
-                $nota->texto = $row_data["Texto"];
+
                 $nota->destacada = $row_data["destacada"];
                 $nota->activa = $row_data["activa"];
                 $nota->seccion = $row_data["seccion"];
-                $nota->estatus = $row_data["estatus"];
-                $nota->autor = $row_data["autor"];
+                $nota->estatus = $row_data["estatusNombre"];
+                $nota->autor = $row_data["firma"];
+                $nota->imagen = $row_data["imagen"];
 
 
                 array_push($items, $nota);
@@ -163,7 +173,7 @@ class Noticia{
         $items = [];
 
         //$sql = $con->prepare("select * from noticia where seccion = ?");
-        $sql = $con->prepare("CALL noticiaGet_BySeccion(?)");
+        $sql = $con->prepare("select * from vNoticiaCard where seccion = ? and estatus = 3");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -175,16 +185,11 @@ class Noticia{
                 $nota->id = $row_data["id_Noticia"];
                 $nota->titulo = $row_data["Titulo"];
                 $nota->fechaPublicacion = $row_data["FechaPublicacion"];
-                $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
-                $nota->lugar = $row_data["Lugar"];
                 $nota->descripcion = $row_data["Descripcion"];
-                $nota->texto = $row_data["Texto"];
-                $nota->destacada = $row_data["destacada"];
                 $nota->activa = $row_data["activa"];
                 $nota->seccion = $row_data["seccion"];
-                $nota->estatus = $row_data["estatus"];
-                $nota->autor = $row_data["autor"];
-
+                $nota->imagen = $row_data["imagen"];
+                $nota->palabraNombre = $row_data["PalabraClave"];
 
                 array_push($items, $nota);
 
@@ -287,8 +292,9 @@ class Noticia{
         $items = [];
 
         //$sql = $con->prepare("select * from noticia where autor = ?");
-        $sql = $con->prepare("CALL noticiaGet_ByUser(?)");
-        $sql->bind_param("d", $id);
+        //CALL noticiaGet_ByUser(?)
+        $sql = $con->prepare("select * from vNoticiaCard where autor = ?");
+        $sql->bind_param("i", $id);
         $sql->execute();
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
@@ -298,15 +304,13 @@ class Noticia{
                 $nota->id = $row_data["id_Noticia"];
                 $nota->titulo = $row_data["Titulo"];
                 $nota->fechaPublicacion = $row_data["FechaPublicacion"];
-                $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
-                $nota->lugar = $row_data["Lugar"];
                 $nota->descripcion = $row_data["Descripcion"];
-                $nota->texto = $row_data["Texto"];
-                $nota->destacada = $row_data["destacada"];
                 $nota->activa = $row_data["activa"];
                 $nota->seccion = $row_data["seccion"];
+                $nota->estatusNombre = $row_data["estatusNombre"];
                 $nota->estatus = $row_data["estatus"];
                 $nota->autor = $row_data["autor"];
+                $nota->imagen = $row_data["imagen"];
 
 
                 array_push($items, $nota);
@@ -343,7 +347,7 @@ class Noticia{
         $items = [];
 
         //select * from noticia where seccion = ? and activa = 1 and estatus = 3;
-        $sql = $con->prepare("select * from noticia where seccion = ? and activa = 1 order by id_Noticia limit 3");
+        $sql = $con->prepare("select * from vNoticiaCard where seccion = ? and activa = 1  and estatus = 3 order by id_Noticia limit 3;");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -356,14 +360,17 @@ class Noticia{
                 $nota->titulo = $row_data["Titulo"];
                 $nota->fechaPublicacion = $row_data["FechaPublicacion"];
                 $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
-                $nota->lugar = $row_data["Lugar"];
+                //$nota->lugar = $row_data["Lugar"];
                 $nota->descripcion = $row_data["Descripcion"];
-                $nota->texto = $row_data["Texto"];
+                //$nota->texto = $row_data["Texto"];
                 $nota->destacada = $row_data["destacada"];
                 $nota->activa = $row_data["activa"];
                 $nota->seccion = $row_data["seccion"];
-                $nota->estatus = $row_data["estatus"];
-                $nota->autor = $row_data["autor"];
+                //$nota->estatus = $row_data["estatus"];
+                $nota->estatus = $row_data["estatusNombre"];
+                $nota->autor = $row_data["firma"];
+                $nota->imagen = $row_data["imagen"];
+                $nota->palabraNombre = $row_data["PalabraClave"];
 
 
                 array_push($items, $nota);

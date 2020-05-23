@@ -9,16 +9,19 @@ class NoticiaControl{
     }
 
     public function registrarNoticia(){
-        $palabra = $_POST["palabraClave"];
-        $nuevaPalabra =$_POST["nuevaPalabra"];
+        echo $palabra = $_POST["palabraClave"];
+        echo $nuevaPalabra =$_POST["nuevaPalabra"];
 
         if($palabra == "nueva"){
             $palabra = $nuevaPalabra;
             PalabraClave::registro($palabra);
+            $palabra = null;
+            $pNueva = PalabraClave::getLast();
+            $palabra = $pNueva->id;
         }
         
         $noticia = Noticia::registro($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
-        $_POST["seccion"] , $_POST["estatus"], $_POST["autor"]);
+        $_POST["seccion"] , $_POST["estatus"], $_POST["autor"], $palabra);
 
 
         $count = count($_FILES['imagenes']["name"]);
@@ -73,14 +76,16 @@ class NoticiaControl{
         $noticia = Noticia::get($_GET["id"]);
         //$secciones = Seccion::getAll();
         $palabras = PalabraClave::getAll();
-        Response::render("editarNoticia",["nota"=>$noticia, "palabras"=>$palabras]);
+        $imagenes = Imagen::noticiaImagenes($_GET["id"]);
+        Response::render("editarNoticia",["nota"=>$noticia, "palabras"=>$palabras, "imagenes"=>$imagenes]);
     }
 
     public function verNoticia(){
         $noticia = Noticia::get($_GET["id"]);
         $comentarios = Comentario::getComentarios($_GET["id"]);
+        $imagenes = Imagen::noticiaImagenes($_GET["id"]);
         //$secciones = Seccion::getAll();
-        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios]);
+        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios, "imagenes"=>$imagenes]);
     }
 
     public function todasNotas(){

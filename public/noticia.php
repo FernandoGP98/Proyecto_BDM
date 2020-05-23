@@ -27,9 +27,13 @@
             <div class="col-md-12 text-center">
                 <div class="img-carousel">
                     <?php
-                        for ($i=0; $i < 5; $i++) { 
+                        foreach ($imagenes as $item) {
+                            $notaI = new Imagen();
+                            $notaI = $item;
+                        
                     ?>
-                    <img class="img-slide" width="100%" height="512px" src="https://imagenes.milenio.com/iD4EjdR_INry5ysU_NR7_o1SpJg=/958x596/https://www.milenio.com/uploads/media/2020/03/05/personas-sin-sintomas-de-coronavirus_0_41_958_595.jpg">
+                    <img class="img-slide imagenNoticia" width="100%" height="512px" 
+                    src="data:image/jpeg;base64,<?=base64_encode($notaI->imagen)?>">
                     <?php
                         }
                     ?>
@@ -42,7 +46,7 @@
 
         <div class="contenido-nota pt-md-3">
             <div class="row">
-                <video src="resources/video/video.mp4" 
+                <video src="<?=$nota->video?>" 
                     width=100%  height=540 controls poster="vistaprevia.jpg">
                 </video>
             </div>
@@ -53,7 +57,7 @@
             <div class="row">
                 <div class="contenido col-md-12">
                     <span class="autor">
-                        Yo mero
+                        <?=$nota->firma?>
                     </span>
                     <div class="fecha_creacion">
                         <p>
@@ -68,14 +72,14 @@
             <div class="row">
                 <div class="seccion col-md-12">
                     <p><b>Seccion: </b>
-                        <a class="mr-3" href=""><?=$nota->seccion?></a>
+                        <a class="mr-3" href=""><?=$nota->nombreSeccion?></a>
                 </div>
             </div>
 
             <div class="row">
                 <div class="palabras-clave col-md-12">
                     <p><b>Tags relacionados: </b>
-                        <a class="mr-3" href="">Coronavirus</a>
+                        <a class="mr-3" href=""><?=$nota->palabraNombre?></a>
                 </div>
             </div>
 

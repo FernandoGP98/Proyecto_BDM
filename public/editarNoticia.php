@@ -105,8 +105,17 @@
 
                             <div class="img-carousel">
                                 <div>
-                                    <img class="img-slide" width="100%" height="512px" src="resources/image/no-imagen.jpg" alt="First slide"
-                                        id="primera">
+                                <?php
+                                    foreach ($imagenes as $item) {
+                                        $notaI = new Imagen();
+                                        $notaI = $item;
+                                    
+                                ?>
+                                <img class="img-slide imagenNoticia" width="100%" height="512px" 
+                                src="data:image/jpeg;base64,<?=base64_encode($notaI->imagen)?>">
+                                <?php
+                                    }
+                                ?>
                                 </div>
                             </div>
                         </div>

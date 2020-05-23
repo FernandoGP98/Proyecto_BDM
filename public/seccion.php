@@ -39,8 +39,8 @@
                                         <?= $nota->fechaPublicacion?>
                                         </small>
                                     </div>
-                                    <div class="col-md-3 p-3 d-flex justify-content-center">
-                                        <img src="resources/image/no-imagen.jpg" width="auto" height="100px" alt="...">
+                                    <div class="col-md-3 p-3 d-flex justify-content-center seccion-imagen">
+                                        <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="100px" alt="...">
                                         <div class="row">
                                         </div>
                                     </div>
@@ -50,6 +50,10 @@
                                         </a>
                                         <div>
                                             <small><?= $nota->descripcion?></small>
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <small><?=$nota->palabraNombre?></small>
                                         </div>
                                     </div>
                                 </div>

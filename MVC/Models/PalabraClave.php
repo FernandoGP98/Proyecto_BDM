@@ -58,4 +58,27 @@ class PalabraClave{
         $con->close();
         return $items;
     }
+
+    public function getLast(){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $id= null;
+
+        $sql = $con->prepare("select ultimaPalabra()");
+        $sql->execute();
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            $row_data = $result->fetch_assoc();
+            $id = new PalabraClave();
+            $id->id = $row_data["ultimaPalabra()"];
+
+        }else {
+           // $items = null;
+        }
+        $sql->close();
+        $con->close();
+        return $id;
+    }
 }

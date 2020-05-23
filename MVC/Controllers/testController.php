@@ -35,7 +35,7 @@ class testController{
 
             $inserVideo = Video::registro($rutaFinal);
         }
-        
+
         header("Location: test", 301);
 
     }
@@ -44,6 +44,8 @@ class testController{
         $imagenes = Imagen::getAll();
         //echo '<img src="data:image/jpeg;base64,'.base64_encode($imagenes->imagen) .' "/>';
         $videos = Video::getAll();
+        $id = PalabraClave::getLast();
+        echo $id->id;
         Response::render("test",["imagenes"=>$imagenes, "videos"=>$videos]);
     }
 }
