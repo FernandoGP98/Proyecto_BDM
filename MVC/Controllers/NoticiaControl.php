@@ -84,9 +84,15 @@ class NoticiaControl{
         $noticia = Noticia::get($_GET["id"]);
         $comentarios = Comentario::getComentarios($_GET["id"]);
         $imagenes = Imagen::noticiaImagenes($_GET["id"]);
-        $relevantes = Noticia::getSeccion($noticia->seccion); 
+
+        $quitarLike = false;
+        $likes = Like::getLikes($noticia->id);
+        $likesCount = count($likes);
+
+        $relevantes = Noticia::getRelevantes($noticia->palabraNombre); 
         //$secciones = Seccion::getAll();
-        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios, "imagenes"=>$imagenes, "relevantes"=>$relevantes]);
+        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios, "imagenes"=>$imagenes, 
+        "relevantes"=>$relevantes, "likesCount"=>$likesCount, "likes"=>$likes]);
     }
 
     public function todasNotas(){

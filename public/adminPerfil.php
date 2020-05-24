@@ -24,7 +24,7 @@
                     if($_SESSION["usuario"]["imagen"] == null){
                         //echo $_SESSION["usuario"]["imagen"];
                 ?>
-                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" 
+                <img src="resources/image/no-imagen.jpg"
                 width="50%" height="auto" alt="">
                 <?php 
                 }else{
@@ -243,7 +243,7 @@
                                     <p class="card-text"><?=$nota->nombre?> <?=$nota->apPaterno?> <?=$nota->apMaterno?></p>
                                     <p class="card-text"><b>Firma:</b> <?=$nota->firma?></p>
                                     <p class="card-text"><b>Contacto:</b> <span><?=$nota->telefono?></span></p>
-                                    <input type="text" name="" class="idUsuario" value="<?=$nota->id?>">
+                                    <input type="hidden" name="" class="idUsuario" value="<?=$nota->id?>">
                                     <input type="hidden" name="" class="firmaUsuario" value="<?=$nota->firma?>">
                                     <a href="#" class="btn btn-outline-danger btn-reportero-eliminar">Eliminar</a>
                                 </div>
@@ -276,8 +276,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary cancelar" data-dismiss="modal">Cancelar</button>
                         <form action="borrarNota" method="POST" id="notaEliminar">
-                            <input type="text" name="idNoticia2" id="idNoticia2" value="">
-                            <input type="text" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                            <input type="hidden" name="idNoticia2" id="idNoticia2" value="">
+                            <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
                             <button type="button" class="btn btn-danger eliminar-noticia"       
                                 data-dismiss="modal">Eliminar</button>
                         </form>
@@ -304,8 +304,8 @@
                         <button type="button" class="btn btn-secondary cancelar-reportero"
                         data-dismiss="modal">Cancelar</button>
                         <form action="borrarUsuario" method="POST" id="borrarUsuario">
-                            <input type="text" name="idUsuario2" id="idUsuario2" value="">
-                            <input type="text" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                            <input type="hidden" name="idUsuario2" id="idUsuario2" value="">
+                            <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
                             <button type="button" class="btn btn-danger eliminar-reportero"
                             data-dismiss="modal">Eliminar</button>
                         </form>
@@ -333,7 +333,7 @@
                         <button type="button" class="btn btn-secondary cancelar-seccion"
                             data-dismiss="modal">Cancelar</button>
                             <form action="eliminarSeccion" method="POST" id="seccionEliminada">
-                                <input type="text" name="idSeccion" id="eliminarSeccionID" value="">
+                                <input type="hidden" name="idSeccion" id="eliminarSeccionID" value="">
                                 <button type="submit" class="btn btn-danger eliminar-seccion"
                                 data-dismiss="modal">Eliminar</button>
                             </form>

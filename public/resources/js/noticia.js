@@ -29,4 +29,9 @@ $(document).ready(function(){
 
     })
 
+    $(".like").click(function(){
+        var form = $("#formLike");
+        form.submit();
+    });
+
 });

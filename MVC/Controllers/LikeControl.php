@@ -2,11 +2,13 @@
 
 class LikeControl{
 
-    public function registroLike(){
-        $like = Like::registro($_POST["noticia"], $_POST["usuario"]);
+    public function moverLike(){
+        $like = Like::registro($_POST["opcion"],$_POST["noticia"], $_POST["usuario"]);
+
+        header("Location: noticia?id=".$_POST["noticia"], 301);
     }
 
     public function deleteLike(){
-        $like = Like::delete($_POST["idLike"]);
+        
     }
 }

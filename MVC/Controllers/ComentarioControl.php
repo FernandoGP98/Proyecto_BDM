@@ -12,7 +12,7 @@ class ComentarioControl{
     }
 
     public function delete(){
-        $com =  Comentario::deleteComentario($_POST["comentario_id"]);
-        
+        $com =  Comentario::deleteComentario($_POST["idComentario"]);
+        header("Location: noticia?id=".$_POST["idNoticia"], 301);
     }
 }

@@ -56,7 +56,16 @@ class Comentario{
     }
 
     public function deleteComentario($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
 
+
+        $sql = $con->prepare("delete from comentarios where id_Comentario = ?");
+        $sql->bind_param("i", $id);
+        $r=$sql->execute();
+        $sql->close();
+        $con->close();
+        return $r;
     }
 
     public function getAll(){

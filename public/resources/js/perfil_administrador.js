@@ -91,14 +91,9 @@ $(document).ready(function(){
     });
 
     $(".btn-reportero-eliminar").click(function(){
-        /* 
-            var usuarioNombre;
-            var usuarioID;
-        */
         reporteroEliminar = $(this).closest(".reportero-card");
         usuarioNombre = reporteroEliminar.find(".firmaUsuario").val();
         usuarioID = reporteroEliminar.find(".idUsuario").val();
-        //reporteroEliminar.hide(400);
         $("#idUsuario2").val(usuarioID);
         $("#usuarioNombreII").html(usuarioNombre);
         $(this).attr("data-toggle","modal");
@@ -108,7 +103,6 @@ $(document).ready(function(){
     })
 
     $(".eliminar-reportero").click(function(){
-        //alert(elementoEliminar.innerHtml());
         var form = $("#borrarUsuario");
         reporteroEliminar.hide(400);
         form.submit();

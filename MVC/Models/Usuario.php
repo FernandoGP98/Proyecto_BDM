@@ -8,10 +8,15 @@ class usuario{
         $DB= new conexion();
         $con = $DB->getConnection();
 
+        if($pFirma == null) $pFirma = "";
+        if($pNombre == null) $pNombre = "";
+        if($pApellidoP == null) $pApellidoP = "";
+        if($pApellidoM == null) $pApellidoM = "";
+        if($pTel == null) $pTel = "";
 
-        $sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,?,?)");
-        $sql->bind_param("sssssssii", $pCorreo, $contra, $pFirma, $pNombre, 
-        $pApellidoP, $pApellidoM, $pTel, $pAvatar, $pTipoUsuario);
+        $sql = $con->prepare("CALL usuarioRegistro(?,?,?,?,?,?,?,null,?)");
+        $sql->bind_param("sssssssi", $pCorreo, $contra, $pFirma, $pNombre, 
+        $pApellidoP, $pApellidoM, $pTel, $pTipoUsuario);
         $r=$sql->execute();
         $sql->close();
         $con->close();
@@ -143,7 +148,68 @@ class usuario{
         $con->close();
         return $r;
     }
-}
 
+    public function updateUsuario($id, $nombre, $paterno, $materno, $firma, $telefono, $avatar, $contraseña){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        if($avatar == null){
+            $sql = $con->prepare("CALL spUpdateUsuario(?,?,?,?,?,?, null,?)");
+            $sql->bind_param("issssss", $id, $nombre, $paterno, $materno, $firma, $telefono, $contraseña);
+        }else{
+            $sql = $con->prepare("CALL spUpdateUsuario(?,?,?,?,?,?,'$avatar',?)");
+            $sql->bind_param("issssss", $id, $nombre, $paterno, $materno, $firma, $telefono,$contraseña);    
+        }
+        $r=$sql->execute();
+        $sql->close();
+        $con->close();
+        return $r; //si falla regresa null,false,"(vacio)"
+    }
+
+    public function resssion($id){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+        //No terminado
+        $sql = $con->prepare("call psUsuarioByID(?)");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        //$id=null;
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            session_start();
+            if(isset($_SESSION['usuario'])){
+                unset($_SESSION['usuario']);
+            }
+            while($row_data = $result->fetch_assoc()){
+                if($row_data["activo"]== 0){
+                    return false;
+                }else{
+                    $_SESSION['usuario']=array(
+                        "id_Usuario"=>$row_data['id_Usuario'],
+                        "correo"=>$row_data['correo'],
+                        "contraseña"=>$row_data['contraseña'],
+                        "firma"=>$row_data['firma'],
+                        "nombre"=>$row_data['nombre'],
+                        "apellido_paterno"=>$row_data['apellido_paterno'],
+                        "apellido_materno"=>$row_data['apellido_materno'],
+                        "telefono"=>$row_data['telefono'],
+                        "imagen"=>$row_data['imagen'],
+                        "tipoUsuario"=>$row_data['tipoUsuario'],
+                        "activo"=>$row_data['activo']
+                    );
+                }
+            }
+            //$id=$row_data['tipoUsuario'];
+        }else {
+            # No data actions
+            return false;
+        }
+        $sql->close();
+        $con->close();
+        //return $_SESSION['usuario']['id_Usuario'];
+    }
+}
 
 ?>

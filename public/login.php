@@ -20,7 +20,7 @@
             <?php }?>
             
             <h2>Ingresar</h2>
-            <form action = "loginUsuario" method="get">
+            <form action = "loginUsuario" method="POST">
                 <label>Email</label>
                 <input class="form-control" type="text" name="email" placeholder="Ingrese su email">
                 <label>Contraseña</label>

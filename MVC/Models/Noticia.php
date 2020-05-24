@@ -64,7 +64,8 @@ class Noticia{
                 $nota->activa = $row_data["activa"];
                 $nota->seccion = $row_data["seccion"];
                 $nota->estatus = $row_data["estatus"];
-                $nota->autor = $row_data["Autor"];
+                $nota->autor = $row_data["autor"];
+                //$nota->autor = $row_data["Autor"];
                 $nota->nombreSeccion = $row_data["seccion_nombre"];
                 $nota->firma = $row_data["firma"];
                 $nota->palabra = $row_data["palabra"];
@@ -175,6 +176,42 @@ class Noticia{
         //$sql = $con->prepare("select * from noticia where seccion = ?");
         $sql = $con->prepare("select * from vNoticiaCard where seccion = ? and estatus = 3");
         $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = $sql->get_result();
+        if ($result->num_rows>=1) {
+            
+            while($row_data = $result->fetch_assoc()){
+                $nota = new Noticia();
+                $nota->id = $row_data["id_Noticia"];
+                $nota->titulo = $row_data["Titulo"];
+                $nota->fechaPublicacion = $row_data["FechaPublicacion"];
+                $nota->descripcion = $row_data["Descripcion"];
+                $nota->activa = $row_data["activa"];
+                $nota->seccion = $row_data["seccion"];
+                $nota->imagen = $row_data["imagen"];
+                $nota->palabraNombre = $row_data["PalabraClave"];
+
+                array_push($items, $nota);
+
+            }
+        }else {
+            # No data actions
+        }
+        $sql->close();
+        $con->close();
+        return $items;
+    }
+
+    public function getRelevantes($palabra){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $items = [];
+
+        //$sql = $con->prepare("select * from noticia where seccion = ?");
+        $sql = $con->prepare("call spNotasRelacionadas(?)");
+        $sql->bind_param("s", $palabra);
         $sql->execute();
 
         $result = $sql->get_result();

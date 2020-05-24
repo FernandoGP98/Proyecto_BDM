@@ -84,11 +84,39 @@
 
             <div class="row">
                 <div class="col-md-1 text-center">
-                    <p class="like-text">0001</p>
+                    <p class="like-text"> <b>Likes:</b> <?=$likesCount?></p>
                 </div>
                 <div class="col-md-10">
-                    <img class="like" src="resources/image/Like_gray.png" width="50px" height="50px" like="0" alt="">
-                    <img class="like" src="resources/image/Like_gray.png" width="50px" height="50px" like="1" alt="">
+                    <?php 
+                        if(isset($_SESSION['usuario'])){
+                            $usuario = $_SESSION['usuario']['id_Usuario'];
+                            $quitarLike = false;
+                            foreach ($likes as $like) {
+                                $item = new Like();
+                                $item = $like;
+                                if($item->usuario == $usuario){
+                                    $quitarLike = true;
+                                    break;
+                                }
+                            }
+                        
+                        if($quitarLike == false){     
+                    ?>  
+                    <form action="moverLike" method="post" id="formLike">
+                        <input type="hidden" name="opcion" value="1">
+                        <input type="hidden" name="noticia" value="<?=$nota->id?>">
+                        <input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                        <img class="like submit" id="moverLike" src="resources/image/Like_gray.png" width="50px" height="50px" like="0" alt="">
+                    </form>
+                        
+                    <?php }else{?>
+                    <form action="moverLike" method="post" id="formLike">
+                        <input type="hidden" name="opcion" value="2">
+                        <input type="hidden" name="noticia" value="<?=$nota->id?>">
+                        <input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
+                        <img class="like submit" id="moverLike" src="resources/image/Like_blue.png" width="50px" height="50px" like="1" alt="">
+                    </form>
+                    <?php }} ?>
                 </div>
             </div>
 
@@ -105,25 +133,30 @@
                         <div class="col-12">
                             <div class="carousel">
                                 <?php
+                                echo count($relevantes);
                         foreach ($relevantes as $item) {
                             $relevante = new Noticia();
                             $relevante = $item;
                             if($nota->id != $relevante->id){
                         ?>
                                 <div class="noticia-card card">
-                                    <a href="noticia.php">
-                                        <img class="card-img-top"
-                                            src="data:image/jpeg;base64,<?=base64_encode($relevante->imagen)?>"
-                                            alt="Card image cap">
+                                        <a href="noticia?id=<?=$relevante->id?>">
+                                            <img class="card-img-top"
+                                                src="data:image/jpeg;base64,<?=base64_encode($relevante->imagen)?>"
+                                                alt="Card image cap">
 
-                                        <div class="card-body">
+                                            <div class="card-body">
 
-                                            <h5 class="card-title"><?= $relevante->titulo ?> </h5>
+                                                <h5 class="card-title"><?= $relevante->titulo ?> </h5>
 
-                                            <p class="card-text"><?= $relevante->descripcion ?></p>
-                                        </div>
-                                    </a>
-                                </div>
+                                                <p class="card-text"><?= $relevante->descripcion ?></p>
+
+                                                <div>
+                                                <small><?=$relevante->palabraNombre?></small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 <?php
                                 } 
                             } 
@@ -131,6 +164,7 @@
                             </div>
                         </div>
                     </div>
+                    <br>
                     <hr class="inSection">
                 </div>
             </div>
@@ -144,12 +178,11 @@
                         <br>
 
                         <div class="comentarios-in">
-
                             <?php
                             foreach ($comentarios as $item) {
-                            $comentario = new Comentario();
+                                $comentario = new Comentario();
                                 $comentario = $item;
-                    ?>
+                            ?>
                             <div class="comentarios">
                                 <div class="row">
                                     <div class="col-2">
@@ -174,18 +207,23 @@
                                             <?=$comentario->comentario?>
                                         </p>
                                     </div>
-                                </div>
-                                <?php
+                                    <?php
                                     if(isset($_SESSION['usuario'])){
-                                        if($_SESSION['usuario']['id_Usuario'] == $nota->autor || $_SESSION['usuario']['tipoUsuario'] == $nota->autor){
+                                        if($_SESSION['usuario']['id_Usuario'] == $nota->autor || $_SESSION['usuario']['tipoUsuario'] == 1){
                                 ?>
-                                <div class="row">
-                                    <button class="mb-1 btn btn-submit btn-eliminar-comentario"><i
+                                <div class="col-1">
+                                    <form action="borrarComentario" method="POST">
+                                        <input type="hidden" name="idComentario" value="<?=$comentario->id?>">
+                                        <input type="hidden" name="idNoticia" value="<?=$nota->id?>">
+                                        <button class="mb-1 btn btn-submit btn-eliminar-comentario"><i
                                             class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                    
                                 </div>
                                 <?php
                                     }}
                                 ?>
+                                </div>
                                 <hr>
                             </div>
                             <?php
@@ -207,8 +245,20 @@
                             <input type="hidden" name="idUsuario" id="" value="<?=$_SESSION['usuario']['id_Usuario']?>">
                             <input type="hidden" name="noticia" id="" value="<?=$nota->id?>">
                             <button class="mb-2 btn btn-submit" type="submit">Comentar</button>
+
+                                <?php
+                                    if($_SESSION["usuario"]["imagen"] == null){
+                                        //echo $_SESSION["usuario"]["imagen"];
+                                ?>
+                                <img src="resources/image/no-imagen.jpg"
+                                class="avatar" alt="">
+                                <?php 
+                                }else{
+                                ?>
+                            
                             <img src="data:image/jpeg;base64,<?=base64_encode( $_SESSION["usuario"]["imagen"])?>"
                                 class="avatar" alt="">
+                                <?php } ?>
                         </form>
                         <?php
                         }

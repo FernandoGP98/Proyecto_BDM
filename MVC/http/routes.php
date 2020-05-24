@@ -7,6 +7,7 @@ Router::add("index", "mainController", "index");
 
 //Comentarios
 Router::add("comentario","ComentarioControl","registro");
+Router::add("borrarComentario","ComentarioControl","delete");
 
 //Noticias
 Router::add("redactar","NoticiaControl","index");
@@ -18,6 +19,9 @@ Router::add("borrarNota","NoticiaControl","deleteNoticia");
 Router::add("borrarNotaAdmin","NoticiaControl","deleteNoticiaAdmin");
 Router::add("publicar","NoticiaControl","publicar");
 Router::add("guardar","NoticiaControl","updateNoticia");
+
+//Likes
+Router::add("moverLike","LikeControl","moverLike");
 
 //Busquda
 Router::add("busqueda","NoticiaControl","buscar");
@@ -31,7 +35,9 @@ Router::add("login","UsuarioControl","login");
 Router::add("registrarse","UsuarioControl","registrarse");
 Router::add("registroByAdmin","UsuarioControl","registroByAdmin");
 Router::add("borrarUsuario","UsuarioControl","borrarUsuario");
+Router::add("borrarUsuarioPropio","UsuarioControl","borrarUsuarioPropio");
 Router::add("registrarUsuario", "UsuarioControl", "registrar");
+Router::add("modificarUsuario", "UsuarioControl", "update");
 
 
 //Secciones

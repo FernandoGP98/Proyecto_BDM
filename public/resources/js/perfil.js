@@ -4,6 +4,12 @@ $(document).ready(function(){
     var noticiaNombre;
     var noticiaID;
 
+    var reporteroEliminar;
+    var usuarioNombre;
+    var usuarioID
+
+    $(".info-registro").hide(200);
+
     $(".btn-eliminar").click(function(){
         EliminarElemento = $(this).closest(".post-outbox");
         noticiaNombre = EliminarElemento.find(".noticiaNombreI").val();
@@ -71,6 +77,26 @@ $(document).ready(function(){
         }
     }
 
-
+    $("#contraseña").keyup(function(e){
+        console.log(contra);
+        var contra = $("#contraseña").val()
+        var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+        console.log(contra);
+        if(reg.test(contra)){
+            console.log(reg.test(contra))
+            $(".info-registro").hide(200);
+            $("#contraseña").css("background-color", "#6ae68b");
+            checkContraseña = true;
+            //Registro(checkContraseña, checkCorreo);
+            $("#guardarUsuario").attr("hidden",false);
+            
+        }else{
+            $(".info-registro").show(200);
+            $("#contraseña").css("background-color", "#fa5448");
+            checkContraseña = false;
+            //Registro(checkContraseña, checkCorreo);
+            $("#guardarUsuario").attr("hidden",true);
+        }
+    });
 
 });

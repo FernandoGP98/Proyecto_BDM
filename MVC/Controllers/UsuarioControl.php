@@ -2,15 +2,14 @@
 class UsuarioControl{
     public function registrar(){
         $us = Usuario::registrarUsuario($_POST["email"], $_POST["password"], $_POST["username"], 
-        $_POST["nombre"], $_POST["ApPaterno"], $_POST["ApMaterno"], strval($_POST["telefono"]), 1, 1);
+        $_POST["nombre"], $_POST["ApPaterno"], $_POST["ApMaterno"], strval($_POST["telefono"]), null, 3);
         
-        echo $us;
         if($us == null){
             echo "null";
             Response::render("registrarse",["error"=>false, "correo"=>$_POST["email"]]);
+        }else{
+            Response::render("login", ["var"=>$us]);
         }
-
-        //Response::render("login", ["var"=>$us]);
     }
 
     public function registroByAdmin(){
@@ -23,7 +22,7 @@ class UsuarioControl{
     }
 
     public function obtener_porCorreoContra(){
-        $id = Usuario::obtenerUsuario($_GET["email"], $_GET["password"]);
+        $id = Usuario::obtenerUsuario($_POST["email"], $_POST["password"]);
 
         if($id != false){
             if($_SESSION["usuario"]["tipoUsuario"] == 1){
@@ -82,6 +81,39 @@ class UsuarioControl{
         $us = usuario::borrarUsuario($_POST["idUsuario2"]);
 
         header("Location: perfil_administrador?id=".$_POST["userID"], 301);
+    }
+
+    public function borrarUsuarioPropio(){
+        session_start();
+        if(isset($_SESSION['usuario'])){
+            unset($_SESSION['usuario']);
+            echo "borando session";
+        }
+        $us = usuario::borrarUsuario($_POST["userID"]);
+        header("Location: home", 301);
+
+    }
+
+    public function update(){
+        $avatar = null;
+        $data = null;
+        $data2 = null;
+        $name = null;
+        if(!empty($_FILES["avatar"]["name"])){
+            $name = $_FILES["avatar"]["name"];
+            $type = $_FILES["avatar"]["type"];
+            $data = file_get_contents($_FILES["avatar"]["tmp_name"]);
+            $data2 = addslashes($data);
+            $avatar = $data2;
+
+        }
+
+        $r = usuario::updateUsuario($_POST["idUsuario"], $_POST["nombre"],$_POST["paterno"], 
+            $_POST["materno"], $_POST["firma"], $_POST["telefono"], $avatar, $_POST["contraseña"]);
+        usuario::resssion($_POST["idUsuario"]);
+
+        header("Location: perfil_administrador?id=".$_POST["idUsuario"], 301);
+        
     }
 }
 ?>
