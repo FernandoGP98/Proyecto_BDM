@@ -7,7 +7,7 @@ class conexion{
 
     public static function getConnection(){
         
-        return new mysqli("localhost", "root", "root", "bdm_01");        // USO LOCAL
+        return new mysqli("localhost", "root", "", "bdm_01");        // USO LOCAL
         //return new mysqli("187.138.154.27", "root", "", "bdm_01");     // USO REMOTO
 
         //187.138.175.190

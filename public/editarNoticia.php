@@ -140,8 +140,8 @@
                         </div>
                         
 
-                        <input type="text" value="<?=$nota->id?>" name="idNoticia">
-                        <input type="text" value="1" name="estatus" id="estatusNota">
+                        <input type="text" value="<?=$nota->id?>" name="idNoticia" hidden>
+                        <input type="text" value="1" name="estatus" id="estatusNota" hidden>
                         <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
                         <div class="text-center">
                             <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota"></input>

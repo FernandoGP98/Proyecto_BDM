@@ -311,8 +311,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `usuarioGet_porCorreoContra`(
 	IN contraseña2 VARCHAR(255)
 )
 BEGIN
-	select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
-	from vUsuario
+		select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
+		from vUsuario
     where correo = correo2 and contraseña = contraseña2; 
 END;
 

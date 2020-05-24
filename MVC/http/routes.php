@@ -3,9 +3,6 @@ Router::add("home", "mainController", "index");
 Router::add("testRegistrar", "registrarTest", "registrar");
 Router::add("getTest", "registrarTest", "testGet");
 
-
-Router::add("loginUsuario", "UsuarioControl", "obtener_porCorreoContra");
-
 Router::add("index", "mainController", "index");
 
 //Comentarios
@@ -27,6 +24,7 @@ Router::add("busqueda","NoticiaControl","buscar");
 Router::add("buscar","NoticiaControl","busquedaOpcion");
 
 //Usuario
+Router::add("loginUsuario", "UsuarioControl", "obtener_porCorreoContra");
 Router::add("perfil_administrador","UsuarioControl","administrador");
 Router::add("logout","UsuarioControl","logout");
 Router::add("login","UsuarioControl","login");

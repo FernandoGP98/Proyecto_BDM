@@ -63,7 +63,7 @@
                         <div class="post-innerbox">
                         <div class="row">
                             <div class="col-2 p-1 d-flex justify-content-center">
-                                <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="50px" alt="...">
+                                <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="100px" alt="...">
                             </div>
                             <div class="col-6 p-0">
                                 <h4 class="mb-1"><?= $nota->titulo?></h4>

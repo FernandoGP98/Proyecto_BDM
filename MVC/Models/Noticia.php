@@ -64,7 +64,7 @@ class Noticia{
                 $nota->activa = $row_data["activa"];
                 $nota->seccion = $row_data["seccion"];
                 $nota->estatus = $row_data["estatus"];
-                $nota->autor = $row_data["autor"];
+                $nota->autor = $row_data["Autor"];
                 $nota->nombreSeccion = $row_data["seccion_nombre"];
                 $nota->firma = $row_data["firma"];
                 $nota->palabra = $row_data["palabra"];

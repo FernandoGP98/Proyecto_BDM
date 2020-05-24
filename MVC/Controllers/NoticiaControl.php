@@ -84,8 +84,9 @@ class NoticiaControl{
         $noticia = Noticia::get($_GET["id"]);
         $comentarios = Comentario::getComentarios($_GET["id"]);
         $imagenes = Imagen::noticiaImagenes($_GET["id"]);
+        $relevantes = Noticia::getSeccion($noticia->seccion); 
         //$secciones = Seccion::getAll();
-        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios, "imagenes"=>$imagenes]);
+        Response::render("noticia",["nota"=>$noticia, "comentarios"=>$comentarios, "imagenes"=>$imagenes, "relevantes"=>$relevantes]);
     }
 
     public function todasNotas(){

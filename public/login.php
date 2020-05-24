@@ -36,12 +36,7 @@
             <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
     </div>
-    <!--
-        NO SE QUE ES ESTO O PARA QUE ES //JAJAJ al registrarse le puse que se redireccionara al login y 
-        nomas para checar puse que mandara una variable y aqui la pongo
-        <p><?=$var?><p> 
-    -->
-            <?php include 'templates/footer.php';?>
+    <?php include 'templates/footer.php';?>
 </body>
 
 </html>

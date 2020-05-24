@@ -51,12 +51,10 @@ class usuario{
                 }
             }
             //$id=$row_data['tipoUsuario'];
-            echo $row_data['avatar'];
         }else {
             # No data actions
             return false;
         }
-
         $sql->close();
         $con->close();
         return $_SESSION['usuario']['id_Usuario'];

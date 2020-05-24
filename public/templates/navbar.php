@@ -33,7 +33,6 @@
         <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador">
             <?php
                 if($_SESSION["usuario"]["imagen"] == null){
-                    echo $_SESSION["usuario"]["imagen"];
             ?>
             <img src="resources/image/no-imagen.jpg" class="nav-avatar" alt="no avatar">
             <?php 

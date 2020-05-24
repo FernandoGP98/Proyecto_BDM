@@ -57,9 +57,9 @@
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-2 p-1 d-flex justify-content-center">
-                                        <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="150px" alt="...">
+                                        <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="100px" alt="...">
                                     </div>
-                                    <div class="col-5 p-0">
+                                    <div class="col-4 p-0">
                                         <h4 class="mb-1"><?= $nota->titulo?></h4>
                                         <div>
                                             <small><?= $nota->descripcion?></small>
@@ -72,9 +72,10 @@
                                         <p><?= $nota->autor?></p>
                                     </div>
 
-                                    <div class="col-md-1 text-center">
-                                        <p class="estatus">Estatus</p>
-                                        <small><?= $nota->estatus?></small>
+                                    <div class="col-md-2">
+                                        <br>
+                                        <h5>Estatus</h5>
+                                        <p style="text-align:left; border:0px;"><?= $nota->estatus?></p>
                                     </div>
                                     <div class="col-md-1 text-center">
                                         <br>
@@ -83,9 +84,10 @@
                                             <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
                                             <label for=""><small>Destacada</small></label>
                                             <input type="checkbox" class="form-control" name="destacada" id="">
+                                            <br>
                                             <button class="btn btn-outline-success submit">Publicar</button>
                                         </form>
-                                        <br><br>
+                                        <br>
                                         <input type="hidden" name="" class="idNoticiaI" value="<?=$nota->id?>">
                                         <input type="hidden" name="" class="noticiaNombreI" value="<?=$nota->titulo?>">
                                         <button class="btn btn-outline-danger btn-eliminar">Eliminar</button>

@@ -88,7 +88,7 @@
                             </div>
                         </div>
 
-                        <div id="imagenes-input">
+                        <div id="imagenes-input" hidden>
                             <small>Esto va HIDDEN al final, lo dejo por ahora, para asegurarme de que funciona</small>
                             <br>
                             Imagenes: <span id="contador">###</span>
@@ -108,13 +108,12 @@
                         </div>
                         
 
-                        <input type="text" value="<?=$_SESSION["usuario"]["id_Usuario"]?>" name="autor">
-                        <input type="text" value="1" name="estatus" id="estatusNota">
-                        <div class="text-center">
-                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota" hidden></input>
+                        <input type="text" value="<?=$_SESSION["usuario"]["id_Usuario"]?>" name="autor" hidden>
+                        <input type="text" value="1" name="estatus" id="estatusNota" hidden>
+                        <div class="text-center ">
+                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota" hidden>
                             <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota" hidden>
                         </div>
-                        
                     </form>
                 </div>
             </div>
