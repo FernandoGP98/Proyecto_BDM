@@ -20,8 +20,10 @@ class mainController{
             }
         }
 
+        $portada = Noticia::portada();
+
         //$noticias = Noticia::getAll();
-        Response::render("home", ["noticias"=>$noticias]);
+        Response::render("home", ["noticias"=>$noticias, "portada"=>$portada]);
     }
 }
 ?>
