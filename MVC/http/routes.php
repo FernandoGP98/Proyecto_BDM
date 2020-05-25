@@ -29,7 +29,7 @@ Router::add("buscar","NoticiaControl","busquedaOpcion");
 
 //Usuario
 Router::add("loginUsuario", "UsuarioControl", "obtener_porCorreoContra");
-Router::add("perfil_administrador","UsuarioControl","administrador");
+Router::add("perfil","UsuarioControl","perfil");
 Router::add("logout","UsuarioControl","logout");
 Router::add("login","UsuarioControl","login");
 Router::add("registrarse","UsuarioControl","registrarse");

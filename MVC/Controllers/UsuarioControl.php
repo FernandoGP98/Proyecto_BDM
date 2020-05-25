@@ -18,7 +18,7 @@ class UsuarioControl{
 
         $seccion = Seccion::update(2,$_GET["idSeccion"], $_GET["color"],$_GET["orden"],1);
         Seccion::getAll();
-        header("Location: perfil_administrador?id=".$_SESSION['usuario']['id_Usuario'], 301);
+        header("Location: perfil?id=".$_SESSION['usuario']['id_Usuario'], 301);
     }
 
     public function obtener_porCorreoContra(){
@@ -43,7 +43,7 @@ class UsuarioControl{
         }
     }
 
-    public function administrador(){
+    public function perfil(){
         session_start();
         //$secciones = Seccion::getAll();
         if($_SESSION["usuario"]["tipoUsuario"] == 1){
@@ -80,7 +80,7 @@ class UsuarioControl{
     public function borrarUsuario(){
         $us = usuario::borrarUsuario($_POST["idUsuario2"]);
 
-        header("Location: perfil_administrador?id=".$_POST["userID"], 301);
+        header("Location: perfil?id=".$_POST["userID"], 301);
     }
 
     public function borrarUsuarioPropio(){
@@ -112,7 +112,7 @@ class UsuarioControl{
             $_POST["materno"], $_POST["firma"], $_POST["telefono"], $avatar, $_POST["contraseña"]);
         usuario::resssion($_POST["idUsuario"]);
 
-        header("Location: perfil_administrador?id=".$_POST["idUsuario"], 301);
+        header("Location: perfil?id=".$_POST["idUsuario"], 301);
         
     }
 }

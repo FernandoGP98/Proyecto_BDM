@@ -7,7 +7,7 @@ class SeccionControl{
         //$secciones = Seccion::getAll();
         Seccion::getAll();
 
-        header("Location: perfil_administrador?id=".$_SESSION['usuario']['id_Usuario'], 301);
+        header("Location: perfil?id=".$_SESSION['usuario']['id_Usuario'], 301);
 
         //Response::render("adminPerfil");
     }
@@ -17,7 +17,7 @@ class SeccionControl{
         Seccion::getAll();
         //$secciones = Seccion::getAll();
         //Response::render("adminPerfil");
-        header("Location: perfil_administrador?id=".$_SESSION['usuario']['id_Usuario'], 301);
+        header("Location: perfil?id=".$_SESSION['usuario']['id_Usuario'], 301);
     }
 
     public function eliminarSeccion(){
@@ -25,7 +25,7 @@ class SeccionControl{
         Seccion::getAll();
         //$secciones = Seccion::getAll();
         //Response::render("adminPerfil");
-        header("Location: perfil_administrador?id=".$_SESSION['usuario']['id_Usuario'], 301);
+        header("Location: perfil?id=".$_SESSION['usuario']['id_Usuario'], 301);
 
     }
 

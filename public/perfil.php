@@ -37,23 +37,23 @@
             <div class="col-md-9">
                 <div class="info-usuario">
                 <form action="modificarUsuario" method="POST" enctype="multipart/form-data">
-                        <label class="form-check-label" for="">Nombre</label>
-                        <input class="form-control" type="text" name="nombre" id="" value="<?=$_SESSION['usuario']['nombre']?>">
-                        <label class="form-check-label" for="">Apellido Paterno</label>
-                        <input class="form-control" type="text" name="paterno" id="" value="<?=$_SESSION['usuario']['apellido_paterno']?>">
-                        <label class="form-check-label" for="">Apellido Materno</label>
-                        <input class="form-control" type="text" name="materno" id="" value="<?=$_SESSION['usuario']['apellido_materno']?>">
-                        <label class="form-check-label" for="">Correo</label>
-                        <input class="form-control" type="text" name="correo" id="" disabled value="<?=$_SESSION['usuario']['correo']?>">
-                        <label class="form-check-label" for="">Contraseña</label>
+                        <label class="form-check-label" for="nombre">Nombre</label>
+                        <input class="form-control" type="text" name="nombre" id="nombre" value="<?=$_SESSION['usuario']['nombre']?>">
+                        <label class="form-check-label" for="paterno">Apellido Paterno</label>
+                        <input class="form-control" type="text" name="paterno" id="paterno" value="<?=$_SESSION['usuario']['apellido_paterno']?>">
+                        <label class="form-check-label" for="materno">Apellido Materno</label>
+                        <input class="form-control" type="text" name="materno" id="materno" value="<?=$_SESSION['usuario']['apellido_materno']?>">
+                        <label class="form-check-label" for="correo">Correo</label>
+                        <input class="form-control" type="text" name="correo" id="correo" disabled value="<?=$_SESSION['usuario']['correo']?>">
+                        <label class="form-check-label" for="contraseña">Contraseña</label>
                         <input class="form-control" type="password" name="contraseña" id="contraseña" value="<?=$_SESSION["usuario"]["contraseña"]?>">
                         <div class="info-registro">
                             <small>La contraseña debe contener 1 letra mayuscula, 1 letra minuscula,
                                 1 numero y 8 caracteres</small>
                         </div>
-                        <label class="form-check-label" for="">Firma</label>
-                        <input class="form-control" type="text" name="firma" id="" value="<?=$_SESSION['usuario']['firma']?>">
-                        <label class="form-check-label" for="">Telefono</label>
+                        <label class="form-check-label" for="firma">Firma</label>
+                        <input class="form-control" type="text" name="firma" id="firma" value="<?=$_SESSION['usuario']['firma']?>">
+                        <label class="form-check-label" for="telefono">Telefono</label>
                         <input class="form-control" type="text" name="telefono" id="telefono" value="<?=$_SESSION['usuario']['telefono']?>" maxlength="10">
                         <label for="form-check-control">Avatar</label>
                         <input class="form-control" type="file" name="avatar" id="avatar" accept="image/*">
@@ -73,7 +73,7 @@
                         <div class="post-innerbox">
                         <div class="row">
                             <div class="col-2 p-1 d-flex justify-content-center">
-                                <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="100px" alt="...">
+                                <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" style="object-fit: cover;" width="100px" height="100px" alt="...">
                             </div>
                             <div class="col-6 p-0">
                                 <h4 class="mb-1"><?= $nota->titulo?></h4>

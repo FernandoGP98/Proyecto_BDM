@@ -101,7 +101,7 @@ class usuario{
 
         $items = [];
 
-        $sql = $con->prepare("select * from usuario where activo = 1 and tipoUsuario != 1");
+        $sql = $con->prepare("select * from vusuario where activo = 1 and tipoUsuario = 2");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -117,7 +117,7 @@ class usuario{
                 $nota->apPaterno = $row_data['apellido_paterno'];
                 $nota->apMaterno = $row_data['apellido_materno'];
                 $nota->telefono = $row_data['telefono'];
-                $nota->avatar = $row_data['avatar'];
+                $nota->imagen = $row_data['imagen'];
                 //$nota->avatar = $row_data['imagen'];
                 $nota->tipoUsuario = $row_data['tipoUsuario'];
                 $nota->activo = $row_data['activo'];

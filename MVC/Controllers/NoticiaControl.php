@@ -56,14 +56,14 @@ class NoticiaControl{
         $noticia = Noticia::update($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
         $_POST["seccion"] , $_POST["estatus"], $_POST["idNoticia"]);
 
-        header("Location: perfil_administrador?id=".$_POST["userID"], 301);
+        header("Location: perfil?id=".$_POST["userID"], 301);
     }
 
     public function deleteNoticia(){
         $delete = Noticia::delete($_POST["idNoticia2"]);
         $notas = Noticia::getByUser($_POST["userID"]);
         //Response::render("perfil", ["notas"=>$notas]);
-        header("Location: perfil_administrador?id=".$_POST["userID"], 301);
+        header("Location: perfil?id=".$_POST["userID"], 301);
     }
 
     public function deleteNoticiaAdmin(){
@@ -121,6 +121,6 @@ class NoticiaControl{
         }
 
         $nota = Noticia::publicar($_POST["idNoticia"],$destacado);
-        header("Location: perfil_administrador?id=".$_POST["userID"], 301);
+        header("Location: perfil?id=".$_POST["userID"], 301);
     }
 }

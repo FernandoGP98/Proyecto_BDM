@@ -116,7 +116,10 @@ class Seccion{
 
             }
         }else {
+            session_start();
+            $_SESSION['secciones']=NULL;
         }
+        
         $sql->close();
         $con->close();
         //return $items;

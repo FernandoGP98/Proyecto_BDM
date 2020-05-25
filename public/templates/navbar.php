@@ -27,10 +27,10 @@
         <?php
             if(isset($_SESSION['usuario'])){
         ?>
-        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador?id=<?=$_SESSION["usuario"]["id_Usuario"]?>">
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil?id=<?=$_SESSION["usuario"]["id_Usuario"]?>">
             <?=( $_SESSION["usuario"]["firma"])?>
         </a>
-        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil_administrador">
+        <a class="btn btn-outline-succes my-2 my-sm-0" href="perfil?id=<?=$_SESSION["usuario"]["id_Usuario"]?>">
             <?php
                 if($_SESSION["usuario"]["imagen"] == null){
             ?>

@@ -133,7 +133,6 @@
                         <div class="col-12">
                             <div class="carousel">
                                 <?php
-                                echo count($relevantes);
                         foreach ($relevantes as $item) {
                             $relevante = new Noticia();
                             $relevante = $item;

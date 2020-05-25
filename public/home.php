@@ -25,12 +25,12 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
                         <div class="carousel">
-                        <?php foreach ($portada as $item) {
+                            <?php foreach ($portada as $item) {
                                 $nota = new Noticia();
                                 $nota = $item;
                                 if($nota->destacada == 1){
                             ?>
-                                <div class="noticia-card card destacado">
+                            <div class="noticia-card card destacado">
                                 <a href="noticia?id=<?=$nota->id?>">
                                     <img class="card-img-top"
                                         src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
@@ -54,25 +54,25 @@
                             </div>
                             <?php  }else{
                             ?>
-                            
-                                    <div class="noticia-card card">
-                                        <a href="noticia?id=<?=$nota->id?>">
-                                            <img class="card-img-top"
-                                                src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
-                                                alt="Card image cap">
 
-                                            <div class="card-body">
+                            <div class="noticia-card card">
+                                <a href="noticia?id=<?=$nota->id?>">
+                                    <img class="card-img-top"
+                                        src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
+                                        alt="Card image cap">
 
-                                                <h5 class="card-title"><?= $nota->titulo ?> </h5>
+                                    <div class="card-body">
 
-                                                <p class="card-text"><?= $nota->descripcion ?></p>
+                                        <h5 class="card-title"><?= $nota->titulo ?> </h5>
 
-                                                <div>
-                                                <small><?=$nota->palabraNombre?></small>
-                                                </div>
-                                            </div>
-                                        </a>
+                                        <p class="card-text"><?= $nota->descripcion ?></p>
+
+                                        <div>
+                                            <small><?=$nota->palabraNombre?></small>
+                                        </div>
                                     </div>
+                                </a>
+                            </div>
                             <?php
                                 }
                             } 
@@ -84,7 +84,8 @@
             </div>
         </div>
         <?php
-        for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
+        if($_SESSION['secciones']!=NULL){
+            for ($i=0; $i < count($_SESSION['secciones']); $i++) { 
         ?>
         <div class="row d-flex justify-content-center">
             <div class="col-12">
@@ -104,7 +105,7 @@
                                 if($nota->seccion == $_SESSION['secciones'][$i]['id']){
                                     if($nota->destacada == 1){
                             ?>
-                                <div class="noticia-card card destacado">
+                            <div class="noticia-card card destacado">
                                 <a href="noticia?id=<?=$nota->id?>">
                                     <img class="card-img-top"
                                         src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
@@ -128,25 +129,25 @@
                             </div>
                             <?php  }else{
                             ?>
-                            
-                                    <div class="noticia-card card">
-                                        <a href="noticia?id=<?=$nota->id?>">
-                                            <img class="card-img-top"
-                                                src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
-                                                alt="Card image cap">
 
-                                            <div class="card-body">
+                            <div class="noticia-card card">
+                                <a href="noticia?id=<?=$nota->id?>">
+                                    <img class="card-img-top"
+                                        src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>"
+                                        alt="Card image cap">
 
-                                                <h5 class="card-title"><?= $nota->titulo ?> </h5>
+                                    <div class="card-body">
 
-                                                <p class="card-text"><?= $nota->descripcion ?></p>
+                                        <h5 class="card-title"><?= $nota->titulo ?> </h5>
 
-                                                <div>
-                                                <small><?=$nota->palabraNombre?></small>
-                                                </div>
-                                            </div>
-                                        </a>
+                                        <p class="card-text"><?= $nota->descripcion ?></p>
+
+                                        <div>
+                                            <small><?=$nota->palabraNombre?></small>
+                                        </div>
                                     </div>
+                                </a>
+                            </div>
                             <?php
                                 }} 
                             } 
@@ -159,6 +160,7 @@
             </div>
         </div>
         <?php
+            }    
         }
         ?>
         <div class="row d-flex justify-content-center">
@@ -166,73 +168,37 @@
                 <hr class="nextSection">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2>Reporteros destacados</h2>
+                        <h2>Firmas</h2>
                     </div>
                 </div>
                 <hr class="inSection">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
                         <div class="carousel">
+                            <?php
+                            foreach ($firmas as $us) {
+                                $usuario = new Usuario();
+                                $usuario = $us;
+                                if(isset($_SESSION['usuario'])){
+                                    if($usuario->id==$_SESSION["usuario"]["id_Usuario"]){
+                                    break;
+                                    }
+                                }                          
+                            ?>
                             <div class="noticia-card card">
                                 <a href="reportero.php">
                                     <img class="card-img-top"
-                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
+                                    src="data:image/jpeg;base64,<?=base64_encode( $usuario->imagen)?>"
                                         alt="Card image cap">
 
                                     <div class="card-body">
-                                        <h5 class="card-title">Reportero 1 </h5>
+                                        <h5 class="card-title"><?= $usuario->firma ?></h5>
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="noticia-card card">
-                                <a href="reportero.php">
-                                    <img class="card-img-top"
-                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                        alt="Card image cap">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reportero 2 </h5>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="noticia-card card">
-                                <a href="reportero.php">
-                                    <img class="card-img-top"
-                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                        alt="Card image cap">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reportero 3 </h5>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="noticia-card card">
-                                <a href="reportero.php">
-                                    <img class="card-img-top"
-                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                        alt="Card image cap">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reportero 4 </h5>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="noticia-card card">
-                                <a href="reportero.php">
-                                    <img class="card-img-top"
-                                        src="https://steamuserimages-a.akamaihd.net/ugc/861733993522449241/B3D4C96B0DF8FD4EA077003BA4A9CA6A5414FA30/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-                                        alt="Card image cap">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reportero 5 </h5>
-                                    </div>
-                                </a>
-                            </div>
-
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
