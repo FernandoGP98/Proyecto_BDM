@@ -252,7 +252,6 @@ class Noticia{
         $sql = $con->prepare("CALL noticiaBusqueda_ByTitulo(?)");
         $sql->bind_param("s", $string);
         $sql->execute();
-        echo $string;
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
             
