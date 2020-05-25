@@ -52,5 +52,7 @@ Router::add("seccion", "SeccionControl","seccion");
 Router::add("test_imagen", "testController","imagen");
 Router::add("test", "testController","test");
 
+//REPORTERO
+Router::add("reportero", "UsuarioControl","reportero");
 
 ?>

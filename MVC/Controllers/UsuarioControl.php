@@ -115,5 +115,11 @@ class UsuarioControl{
         header("Location: perfil?id=".$_POST["idUsuario"], 301);
         
     }
+
+    public function reportero(){
+        $reportero=Usuario::findUser($_GET["id"]);
+        $noticias=Noticia::getByUser($_GET["id"]);
+        Response::render("reportero", ["reportero"=>$reportero, "noticias"=>$noticias]);
+    }
 }
 ?>

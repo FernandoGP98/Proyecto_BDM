@@ -186,7 +186,7 @@
                                 }                          
                             ?>
                             <div class="noticia-card card">
-                                <a href="reportero.php">
+                                <a href="reportero?id=<?=$usuario->id?>">
                                     <img class="card-img-top"
                                     src="data:image/jpeg;base64,<?=base64_encode( $usuario->imagen)?>"
                                         alt="Card image cap">

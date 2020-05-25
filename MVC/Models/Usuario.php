@@ -70,19 +70,29 @@ class usuario{
         $con = $DB->getConnection();
         //No terminado
         //$sql = $con->prepare("select tipoUsuario from usuario where id_Usuario = ?");
-        $sql = $con->prepare("CALL usuarioTipoUsuario_ById(?)");
+        $sql = $con->prepare("select * from vusuario where id_Usuario = ?");
         $sql->bind_param("i", $id);
         $sql->execute();
 
-        $id=null;
+        $usuario = new usuario();
 
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
             //session_start();
             while($row_data = $result->fetch_assoc()){
-                $_SESSION['usuario']=array(
-                    $id = $row_data['tipoUsuario']
-                );
+               
+                $usuario->id = $row_data['id_Usuario'];
+                $usuario->correo = $row_data['correo'];
+                $usuario->contraseña= $row_data['contraseña'];
+                $usuario->firma = $row_data['firma'];
+                $usuario->nombre = $row_data['nombre'];
+                $usuario->apPaterno = $row_data['apellido_paterno'];
+                $usuario->apMaterno = $row_data['apellido_materno'];
+                $usuario->telefono = $row_data['telefono'];
+                $usuario->imagen = $row_data['imagen'];
+                $usuario->tipoUsuario = $row_data['tipoUsuario'];
+                $usuario->activo = $row_data['activo'];
+            
             }
             //$id=$row_data['tipoUsuario'];
         }else {
@@ -92,7 +102,7 @@ class usuario{
 
         $sql->close();
         $con->close();
-        return $id;
+        return $usuario;
     }
 
     public function getAll(){

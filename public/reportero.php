@@ -14,44 +14,59 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center mt-md-4">
-                <img src="https://capenetworks.com/static/images/testimonials/user-icon.svg" width="10%" height="auto"
-                    alt="">
-                <h2>Nombre</h2>
+                <?php
+                    if($reportero->imagen == null){
+                ?>
+                    <img src="resources/image/no-imagen.jpg"
+                    width="50%" height="auto" alt="" id="avatarImg">
+                <?php 
+                }else{
+                ?>
+                    <img src="data:image/jpeg;base64,<?=base64_encode( $reportero->imagen)?>"
+                        width="50%" height="auto" alt="" id="avatarImg">
+                <?php } ?>
+                <h2><?=$reportero->firma?></h2>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
                 <div class="temp">
                     <?php
-                    for ($j=0; $j <= 5; $j++) {
+
+                    for ($j=0; $j < ceil(count($noticias)/5); $j++) {
                     ?>
                     <div class="publicaciones">
                         <?php
-                            for ($i=0; $i <= 5; $i++) { 
+                        $n=0;
+                            for ($i=0; $i <= 4; $i++) {
+                                if($n<count($noticias)){
                         ?>
                         <div class="post-outbox">
                             <div class="post-innerbox">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <p>Fecha</p>
+                                        <p><?= $noticias[$n]->fechaPublicacion ?></p>
                                     </div>
                                     <div class="col-md-4 p-1 d-flex justify-content-center">
                                         <a href="noticia.php">
-                                            <img src="resources/image/no-imagen.jpg" width="auto" height="50px" alt="...">
+                                            <img src="data:image/jpeg;base64,<?=base64_encode( $noticias[$n]->imagen)?>"
+                                             width="auto" height="100px" alt="">
                                         </a>
                                     </div>
                                     <div class="col-md-6 p-0">
                                         <a href="noticia.php">
-                                            <h4 class="mb-1">Titulo</h4>
+                                            <h4 class="mb-1"><?= $noticias[$n]->titulo ?></h4>
                                         </a>
                                         <div>
-                                            <p>Descripcion</p>
+                                            <p><?= $noticias[$n]->descripcion ?></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <?php
+                        $n++;
+                                }else{break;}
                         }
                         ?>
                     </div>

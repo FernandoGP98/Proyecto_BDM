@@ -15,7 +15,7 @@
         <div class="row d-flex justify-content-center">
             <div class="mt-md-5 col-md-10">
                 <div class="card busqueda-card">
-                    <form class="form-inline my-2 my-lg-0" action="buscar" style="padding: 30px;" method="GET">
+                    <form id="fBuscar" class="form-inline my-2 my-lg-0" action="buscar" style="padding: 30px;" method="GET">
                         <div class="row" style="width:100%">
                             <div class="col-md-10">
                                 <input id="search-bar" style="width:100%; height:auto; font-size: 40px;"
@@ -23,8 +23,8 @@
                                     name="texto">
                             </div>
                             <div class="col-md-2">
-                                <a id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red"
-                                        class="fas fa-search fa-4x"> </i></a>
+                                <a href="javascript:{}" onclick="document.getElementById('fBuscar').submit(); return false;" id="search-btn" class="ml-md-4 mr-md-4" type="submit"><i id="buscar-red"
+                                        class="fas fa-search fa-4x"></i></a>
                             </div>
                         </div>
                         <div class="row mt-3" style="width: 100%">

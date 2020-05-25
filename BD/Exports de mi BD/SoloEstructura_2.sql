@@ -626,7 +626,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaBusqueda_ByTitulo`(IN p varchar(50))
 BEGIN
   select id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen 
-		from vNoticiaCard where Titulo Like CONCAT('%', p , '%') and estatus = 3
+		from vNoticiaCard where Titulo Like CONCAT('%', p , '%') and estatus = 3 and activa = 1
         order by FechaPublicacion desc;
 END ;;
 DELIMITER ;
@@ -1159,7 +1159,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `testBusquedaOpcion`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BusquedaOpcion`(
 	in opcion int,
 	IN texto VARCHAR(255),
     in fechaIni date,
@@ -1169,15 +1169,15 @@ BEGIN
     case  
 	   when opcion = 0 then
 		select id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen 
-		from vNoticiaCard where Titulo Like CONCAT('%', texto , '%') and estatus = 3
+		from vNoticiaCard where Titulo Like CONCAT('%', texto , '%') and estatus = 3 and activa = 1
         order by FechaPublicacion desc;
 	   when opcion = 1 then
 		select id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen 
-		from vNoticiaCard where PalabraClave Like CONCAT('%', texto , '%') and estatus = 3
+		from vNoticiaCard where PalabraClave Like CONCAT('%', texto , '%') and estatus = 3 and activa = 1
         order by FechaPublicacion desc;
 	   when opcion = 2 then
        SELECT id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen  
-		FROM vNoticiaCard WHERE FechaPublicacion  BETWEEN fechaIni AND fechaFin and estatus = 3
+		FROM vNoticiaCard WHERE FechaPublicacion  BETWEEN fechaIni AND fechaFin and estatus = 3 and activa = 1
         order by FechaPublicacion desc;
 	end case;
 END ;;

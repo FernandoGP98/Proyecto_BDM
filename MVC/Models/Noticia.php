@@ -283,7 +283,7 @@ class Noticia{
 
         $items = [];
 
-        $sql = $con->prepare("call testBusquedaOpcion(?,?,?,?)");
+        $sql = $con->prepare("call BusquedaOpcion(?,?,?,?)");
         $sql->bind_param("isss", $pOpcion, $pTexto, $pFechaIni,$pFechaFin);
         $sql->execute();
         $result = $sql->get_result();
@@ -319,7 +319,7 @@ class Noticia{
 
         //$sql = $con->prepare("select * from noticia where autor = ?");
         //CALL noticiaGet_ByUser(?)
-        $sql = $con->prepare("select * from vNoticiaCard where autor = ?");
+        $sql = $con->prepare("select * from vNoticiaCard where autor = ? and activa = 1");
         $sql->bind_param("i", $id);
         $sql->execute();
         $result = $sql->get_result();
