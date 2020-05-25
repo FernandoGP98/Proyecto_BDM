@@ -298,8 +298,130 @@ end =)
 delimiter ;
 /*===================================================================================================*/
 /*===================================================================================================*/
+/*
+	Stored - Para actualizar usuario y agregar avatar si es necesario
+*/
+DELIMITER //
+CREATE PROCEDURE spUpdateUsuario(
+	in pID int,
+	in pNombre varchar(20),
+    in pPaterno varchar(20),
+    in pMaterno varchar(20),
+    in pFirma varchar(30),
+    in pTelefono varchar(15),
+    in pImagen mediumblob
+    in pContraseña varchar(30)
+)
+BEGIN
+	if(pImagen is not null) then
+		insert into imagen (imagen) values (pImagen);
+        
+        update usuario set nombre=pNombre, apellido_paterno=pPaterno, apellido_materno=pMaterno, 
+			firma = pFirma, telefono = pTelefono, avatar = ultimaImagen(), contraseña = pContraseña where id_Usuario = pID;
+    else
+		update usuario set nombre=pNombre, apellido_paterno=pPaterno, apellido_materno=pMaterno, 
+			firma = pFirma, telefono = pTelefono, contraseña = pContraseña where id_Usuario = pID;
+	end if;
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Store para obtener el usuario para reactulizar los datos de la Session
+*/
+DELIMITER //
+CREATE PROCEDURE psUsuarioByID(
+	in pID int
+)
+BEGIN
+	select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
+	from vUsuario
+    where id_Usuario = pID;
+END//
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Stored - Para las noticias relacionadas con la palabra Clave
+*/
+DELIMITER //
+CREATE PROCEDURE spNotasRelacionadas(
+	in pPalabra varchar(30)
+)
+BEGIN
+	select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento,Descripcion, destacada, activa, 
+		estatus, estatusNombre, seccion, PalabraClave, imagen, firma, autor
+	from vNoticiaCard
+    where PalabraClave = pPalabra and estatus = 3
+	order by rand()
+	limit 5;
+END//
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Stored - Para dar y quitar likes
+*/
+DELIMITER //
+CREATE PROCEDURE spLike(
+	in opcion int,
+    in idNoticia int,
+    in idUsuario int
+)
+BEGIN
+	if(opcion = 1) then
+		insert into likes (noticia, usuario) values (idNoticia, idUsuario);
+	elseif(opcion = 2) then
+		delete from likes where noticia = idNoticia and usuario = idUsuario;
+    end if;
+END//
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Funsion -> Obtiene los likes totales de una noticia
+*/
+DELIMITER //
+CREATE FUNCTION fCountLikes(pNoticia int) 
+RETURNS int 
+DETERMINISTIC
+BEGIN
+	declare likesTotales int;
+    set likesTotales = (select count(id_Like) from likes where noticia = pNoticia);
+    return (likesTotales);
+END //
+DELIMITER ;
 
-
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Stored -> obtiene los likes de la noticia y usuario para comprobar si ya dio like o no a una noticia
+*/
+DELIMITER //
+CREATE PROCEDURE spGetLikes(
+	in pNoticia int
+)
+BEGIN
+	select id_Like, usuario from likes where noticia = pNoticia;
+END//
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*
+	Stored - Para las noticias de la portada (las de arriba)
+		son las mas recientes noticias dando prioridad a las destacadas
+*/
+DELIMITER //
+CREATE PROCEDURE spPortada(
+)
+BEGIN
+	select id_Noticia, Titulo, descripcion, activa, destacada, PalabraClave, imagen, FechaPublicacion
+	from vNoticiaCard where estatus = 3 and activa = 1
+	order by destacada desc, FechaPublicacion desc
+	limit 8;
+END//
+DELIMITER ;
+/*===================================================================================================*/
+/*===================================================================================================*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*/////////////////////////Modificaciones de Stored ya creado /////////////////////////////////////////////////////*/
@@ -311,11 +433,48 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `usuarioGet_porCorreoContra`(
 	IN contraseña2 VARCHAR(255)
 )
 BEGIN
-		select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
-		from vUsuario
+	select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
+	from vUsuario
     where correo = correo2 and contraseña = contraseña2; 
 END;
 
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+CREATE DEFINER=`root`@`localhost` PROCEDURE `testBusquedaOpcion`(
+	in opcion int,
+	IN texto VARCHAR(255),
+    in fechaIni date,
+    in fechaFin date
+)
+BEGIN
+    case  
+	   when opcion = 0 then
+		select id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen 
+		from vNoticiaCard where Titulo Like CONCAT('%', texto , '%') and estatus = 3
+        order by FechaPublicacion desc;
+	   when opcion = 1 then
+		select id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen 
+		from vNoticiaCard where PalabraClave Like CONCAT('%', texto , '%') and estatus = 3
+        order by FechaPublicacion desc;
+	   when opcion = 2 then
+       SELECT id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen  
+		FROM vNoticiaCard WHERE FechaPublicacion  BETWEEN fechaIni AND fechaFin and estatus = 3
+        order by FechaPublicacion desc;
+	end case;
+END
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `noticiaBusqueda_ByTitulo`(IN p varchar(50))
+BEGIN
+  select id_Noticia, Titulo, descripcion, FechaPublicacion, activa, PalabraClave, imagen 
+		from vNoticiaCard where Titulo Like CONCAT('%', p , '%') and estatus = 3
+        order by FechaPublicacion desc;
+END
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
