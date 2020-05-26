@@ -1,5 +1,4 @@
 <?php
-
 class LikeControl{
 
     public function moverLike(){
