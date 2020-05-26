@@ -187,9 +187,18 @@
                             ?>
                             <div class="noticia-card card">
                                 <a href="reportero?id=<?=$usuario->id?>">
-                                    <img class="card-img-top"
-                                    src="data:image/jpeg;base64,<?=base64_encode( $usuario->imagen)?>"
-                                        alt="Card image cap">
+
+                                    <?php
+                                        if($usuario->imagen == null){
+                                    ?>
+                                        <img style="object-fit: cover;" src="resources/image/user_icon.png" class="card-img-top" alt="Card image cap">
+                                    <?php 
+                                    }else{
+                                    ?>
+                                        <img class="card-img-top"
+                                        src="data:image/jpeg;base64,<?=base64_encode( $usuario->imagen)?>"
+                                            alt="Card image cap">
+                                    <?php } ?>
 
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $usuario->firma ?></h5>

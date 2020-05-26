@@ -34,7 +34,7 @@
             <?php
                 if($_SESSION["usuario"]["imagen"] == null){
             ?>
-            <img src="resources/image/no-imagen.jpg" class="nav-avatar" alt="no avatar">
+            <img style="object-fit: cover;" src="resources/image/user_icon.png" class="nav-avatar" alt="no avatar">
             <?php 
             }else{
             ?>

@@ -17,7 +17,7 @@
                     if($_SESSION["usuario"]["imagen"] == null){
                         //echo $_SESSION["usuario"]["imagen"];
                 ?>
-                <img src="resources/image/no-imagen.jpg"
+                <img style="object-fit: cover;" src="resources/image/user_icon.png"
                 width="50%" height="auto" alt="" id="avatarImg">
                 <?php 
                 }else{

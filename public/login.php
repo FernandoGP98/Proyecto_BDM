@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </form>
-            <br><a style="color:aliceblue" href="registrarse.php"><u>¿No tienes una cuenta? Registrate!</u></a><br>
+            <br><a style="color:aliceblue" href="registrarse"><u>¿No tienes una cuenta? Registrate!</u></a><br>
         </div>
     </div>
     <?php include 'templates/footer.php';?>

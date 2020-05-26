@@ -17,7 +17,7 @@
                 <?php
                     if($reportero->imagen == null){
                 ?>
-                    <img src="resources/image/no-imagen.jpg"
+                    <img style="object-fit: cover;" src="resources/image/user_icon.png"
                     width="50%" height="auto" alt="" id="avatarImg">
                 <?php 
                 }else{
@@ -54,7 +54,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-6 p-0">
-                                        <a href="noticia.php">
+                                        <a href="noticia?id=<?= $noticias[$n]->id ?>">
                                             <h4 class="mb-1"><?= $noticias[$n]->titulo ?></h4>
                                         </a>
                                         <div>

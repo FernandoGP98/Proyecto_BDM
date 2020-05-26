@@ -119,7 +119,7 @@
                     <?php }} ?>
                 </div>
             </div>
-
+            
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
                     <hr class="nextSection">
@@ -189,7 +189,7 @@
                                         if($comentario->imagen == null){
                                             //echo $_SESSION["usuario"]["imagen"];
                                     ?>
-                                        <img class="avatar" src="resources/image/no-imagen.jpg" alt="...">
+                                        <img class="avatar" style="object-fit: cover;" src="resources/image/user_icon.png" alt="...">
                                         <?php 
                                     }else{
                                     ?>
@@ -249,7 +249,7 @@
                                     if($_SESSION["usuario"]["imagen"] == null){
                                         //echo $_SESSION["usuario"]["imagen"];
                                 ?>
-                                <img src="resources/image/no-imagen.jpg"
+                                <img style="object-fit: cover;" src="resources/image/user_icon.png"
                                 class="avatar" alt="">
                                 <?php 
                                 }else{
