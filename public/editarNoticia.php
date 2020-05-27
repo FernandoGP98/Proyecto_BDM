@@ -8,9 +8,6 @@
     
   <!-- MIS LINKS-->
   <?php include 'links.php';?>
-    <script src="resources/js/redactar.js"></script>
-
-  
 </head>
 
 <body>
@@ -20,7 +17,7 @@
             <div class="col-md-10">
                 <div class="noticia-form">
                     <h2>Redactar noticia</h2>
-                    <form action="guardar" method="POST" id="formNota">
+                    <form action="guardar" method="POST" id="formNota" enctype="multipart/form-data">
                         <label for="">Titulo</label>
                         <input class="form-control" type="text" name="titulo" placeholder="Titulo" 
                         id="" value="<?= $nota->titulo ?>">
@@ -104,23 +101,32 @@
                                     class="mr-2 fas fa-file-upload"></i>Imagenes</label>
 
                             <div class="img-carousel">
-                                <div>
+                                
                                 <?php
                                     foreach ($imagenes as $item) {
                                         $notaI = new Imagen();
                                         $notaI = $item;
                                     
                                 ?>
-                                <img class="img-slide imagenNoticia" width="100%" height="512px" 
-                                src="data:image/jpeg;base64,<?=base64_encode($notaI->imagen)?>">
+                                <div>
+                                    <img class="img-slide" width="100%" height="512px" 
+                                    src="data:image/jpeg;base64,<?=base64_encode($notaI->imagen)?>">
+                                    <!--
+                                        Este boton va a crear un input hidden con el ID de la imagen a eliminar
+                                        El controlador recibe esos inputs, si si existen, eliminara la imagen
+                                        con el ID que venga y ya listo xdd dafdasfads
+                                    -->
+
+                                    <button id="imagenEliminar">Eliminar</button>
+                                </div>
                                 <?php
                                     }
                                 ?>
-                                </div>
+                                
                             </div>
                         </div>
 
-                        <div id="imagenes-input" hidden>
+                        <div id="imagenes-input">
                             <small>Esto va HIDDEN al final, lo dejo por ahora, para asegurarme de que funciona</small>
                             <br>
                             Imagenes: <span id="contador">###</span>
@@ -165,9 +171,7 @@
             }
         });
 
-        //tinymce.activeEditor.setContent('<span>algo mas</span>');
         </script>
-        <script src="js/redactar.js"></script>
         <script type="text/javascript" src="extras/slick/slick.min.js"></script>
         <script>
         $(function() {
@@ -178,6 +182,8 @@
             });
         });
         </script>
+        <script type="text/javascript">var imagen = parseInt("<?= count($imagenes) ?>");</script>
+        <script src="resources/js/editar_noticia.js"></script>
 </body>
 
 </html>

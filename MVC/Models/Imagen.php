@@ -25,7 +25,7 @@ class Imagen{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("select * from imagen where id_Imagen = ?;");
+        $sql = $con->prepare("CALL imagenGet_ById(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
         $result = $sql->get_result();
@@ -55,7 +55,7 @@ class Imagen{
 
         $items = [];
 
-        $sql = $con->prepare("select * from imagen");
+        $sql = $con->prepare("CALL imagenGet_All()");
         $sql->execute();
 
         $result = $sql->get_result();

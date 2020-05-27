@@ -15,7 +15,7 @@ class Comentario{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("insert into comentarios (noticia, usuario, comentario, fecha) values (?,?,?, now())");
+        $sql = $con->prepare("CALL ComentarioRegistro(?,?,?)");
         $sql->bind_param("iis", $pNoticia, $pUsuario, $pComentario);
         $r=$sql->execute();
         $sql->close();
@@ -60,7 +60,7 @@ class Comentario{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("delete from comentarios where id_Comentario = ?");
+        $sql = $con->prepare("CALL ComentarioDelete(?)");
         $sql->bind_param("i", $id);
         $r=$sql->execute();
         $sql->close();

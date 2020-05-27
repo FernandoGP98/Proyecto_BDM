@@ -74,9 +74,11 @@
                         </select>
                         <div class="contenedor-imagenes" style="width: 100%;">
                             <label for="">Imagenes</label>
+                            
                             <input type="file" name="fileImagenes[]" id="multimedia"
                                 class="input-multimedia" accept="image/*" required
                                 style="width: 70%">
+
                             <label id="img_input" for="multimedia" class="btn"><i
                                     class="mr-2 fas fa-file-upload"></i>Imagenes</label>
 
@@ -86,6 +88,7 @@
                                         id="primera">
                                 </div>
                             </div>
+
                         </div>
 
                         <div id="imagenes-input" hidden>

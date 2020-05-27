@@ -56,6 +56,21 @@ class NoticiaControl{
         $noticia = Noticia::update($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
         $_POST["seccion"] , $_POST["estatus"], $_POST["idNoticia"]);
 
+        $count = count($_FILES['imagenes']["name"]);
+        //echo $count;
+        for ($i=0; $i < $count; $i++) { 
+            if(!empty($_FILES["imagenes"]["name"][$i])){
+                $name = $_FILES["imagenes"]["name"][$i];
+                $type = $_FILES["imagenes"]["type"][$i];
+                $data = file_get_contents($_FILES["imagenes"]["tmp_name"][$i]);
+                $data2 = addslashes($data);
+                
+                $insert = Imagen::registro($data2);
+                $data = null;
+                $data2 = null;
+            }
+        }
+
         header("Location: perfil?id=".$_POST["userID"], 301);
     }
 

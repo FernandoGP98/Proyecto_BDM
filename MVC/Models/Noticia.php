@@ -27,10 +27,7 @@ class Noticia{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-
-        $sql = $con->prepare("insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor, palabra) 
-        values (?,?,?,?,?,?,?,?,?);");
-        //$sql = $con->prepare("CALL noticiaRedactar(?,?,?,?,?,?,?,?);");
+        $sql = $con->prepare("CALL noticiaRedactar(?,?,?,?,?,?,?,?,?);");
         $sql->bind_param("sssssiiii", $pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pAutor, $pPalabra);
         $r=$sql->execute();
         $sql->close();
@@ -43,9 +40,8 @@ class Noticia{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-
-        //$sql = $con->prepare("select * from noticia where id_Noticia = ?");
-        $sql = $con->prepare("select * from vVerNoticia where id_Noticia = ?");
+        //$sql = $con->prepare("select * from vVerNoticia where id_Noticia = ?");
+        $sql = $con->prepare("CALL noticiaGet_ById(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 
