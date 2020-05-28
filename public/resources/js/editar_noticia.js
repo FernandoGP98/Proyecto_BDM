@@ -110,7 +110,7 @@ function readURL(input, intento) {
             if(intento == 1){
                 $("#primera").attr("src",e.target.result)
             }else{
-                var elemento = '<div><img class="img-slide" width="100%" height="512px" src="'+e.target.result+'" alt="First slide"></div>'
+                var elemento = '<div><img class="img-slide" width="100%" height="512px" src="'+e.target.result+'" alt="First slide"> <input type="button" class="imagenEliminar btn btn-submit" value="Eliminar"></div>'
                 
                 //$("#nueva-imagen").attr("src", e.target.result);
                 $(".img-carousel").append(elemento);
@@ -130,6 +130,18 @@ function readURL(input, intento) {
         reader.readAsDataURL(input.files[0]);        
     }
 }
+
+$( '.img-carousel' ).on( 'click', 'input', function () {
+    var val = $(this).attr('id');
+    if(val != null){
+        var id=$("#imgAEliminar").val();
+        if(id!="")
+            $("#imgAEliminar").attr("value", id+"|"+val);
+        else
+            $("#imgAEliminar").attr("value", val);
+    }
+    $('.img-carousel').slick('slickRemove', $('.slick-slide').index(0));
+});
 
 $("#terminarNota").click(function(){
     $("#estatusNota").val("2");

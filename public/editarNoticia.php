@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     
-  <!-- MIS LINKS-->
-  <?php include 'links.php';?>
+    <!-- MIS LINKS-->
+    <?php include 'links.php';?>
+    <script>var imagen = parseInt("<?= count($imagenes) ?>");</script>
+        <script src="resources/js/editar_noticia.js"></script>
 </head>
 
 <body>
@@ -111,13 +113,8 @@
                                 <div>
                                     <img class="img-slide" width="100%" height="512px" 
                                     src="data:image/jpeg;base64,<?=base64_encode($notaI->imagen)?>">
-                                    <!--
-                                        Este boton va a crear un input hidden con el ID de la imagen a eliminar
-                                        El controlador recibe esos inputs, si si existen, eliminara la imagen
-                                        con el ID que venga y ya listo xdd dafdasfads
-                                    -->
 
-                                    <button id="imagenEliminar">Eliminar</button>
+                                    <input type="button" id="<?= $notaI->id ?>" class="imagenEliminar btn btn-submit" value="Eliminar">
                                 </div>
                                 <?php
                                     }
@@ -125,8 +122,10 @@
                                 
                             </div>
                         </div>
-
-                        <div id="imagenes-input">
+                        
+                        <input id="imgAEliminar" type='text' name="imgE" value="" hidden>
+                    
+                        <div id="imagenes-input" hidden>
                             <small>Esto va HIDDEN al final, lo dejo por ahora, para asegurarme de que funciona</small>
                             <br>
                             Imagenes: <span id="contador">###</span>
@@ -150,7 +149,7 @@
                         <input type="text" value="1" name="estatus" id="estatusNota" hidden>
                         <input type="hidden" name="userID" id="" value="<?=$_SESSION["usuario"]["id_Usuario"]?>">
                         <div class="text-center">
-                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota"></input>
+                            <input class="mb-2 btn btn-submit" type="button" value="Terminar" id="terminarNota">
                             <input class="mb-2 btn btn-submit" type="button" value="Guardar" id="guardarNota">
                         </div>
 
@@ -182,8 +181,6 @@
             });
         });
         </script>
-        <script type="text/javascript">var imagen = parseInt("<?= count($imagenes) ?>");</script>
-        <script src="resources/js/editar_noticia.js"></script>
 </body>
 
 </html>

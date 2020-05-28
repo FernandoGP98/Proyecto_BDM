@@ -105,4 +105,16 @@ class Imagen{
         $con->close();
         return $items;
     }
+
+    public function deleteImagen($idNoticia ,$idImagen){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $sql = $con->prepare("call noticiaImagenDelete(?,?)");
+        $sql->bind_param("ii", $idNoticia, $idImagen);
+        $sql->execute();
+
+        $sql->close();
+        $con->close();
+    }
 }

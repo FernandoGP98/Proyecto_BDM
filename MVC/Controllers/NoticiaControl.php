@@ -56,18 +56,35 @@ class NoticiaControl{
         $noticia = Noticia::update($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
         $_POST["seccion"] , $_POST["estatus"], $_POST["idNoticia"]);
 
-        $count = count($_FILES['imagenes']["name"]);
-        //echo $count;
-        for ($i=0; $i < $count; $i++) { 
-            if(!empty($_FILES["imagenes"]["name"][$i])){
-                $name = $_FILES["imagenes"]["name"][$i];
-                $type = $_FILES["imagenes"]["type"][$i];
-                $data = file_get_contents($_FILES["imagenes"]["tmp_name"][$i]);
-                $data2 = addslashes($data);
-                
-                $insert = Imagen::registro($data2);
-                $data = null;
-                $data2 = null;
+        
+        if($_POST["imgE"]!=""){
+            $imagenes = Imagen::noticiaImagenes($_POST["idNoticia"]);
+            $imgE[]=explode("|", $_POST["imgE"]);
+            foreach ($imagenes as $item) {
+                $img = new Imagen();
+                $img=$item;
+                for ($i=0; $i < count($imgE[0]); $i++) { 
+                    if($img->id==intval($imgE[0][$i])){
+                        Imagen::deleteImagen($_POST["idNoticia"] ,$img->id);
+                    }
+                }
+            }
+        }
+
+        if(isset($_FILES['imagenes'])){
+            $count = count($_FILES['imagenes']["name"]);
+            //echo $count;
+            for ($i=0; $i < $count; $i++) { 
+                if(!empty($_FILES["imagenes"]["name"][$i])){
+                    $name = $_FILES["imagenes"]["name"][$i];
+                    $type = $_FILES["imagenes"]["type"][$i];
+                    $data = file_get_contents($_FILES["imagenes"]["tmp_name"][$i]);
+                    $data2 = addslashes($data);
+                    
+                    $insert = Imagen::registro($data2);
+                    $data = null;
+                    $data2 = null;
+                }
             }
         }
 
