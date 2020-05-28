@@ -48,25 +48,25 @@ class Noticia{
         $result = $sql->get_result();
         if ($result->num_rows>=1) {
             $row_data = $result->fetch_assoc();
-                $nota = new Noticia();
-                $nota->id = $row_data["id_Noticia"];
-                $nota->titulo = $row_data["Titulo"];
-                $nota->fechaPublicacion = $row_data["FechaPublicacion"];
-                $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
-                $nota->lugar = $row_data["Lugar"];
-                $nota->descripcion = $row_data["Descripcion"];
-                $nota->texto = $row_data["Texto"];
-                $nota->destacada = $row_data["destacada"];
-                $nota->activa = $row_data["activa"];
-                $nota->seccion = $row_data["seccion"];
-                $nota->estatus = $row_data["estatus"];
-                $nota->autor = $row_data["autor"];
-                //$nota->autor = $row_data["Autor"];
-                $nota->nombreSeccion = $row_data["seccion_nombre"];
-                $nota->firma = $row_data["firma"];
-                $nota->palabra = $row_data["palabra"];
-                $nota->palabraNombre = $row_data["PalabraClave"];
-                $nota->video = $row_data["direccion_video"];
+            $nota = new Noticia();
+            $nota->id = $row_data["id_Noticia"];
+            $nota->titulo = $row_data["Titulo"];
+            $nota->fechaPublicacion = $row_data["FechaPublicacion"];
+            $nota->fechaAcontesimiento = $row_data["FechaAcontesimiento"];
+            $nota->lugar = $row_data["Lugar"];
+            $nota->descripcion = $row_data["Descripcion"];
+            $nota->texto = $row_data["Texto"];
+            $nota->destacada = $row_data["destacada"];
+            $nota->activa = $row_data["activa"];
+            $nota->seccion = $row_data["seccion"];
+            $nota->estatus = $row_data["estatus"];
+            $nota->autor = $row_data["autor"];
+            //$nota->autor = $row_data["Autor"];
+            $nota->nombreSeccion = $row_data["seccion_nombre"];
+            $nota->firma = $row_data["firma"];
+            $nota->palabra = $row_data["palabra"];
+            $nota->palabraNombre = $row_data["PalabraClave"];
+            $nota->video = $row_data["direccion_video"];
 
         }else {
             # No data actions

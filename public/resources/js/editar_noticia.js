@@ -86,11 +86,8 @@ $("#multimedia").change(function() {
 });
 
 $("#multimedia-v").change(function(){
-    var value = '     <i class="fas fa-check-circle"></i>'
-    $("#video_input").append(value);
     valVideo = true;
-
-    validar(valImagen, valVideo,valTitulo, valDescripcion, valTexto, valLugar, valFecha);
+    //validar(valImagen, valVideo,valTitulo, valDescripcion, valTexto, valLugar, valFecha);
 });
 
 function sliderInit(){
@@ -130,6 +127,12 @@ function readURL(input, intento) {
         reader.readAsDataURL(input.files[0]);        
     }
 }
+
+$(document).on("change", "#multimedia-v", function() {
+    var $source = $('#video_here');
+    $source[0].src = URL.createObjectURL(this.files[0]);
+    $source.parent()[0].load();
+  });
 
 $( '.img-carousel' ).on( 'click', 'input', function () {
     var val = $(this).attr('id');

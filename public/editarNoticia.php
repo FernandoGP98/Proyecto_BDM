@@ -141,7 +141,11 @@
                                 <label id="video_input" for="multimedia-v" class="btn">
                                     <i class="mr-2 fas fa-file-upload"></i>
                                     Video
-                                </label>                                
+                                </label>
+                                <video width="100%" height="512px" controls>
+                                <source src="<?= $nota->video ?>" id="video_here">
+                                    Your browser does not support HTML5 video.
+                                </video>                       
                         </div>
                         
 

@@ -88,6 +88,21 @@ class NoticiaControl{
             }
         }
 
+        if(!empty($_FILES["video"]["name"])){
+            $video = Video::getById($_POST["idNoticia"]);
+
+            Video::deleteById($_POST["idNoticia"],$video->idVideo);
+            
+            $nuevoNombre = uniqid() .".mp4";
+            $rutaDeGuardado = "public/resources/video". "/" . $nuevoNombre;
+            $rutaFinal = "resources/video". "/" . $nuevoNombre;
+            move_uploaded_file($_FILES["video"]["tmp_name"], $rutaDeGuardado);
+
+            $inserVideo = Video::registro($rutaFinal);
+        }else{
+            echo "No entro";
+        }
+
         header("Location: perfil?id=".$_POST["userID"], 301);
     }
 
@@ -109,6 +124,7 @@ class NoticiaControl{
         //$secciones = Seccion::getAll();
         $palabras = PalabraClave::getAll();
         $imagenes = Imagen::noticiaImagenes($_GET["id"]);
+        
         Response::render("editarNoticia",["nota"=>$noticia, "palabras"=>$palabras, "imagenes"=>$imagenes]);
     }
 
