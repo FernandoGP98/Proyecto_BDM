@@ -83,10 +83,7 @@
                                     class="mr-2 fas fa-file-upload"></i>Imagenes</label>
 
                             <div class="img-carousel">
-                                <div>
-                                    <img class="img-slide" width="100%" height="512px" src="resources/image/no-imagen.jpg" alt="First slide"
-                                        id="primera">
-                                </div>
+
                             </div>
 
                         </div>
@@ -107,7 +104,11 @@
                                 <label id="video_input" for="multimedia-v" class="btn">
                                     <i class="mr-2 fas fa-file-upload"></i>
                                     Video
-                                </label>                                
+                                </label>
+                                <video width="100%" height="512px" controls>
+                                <source src="<?= $nota->video ?>" id="video_here">
+                                    Your browser does not support HTML5 video.
+                                </video>                                                     
                         </div>
                         
 
@@ -127,7 +128,6 @@
             selector: '#texto'
         });
         </script>
-        <script src="js/redactar.js"></script>
         <script type="text/javascript" src="extras/slick/slick.min.js"></script>
         <script>
         $(function() {

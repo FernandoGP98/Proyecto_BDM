@@ -9,7 +9,7 @@
     <!-- MIS LINKS-->
     <?php include 'links.php';?>
     <script>var imagen = parseInt("<?= count($imagenes) ?>");</script>
-        <script src="resources/js/editar_noticia.js"></script>
+    <script src="resources/js/editar_noticia.js"></script>
 </head>
 
 <body>
@@ -123,9 +123,9 @@
                             </div>
                         </div>
                         
-                        <input id="imgAEliminar" type='text' name="imgE" value="">
+                        <input id="imgAEliminar" type='text' name="imgE" value="" hidden>
                     
-                        <div id="imagenes-input">
+                        <div id="imagenes-input" hidden>
                             <small>Esto va HIDDEN al final, lo dejo por ahora, para asegurarme de que funciona</small>
                             <br>
                             Imagenes: <span id="contador">###</span>
@@ -160,7 +160,7 @@
                     </form>
                 </div>
             </div>
-            <div id=anterior hidden>
+            <div id="anterior" hidden>
                 <?= $nota->texto ?>
             </div>
         </div>

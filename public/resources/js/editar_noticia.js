@@ -104,16 +104,14 @@ function readURL(input, intento) {
 
         reader.onload = function(e) {
 
-            if(intento == 1){
-                $("#primera").attr("src",e.target.result)
-            }else{
+            
                 var elemento = '<div><img class="img-slide" width="100%" height="512px" src="'+e.target.result+'" alt="First slide"> <input type="button" class="imagenEliminar btn btn-submit" value="Eliminar"><p id="'+intento+'"></p></div>'
                 
                 //$("#nueva-imagen").attr("src", e.target.result);
                 $(".img-carousel").append(elemento);
                 $('.img-carousel').slick("unslick");
                 sliderInit();
-            }
+            
             
         }
 
@@ -149,8 +147,6 @@ $( '.img-carousel' ).on( 'click', 'input', function () {
     console.log(i);
     $('.img-carousel').slick('slickRemove', i);
   
-    
-    console.log("Id del p: "+inputId);
     $("#imagenes-input").find("#"+inputId).remove();
     imagen--;
     $("#contador").html(imagen);
