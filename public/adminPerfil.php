@@ -237,8 +237,13 @@
                                 $nota = $item;
                             ?>
                             <div class="card col-3 reportero-card">
-                                <img class="card-img-top reportero-imagen" src="resources/image/no-imagen.jpg"
-                                    alt="Card image">
+                            <?php
+                                if($nota->imagen==null){
+                            ?>
+                            <img style="object-fit: cover;" height="150px" src="resources/image/user_icon.png" alt="no avatar">
+                            <?php }else{ ?>
+                                <img style="object-fit: cover;" height="150px" src="data:image/jpeg;base64,<?=base64_encode( $nota->imagen )?>" alt="no cargo">
+                            <?php } ?>
                                 <div class="card-body">
                                     <p class="card-text"><?=$nota->nombre?> <?=$nota->apPaterno?> <?=$nota->apMaterno?></p>
                                     <p class="card-text"><b>Firma:</b> <?=$nota->firma?></p>
