@@ -17,7 +17,7 @@ create table if not exists Seccion(
     seccion_nombre varchar(30),
     color varchar(8),
     orden int,
-    activa bit,
+    activa bit default 1,
     primary key (id_Seccion)
 );
 
@@ -50,7 +50,7 @@ create table if not exists Usuario(
     telefono varchar(15),
     avatar int(10) unsigned not null,
     tipoUsuario int(10) unsigned not null,
-    activo bit default 0,
+    activo bit default 1,
     primary key (id_Usuario),
     constraint fk_usuario_imagen foreign key (avatar) references Imagen(id_Imagen),
     constraint fk_usuario_tipoUsuario foreign key (tipoUsuario) references TipoUsuario(id_TipoUsuario)
@@ -59,7 +59,7 @@ create table if not exists Usuario(
 create table if not exists Noticia(
 	id_Noticia int unsigned auto_increment not null,
     Titulo varchar(50),
-    FechaPublicacion date,
+    FechaPublicacion date default current_timestamp(),
     FechaAcontesimiento date,
     Lugar varchar(250),
     Descripcion varchar(255),
@@ -83,7 +83,7 @@ create table if not exists Comentarios(
     noticia int(10) unsigned not null,
     usuario int(10) unsigned not null,
     comentario varchar(255),
-    fecha date,
+    fecha date default current_timestamp(),
     primary key	(id_Comentario),
     constraint fk_Comentarios_Noticia foreign key (noticia) references Noticia (id_Noticia),
     constraint fk_Comentarios_Usuario foreign key (usuario) references Usuario (id_Usuario)
