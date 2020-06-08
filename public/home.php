@@ -42,9 +42,10 @@
                                         <h5 class="card-title"><?=$nota->titulo?></h5>
 
                                         <p class="card-text"><?=$nota->descripcion?></p>
-                                    </div>
-                                    <div>
-                                        <small><?="".$nota->palabraNombre?></small>
+
+                                        <div>
+                                            <small><?=$nota->palabraNombre?></small>
+                                        </div>
                                     </div>
                                     <div class="card-img-overlay">
                                         <img class="image-destacado" src="./resources/image/ultimo_momento_02.png"
@@ -117,10 +118,12 @@
                                         <h5 class="card-title"><?=$nota->titulo?></h5>
 
                                         <p class="card-text"><?=$nota->descripcion?></p>
+
+                                        <div>
+                                            <small><?="".$nota->palabraNombre?></small>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <small><?="".$nota->palabraNombre?></small>
-                                    </div>
+
                                     <div class="card-img-overlay">
                                         <img class="image-destacado" src="./resources/image/ultimo_momento_02.png"
                                             alt="" srcset="">
@@ -191,13 +194,14 @@
                                     <?php
                                         if($usuario->imagen == null){
                                     ?>
-                                        <img style="object-fit: cover;" src="resources/image/user_icon.png" class="card-img-top" alt="Card image cap">
+                                    <img style="object-fit: cover;" src="resources/image/user_icon.png"
+                                        class="card-img-top" alt="Card image cap">
                                     <?php 
                                     }else{
                                     ?>
-                                        <img class="card-img-top"
+                                    <img class="card-img-top"
                                         src="data:image/jpeg;base64,<?=base64_encode( $usuario->imagen)?>"
-                                            alt="Card image cap">
+                                        style="object-fit:cover;" alt="Card image cap">
                                     <?php } ?>
 
                                     <div class="card-body">

@@ -7,7 +7,7 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-logo">
     <div class="logo">
         <a class="" href="home">
-            <h1>Noticias</h1>
+            <h1>Ultimo reporte</h1>
         </a>
     </div>
 

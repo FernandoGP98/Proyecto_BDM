@@ -253,11 +253,11 @@ class Noticia{
                 $nota->id = $row_data["id_Noticia"];
                 $nota->titulo = $row_data["Titulo"];
                 $nota->fechaPublicacion = $row_data["FechaPublicacion"];
+                $nota->fechaAcontecimiento = $row_data["FechaAcontesimiento"];
                 $nota->descripcion = $row_data["descripcion"];
                 $nota->activa = $row_data["activa"];
                 $nota->imagen = $row_data["imagen"];
                 $nota->palabraNombre = $row_data["PalabraClave"];
-
 
                 array_push($items, $nota);
 
@@ -287,6 +287,7 @@ class Noticia{
                 $nota->id = $row_data["id_Noticia"];
                 $nota->titulo = $row_data["Titulo"];
                 $nota->fechaPublicacion = $row_data["FechaPublicacion"];
+                $nota->fechaAcontecimiento = $row_data["FechaAcontesimiento"];
                 $nota->descripcion = $row_data["descripcion"];
                 $nota->activa = $row_data["activa"];
                 $nota->imagen = $row_data["imagen"];

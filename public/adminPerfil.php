@@ -56,11 +56,11 @@
                         <div class="post-outbox">
                             <div class="post-innerbox">
                                 <div class="row">
-                                    <div class="col-2 p-1 d-flex justify-content-center">
-                                        <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="auto" height="100px" alt="...">
+                                    <div class="col-md-2 p-1 d-flex justify-content-center">
+                                        <img src="data:image/jpeg;base64,<?=base64_encode($nota->imagen)?>" width="80%" height="180px" style="object-fit:cover;" alt="...">
                                     </div>
                                     <div class="col-4 p-0">
-                                        <h4 class="mb-1"><?= $nota->titulo?></h4>
+                                        <a  href="noticia?id=<?= $nota->id ?>"><h4 class="mb-1"><?= $nota->titulo?></h4></a>
                                         <div>
                                             <small><?= $nota->descripcion?></small>
                                         </div>

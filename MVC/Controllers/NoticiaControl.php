@@ -113,7 +113,7 @@ class NoticiaControl{
             $inserVideo = Video::registro($rutaFinal);
         }
 
-        //header("Location: perfil?id=".$_POST["userID"], 301);
+        header("Location: perfil?id=".$_POST["userID"], 301);
     }
 
     public function deleteNoticia(){

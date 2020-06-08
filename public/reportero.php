@@ -48,10 +48,10 @@
                                         <p><?= $noticias[$n]->fechaPublicacion ?></p>
                                     </div>
                                     <div class="col-md-4 p-1 d-flex justify-content-center">
-                                        <a href="noticia.php">
+                                        
                                             <img src="data:image/jpeg;base64,<?=base64_encode( $noticias[$n]->imagen)?>"
                                              width="auto" height="100px" alt="">
-                                        </a>
+                                        
                                     </div>
                                     <div class="col-md-6 p-0">
                                         <a href="noticia?id=<?= $noticias[$n]->id ?>">

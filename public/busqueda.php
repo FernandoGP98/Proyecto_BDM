@@ -33,7 +33,7 @@
                                 <select name="opcion" id="custom-busqueda" class="form-control">
                                     <option value="0" selected>Titulo</option>
                                     <option value="1">Palabra Clave</option>
-                                    <option value="2">Rango de Fecha</option>
+                                    <option value="2">Por fecha de publicacion</option>
                                 </select>
                             </div>
                         </div>
@@ -68,7 +68,8 @@
                                 <div class="row">
                                     <div class="col-md-2 p-3 d-flex justify-content-end">
                                         <small>
-                                            <?= $nota->fechaPublicacion?>
+                                            Sucedio:   
+                                            <?= $nota->fechaAcontecimiento?>
                                         </small>
                                     </div>
                                     <div class="col-md-3 p-3 d-flex justify-content-center">
@@ -87,6 +88,10 @@
                                         <div>
                                             <small><?=$nota->palabraNombre?></small>
                                         </div>
+                                        <small>
+                                            Publicada:   
+                                            <?= $nota->fechaPublicacion?>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
