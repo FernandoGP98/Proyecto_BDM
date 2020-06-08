@@ -151,7 +151,7 @@ class usuario{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-        $sql = $con->prepare("call usuarioBorrar();");
+        $sql = $con->prepare("call usuarioBorrar(?);");
         $sql->bind_param("i", $id);
         $r=$sql->execute();
         $sql->close();

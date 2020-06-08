@@ -166,7 +166,7 @@ class NoticiaControl{
 
     public function busquedaOpcion(){
         //$secciones = Seccion::getAll();
-        $fechaBase = "2020-05-01";
+
         //if($_GET["has"])
         $notas = Noticia::busquedaOpcion($_GET["opcion"], $_GET["texto"], $_GET["desdeFecha"], $_GET["hastaFecha"]);
         Response::render("busqueda",["notas"=>$notas]);

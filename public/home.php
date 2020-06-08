@@ -186,7 +186,8 @@
                                     if($usuario->id==$_SESSION["usuario"]["id_Usuario"]){
                                     break;
                                     }
-                                }                          
+                                }
+                                if($usuario->activo==1)  {                        
                             ?>
                             <div class="noticia-card card">
                                 <a href="reportero?id=<?=$usuario->id?>">
@@ -210,6 +211,7 @@
                                 </a>
                             </div>
                             <?php
+                                }
                             }
                             ?>
                         </div>

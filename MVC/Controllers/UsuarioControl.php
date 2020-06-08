@@ -87,9 +87,9 @@ class UsuarioControl{
         session_start();
         if(isset($_SESSION['usuario'])){
             unset($_SESSION['usuario']);
-            echo "borando session";
         }
         $us = usuario::borrarUsuario($_POST["userID"]);
+        
         header("Location: home", 301);
 
     }
