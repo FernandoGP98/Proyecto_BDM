@@ -76,14 +76,12 @@ class Noticia{
         return $nota;
     }
 
-    public function update($pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $id){
+    public function update($pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $id, $pPalabra){
         $DB= new conexion();
         $con = $DB->getConnection();
 
-
-        $sql = $con->prepare("update noticia set Titulo=?, FechaAcontesimiento = ?, Lugar = ?, Descripcion = ?, Texto =?, seccion = ?, estatus=? where id_Noticia = ?;");
-        //$sql = $con->prepare("CALL noticiaRedactar(?,?,?,?,?,?,?,?);");
-        $sql->bind_param("sssssiii", $pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $id);
+        $sql = $con->prepare("CALL noticiaUpdate(?,?,?,?,?,?,?,?,?);");
+        $sql->bind_param("sssssiiii", $pTitulo, $pFechaAcotencimiento, $pLugar, $pDescripcion, $pTexto, $pSeccion, $pEstatus, $pPalabra, $id);
         $r=$sql->execute();
         $sql->close();
         $con->close();
@@ -127,8 +125,7 @@ class Noticia{
 
         $items = [];
 
-        //CALL noticiaGet_All()
-        $sql = $con->prepare("select * from vNoticiaCard where estatus = 2 and activa = 1");
+        $sql = $con->prepare("CALL noticiaGet_All()");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -170,7 +167,7 @@ class Noticia{
         $items = [];
 
         //$sql = $con->prepare("select * from noticia where seccion = ?");
-        $sql = $con->prepare("select * from vNoticiaCard where seccion = ? and estatus = 3");
+        $sql = $con->prepare("CALL noticiaGet_AllBySeccion(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -313,9 +310,8 @@ class Noticia{
 
         $items = [];
 
-        //$sql = $con->prepare("select * from noticia where autor = ?");
-        //CALL noticiaGet_ByUser(?)
-        $sql = $con->prepare("select * from vNoticiaCard where autor = ? and activa = 1");
+        //$sql = $con->prepare("select * from vNoticiaCard where autor = ? and activa = 1");
+        $sql = $con->prepare("CALL noticiaGet_ByUser(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
         $result = $sql->get_result();
@@ -351,9 +347,8 @@ class Noticia{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-        //delete from seccion where id_seccion=1;
-        //$sql = $con->prepare("delete from noticia where id_Noticia = ?");
-        $sql = $con->prepare("update noticia set estatus = 3, destacada = ? where id_Noticia = ?");
+        //$sql = $con->prepare("update noticia set estatus = 3, destacada = ? where id_Noticia = ?");
+        $sql = $con->prepare("CALL noticiaPubicar(?,?)");
         $sql->bind_param("ii", $destacado,$id);
         $r=$sql->execute();
         $sql->close();
@@ -368,10 +363,10 @@ class Noticia{
 
         $items = [];
 
-        //select * from noticia where seccion = ? and activa = 1 and estatus = 3;
-        $sql = $con->prepare("select * from vNoticiaCard where seccion = ? and activa = 1  and estatus = 3 
+        /*$sql = $con->prepare("select * from vNoticiaCard where seccion = ? and activa = 1  and estatus = 3 
             order by destacada desc, FechaPublicacion desc 
-            limit 6;");
+            limit 6;");*/
+        $sql = $con->prepare("CALL noticiaGet_Home(?);");
         $sql->bind_param("i", $id);
         $sql->execute();
 

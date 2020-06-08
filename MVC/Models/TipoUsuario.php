@@ -6,28 +6,13 @@ class TipoUsuario{
     public $id;
     public $tipoUsuario;
 
-    public function registro(){
-    }
-
-    public function get($id){
-
-    }
-
-    public function update($id){
-        
-    }
-
-    public function delete($id){
-
-    }
-
     public function getAll(){
         $DB= new conexion();
         $con = $DB->getConnection();
 
         $items = [];
 
-        $sql = $con->prepare("select * from tipousuario");
+        $sql = $con->prepare("CALL tipoUsuarioGet_All();");
         $sql->execute();
 
         $result = $sql->get_result();

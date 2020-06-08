@@ -27,7 +27,7 @@ class Seccion{
         $con = $DB->getConnection();
         $nota = null;
 
-        $sql = $con->prepare("select * from seccion where id_Seccion = ?");
+        $sql = $con->prepare("CALL seccionGet_ById(?);");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -67,7 +67,7 @@ class Seccion{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-        $sql = $con->prepare("delete from seccion where id_Seccion = ?;");
+        $sql = $con->prepare("CALL seccionDelete_ById(?);");
         $sql->bind_param("i", $id);
         $r=$sql->execute();
         $sql->close();
@@ -83,7 +83,7 @@ class Seccion{
 
         $items = [];
 
-        $sql = $con->prepare("select * from seccion order by orden;");
+        $sql = $con->prepare("CALL seccionGet_AllOrder();");
         $sql->execute();
 
         $result = $sql->get_result();

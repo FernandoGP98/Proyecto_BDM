@@ -11,24 +11,12 @@ class PalabraClave{
         $con = $DB->getConnection();
 
 
-        $sql = $con->prepare("insert into palabraclave (PalabraClave) values (?);");
+        $sql = $con->prepare("CALL palabraClaveRegistrar(?);");
         $sql->bind_param("s", $pPalabra);
         $r=$sql->execute();
         $sql->close();
         $con->close();
         //return $r;
-    }
-
-    public function get($id){
-
-    }
-
-    public function update($id){
-        
-    }
-
-    public function delete($id){
-
     }
 
     public function getAll(){
@@ -37,7 +25,7 @@ class PalabraClave{
 
         $items = [];
 
-        $sql = $con->prepare("select * from palabraclave");
+        $sql = $con->prepare("Call palabraClaveGet_All");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -65,7 +53,7 @@ class PalabraClave{
 
         $id= null;
 
-        $sql = $con->prepare("select ultimaPalabra()");
+        $sql = $con->prepare("CALL palabraClaveGet_Ultima();");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -73,6 +61,31 @@ class PalabraClave{
             $row_data = $result->fetch_assoc();
             $id = new PalabraClave();
             $id->id = $row_data["ultimaPalabra()"];
+
+        }else {
+           // $items = null;
+        }
+        $sql->close();
+        $con->close();
+        return $id;
+    }
+
+    public function getByText($palabra){
+        $DB= new conexion();
+        $con = $DB->getConnection();
+
+        $id= null;
+
+        $sql = $con->prepare("CALL palabraclaveget_ByTexto(?)");
+        $sql->bind_param("s", $palabra);
+        $sql->execute();
+
+        $result = $sql->get_result();
+        $id = null;
+        if ($result->num_rows>=1) {
+            $row_data = $result->fetch_assoc();
+            $id = new PalabraClave();
+            $id->id = $row_data["id_PalabraClave"];
 
         }else {
            // $items = null;

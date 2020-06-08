@@ -68,9 +68,9 @@ class usuario{
     public function findUser($id){
         $DB= new conexion();
         $con = $DB->getConnection();
-        //No terminado
-        //$sql = $con->prepare("select tipoUsuario from usuario where id_Usuario = ?");
-        $sql = $con->prepare("select * from vusuario where id_Usuario = ?");
+
+        //$sql = $con->prepare("select * from vusuario where id_Usuario = ?");
+        $sql = $con->prepare("CALL usuarioGet_ById(?)");
         $sql->bind_param("i", $id);
         $sql->execute();
 
@@ -111,7 +111,7 @@ class usuario{
 
         $items = [];
 
-        $sql = $con->prepare("select * from vusuario where activo = 1 and tipoUsuario = 2");
+        $sql = $con->prepare("CALL usuarioGet_All();");
         $sql->execute();
 
         $result = $sql->get_result();
@@ -151,7 +151,7 @@ class usuario{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-        $sql = $con->prepare("update usuario set activo = 0 where id_Usuario = ?");
+        $sql = $con->prepare("call usuarioBorrar();");
         $sql->bind_param("i", $id);
         $r=$sql->execute();
         $sql->close();

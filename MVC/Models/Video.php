@@ -10,7 +10,8 @@ class Video{
         $DB= new conexion();
         $con = $DB->getConnection();
 
-        $sql = $con->prepare("insert into video (direccion_video) values ('$pVideo')");
+        $sql = $con->prepare("call videoRegistro(?);");
+        $sql->bind_param("s", $pVideo);
         $r=$sql->execute();
 
         $sql->close();
@@ -62,7 +63,7 @@ class Video{
 
         $items = [];
 
-        $sql = $con->prepare("select * from video");
+        $sql = $con->prepare("CALL videoGet_All();");
         $sql->execute();
 
         $result = $sql->get_result();

@@ -53,8 +53,20 @@ class NoticiaControl{
     }
 
     public function updateNoticia(){
+        
+        $palabra = $_POST["palabraClave"];
+        $nuevaPalabra =$_POST["nuevaPalabra"];
+
+        if($palabra == "nueva"){
+            $palabra = $nuevaPalabra;
+            PalabraClave::registro($palabra);
+            $palabra = null;
+            $pNueva = PalabraClave::getLast();
+            $palabra = $pNueva->id;
+        }
+
         $noticia = Noticia::update($_POST["titulo"],$_POST["fecha"], $_POST["lugar"],$_POST["descripcion"], $_POST["texto"],
-        $_POST["seccion"] , $_POST["estatus"], $_POST["idNoticia"]);
+        $_POST["seccion"] , $_POST["estatus"], $_POST["idNoticia"], $palabra);
 
         
         if($_POST["imgE"]!=""){
@@ -99,11 +111,9 @@ class NoticiaControl{
             move_uploaded_file($_FILES["video"]["tmp_name"], $rutaDeGuardado);
 
             $inserVideo = Video::registro($rutaFinal);
-        }else{
-            echo "No entro";
         }
 
-        header("Location: perfil?id=".$_POST["userID"], 301);
+        //header("Location: perfil?id=".$_POST["userID"], 301);
     }
 
     public function deleteNoticia(){
