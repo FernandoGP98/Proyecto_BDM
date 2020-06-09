@@ -373,3 +373,383 @@ BEGIN
         order by FechaPublicacion desc;
 END
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE usuarioGet_ById(IN id int(10))
+BEGIN
+  select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno,
+  telefono, tipoUsuario, activo, imagen
+  from vusuario where id_Usuario = id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE usuarioGet_All()
+BEGIN
+  select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno,
+  telefono, tipoUsuario, activo, imagen
+  from vusuario where activo = 1 and tipoUsuario = 2;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE usuarioBorrar(in id int(10))
+BEGIN
+  update usuario set activo = 0 where id_Usuario = id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ComentarioRegistro(IN pNoticia int(10), IN pUs int(10), IN pComent varchar(255))
+BEGIN
+  INSERT INTO comentarios(noticia, usuario, comentario, fecha) VALUES(pNoticia,pUs,pComent,now());
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE videoRegistro(IN url varchar(250))
+BEGIN
+  insert into video (direccion_video) values (url);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE videoGet_All()
+BEGIN
+  select id_Video, direccion_video from video;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ComentarioDelete(IN pId int(10))
+BEGIN
+  delete from comentarios where id_Comentario = pId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE imagenGet_ById(IN pId int(10))
+BEGIN
+  select id_Imagen, imagen from imagen where id_Imagen=pId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE imagenGet_All()
+BEGIN
+  select id_Imagen, imagen from imagen;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE noticiaRedactar(IN pTitulo varchar(50), IN pFechaAcontesimiento date,
+IN pLugar varchar(250), IN pDescripcion varchar(250), IN pTexto text, 
+IN pseccion int(10), IN pstatus int(10), IN pautor int(10), IN ppalabra int(10))
+BEGIN
+  insert into noticia (Titulo, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion, estatus, autor, palabra) 
+        values (pTitulo, pFechaAcontesimiento, pLugar, pDescripcion, pTexto, pseccion, pestatus, pautor);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE noticiaImagenDelete(IN pId int(10))
+BEGIN
+  delete from noticiaimagen where id_NoticiaImagen=pId;
+END //
+
+DELIMITER //
+CREATE PROCEDURE videoDelete(IN pNoticaId int(10), IN pVideoId int(10))
+BEGIN
+  delete from noticiavideo where noticia=pNoticaId;
+  delete from video where id_Video = pVideoId;
+END //
+
+DELIMITER //
+CREATE PROCEDURE videoGet_ByNoticia(IN pNoticaId int(10))
+BEGIN
+  select id_NoticiaVideo, video from noticiavideo where noticia=pNoticaId;
+END //
+
+DELIMITER //
+CREATE PROCEDURE palabraclaveget_ByTexto(IN pTexto varchar(20))
+BEGIN
+  select id_PalabraClave from palabraclave where PalabraClave=pTexto;
+END //
+
+DELIMITER //
+CREATE PROCEDURE noticiaUpdate(IN pTitulo varchar(50), IN pFechaAcontesimiento date,
+IN pLugar varchar(250), IN pDescripcion varchar(250), IN pTexto text, 
+IN pseccion int(10), IN pstatus int(10), IN ppalabra int(10), IN pIdNoticia int(10))
+BEGIN
+  update noticia set Titulo=pTitulo, FechaAcontesimiento=pFechaAcontesimiento, 
+  Lugar=pLugar, Descripcion=pDescripcion, Texto=pTexto, seccion=pseccion, estatus=pstatus,
+  palabra=ppalabra
+  where id_Noticia=pIdNoticia;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE noticiaGet_AllBySeccion(IN idSec int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Descripcion,
+  destacada, activa, estatus, estatusNombre, seccion, PalabraClave, imagen,
+  firma, autor
+  from vNoticiaCard where seccion = idSec and activa = 1 and estatus = 3;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE noticiaPubicar(IN pDestacada bit(1), IN pId int(10))
+BEGIN
+  update noticia set estatus = 3, destacada = pDestacada where id_Noticia = pId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE noticiaGet_Home(IN pSec int(10))
+BEGIN
+ select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Descripcion,
+  destacada, activa, estatus, estatusNombre, seccion, PalabraClave, imagen,
+  firma, autor
+  from vNoticiaCard where seccion = pSec and activa=1 and estatus = 3
+  order by destacada desc, FechaPublicacion desc 
+  limit 6;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE palabraClaveGet_All()
+BEGIN
+select id_PalabraClave, PalabraClave from palabraclave;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE palabraClaveGet_Ultima()
+BEGIN
+select ultimaPalabra();
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE palabraClaveRegistrar(IN palabra varchar(20))
+BEGIN
+insert into palabraclave (PalabraClave) values (palabra);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE seccionGet_ById(in id int(10))
+BEGIN
+select id_Seccion, color, orden, activa from seccion where id_Seccion = id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE seccionDelete_ById(in id int(10))
+BEGIN
+delete from seccion where id_Seccion = id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE tipoUsuarioGet_All()
+BEGIN
+select id_TipoUsuario, TipoUsuario from tipoUsuario;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE seccionGet_AllOrder()
+BEGIN
+select id_Seccion, color, orden, activa from seccion order by orden;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE usuarioGet_porCorreo(IN pCorreo varchar(100))
+BEGIN
+  SELECT id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, 
+  avatar, tipoUsuario, activo from usuario where correo = pCorreo;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE noticiaBusqueda_ByTitulo(IN p varchar(50))
+BEGIN
+  select id_Noticia, Titulo, descripcion, FechaPublicacion, FechaAcontesimiento, activa, PalabraClave, imagen 
+		from vNoticiaCard where Titulo Like CONCAT('%', p , '%') and estatus = 3 and activa=1
+        order by FechaPublicacion desc;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE  PROCEDURE BusquedaOpcion(
+	in opcion int,
+	IN texto VARCHAR(255),
+    in fechaIni date,
+    in fechaFin date
+)
+BEGIN
+    case  
+	   when opcion = 0 then
+		select id_Noticia, Titulo, descripcion, FechaPublicacion, FechaAcontesimiento, activa, PalabraClave, imagen 
+		from vNoticiaCard where Titulo Like CONCAT('%', texto , '%') and estatus = 3 and activa=1
+        order by FechaPublicacion desc;
+	   when opcion = 1 then
+		select id_Noticia, Titulo, descripcion, FechaPublicacion, FechaAcontesimiento,activa, PalabraClave, imagen 
+		from vNoticiaCard where PalabraClave Like CONCAT('%', texto , '%') and estatus = 3 and activa=1
+        order by FechaPublicacion desc;
+	   when opcion = 2 then
+       SELECT id_Noticia, Titulo, descripcion, FechaPublicacion, FechaAcontesimiento,activa, PalabraClave, imagen  
+		FROM vNoticiaCard WHERE FechaPublicacion  BETWEEN fechaIni AND fechaFin and estatus = 3 and activa=1
+        order by FechaPublicacion desc;
+	end case;
+END //
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE noticiaDelete_ById(IN p int(10))
+BEGIN
+  delete from noticia where id_Noticia = p;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE noticiaGet_All()
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Descripcion,
+  destacada, activa, estatus, estatusNombre, seccion, PalabraClave, imagen,
+  firma, autor
+  from vNoticiaCard where estatus = 2 and activa = 1;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE  PROCEDURE noticiaGet_ById(IN p int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar,
+  Descripcion, Texto, destacada, activa, seccion, estatus, autor,
+  seccion_nombre, firma, palabra, PalabraClave, direccion_video
+  from vVerNoticia where id_Noticia = p;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE noticiaGet_BySeccion(IN p int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Lugar, Descripcion, Texto, seccion,
+  estatus, autor, destacada, activa from noticia where seccion = p;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE noticiaGet_ByUser(IN p int(10))
+BEGIN
+  select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento, Descripcion,
+  destacada, activa, estatus, estatusNombre, seccion, PalabraClave, imagen,
+  firma, autor
+  from vNoticiaCard where autor = p and activa = 1;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE noticiaSoftDelete_ById(IN p int(10))
+BEGIN
+  update noticia set activa=0 where id_Noticia = p;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE psUsuarioByID(
+	in pID int
+)
+BEGIN
+	select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
+	from vUsuario
+    where id_Usuario = pID;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE pUpdateSeccion(
+	in pId int,
+    in pColor varchar(8),
+	in pOrden int,
+    in pActiva int
+)
+begin
+	declare oldOrden int;
+	
+    set oldOrden = (select orden from seccion where id_Seccion = pId);
+    
+	if(oldOrden != pOrden) then
+		if(pOrden < oldOrden) then
+			update seccion set orden = (orden + 1) where orden between pOrden and oldOrden;
+        end if;
+        if(pOrden > oldOrden) then
+			update seccion set orden = (orden - 1) where orden between oldOrden and pOrden;
+        end if;
+    end if;
+    
+    update seccion set orden = pOrden, color = pColor, activa = pActiva where id_Seccion = pId;
+end$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spGetLikes(
+	in pNoticia int
+)
+BEGIN
+	select id_Like, usuario from likes where noticia = pNoticia;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spNotasRelacionadas(
+	in pPalabra varchar(30)
+)
+BEGIN
+	select id_Noticia, Titulo, FechaPublicacion, FechaAcontesimiento,Descripcion, destacada, activa, 
+		estatus, estatusNombre, seccion, PalabraClave, imagen, firma, autor
+	from vNoticiaCard
+    where PalabraClave = pPalabra and estatus = 3
+	order by rand()
+	limit 5;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spPortada(
+)
+BEGIN
+	select id_Noticia, Titulo, descripcion, activa, destacada, PalabraClave, imagen
+	from vNoticiaCard where estatus = 3 and activa = 1
+	order by destacada desc, id_Noticia
+	limit 8;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE usuarioGet_porCorreoContra(
+	in correo2 varchar(50),
+	IN contraseña2 VARCHAR(255)
+)
+BEGIN
+	select id_Usuario, correo, contraseña, firma, nombre, apellido_materno, apellido_paterno, telefono, tipoUsuario, activo, imagen 
+	from vUsuario
+    where correo = correo2 and contraseña = contraseña2; 
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE usuarioRegistro(IN pCorreo varchar(100), IN pContra varchar(30), IN pFirma varchar(20),
+IN pNombre varchar(20), IN pApPaterno varchar(20), IN pApMaterno varchar(20), IN pTelefono varchar(15),
+IN pAvatar int(10), IN pTipoUsuario varchar(10))
+BEGIN
+  INSERT INTO usuario (correo, contraseña, firma, nombre, apellido_paterno, apellido_materno, telefono,avatar, tipoUsuario,activo)
+  VALUES (pCorreo, pContra, pFirma, pNombre, pApPaterno, pApMaterno, pTelefono, pAvatar, pTipoUsuario, 1);
+END$$
+DELIMITER ;
+
+
